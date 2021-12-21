@@ -11,7 +11,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        let date = Date()
+        print(date.zh_12hStr() + date.zh_AmPmStr())
+        print(date.zh_12hhStr() + date.zh_AmPmCNStr())
     }
 
 

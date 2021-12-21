@@ -1,0 +1,6 @@
+framework module Pods_ZHKitDome {
+  umbrella header "Pods-ZHKitDome-umbrella.h"
+
+  export *
+  module * { export * }
+}
