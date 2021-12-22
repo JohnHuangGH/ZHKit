@@ -21,6 +21,7 @@
 		9C7F660C277033400025CA56 /* Date+Ectension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F660B277033400025CA56 /* Date+Ectension.swift */; };
 		9C7F660E2770338E0025CA56 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F660D2770338E0025CA56 /* String+Extension.swift */; };
 		9C7F6610277033B40025CA56 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F660F277033B40025CA56 /* UIImage+Extension.swift */; };
+		9CF33BB12772B68F00AC1D54 /* ZHWebSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF33BB02772B68F00AC1D54 /* ZHWebSocketManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		9C7F660B277033400025CA56 /* Date+Ectension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Ectension.swift"; sourceTree = "<group>"; };
 		9C7F660D2770338E0025CA56 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		9C7F660F277033B40025CA56 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		9CF33BB02772B68F00AC1D54 /* ZHWebSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHWebSocketManager.swift; sourceTree = "<group>"; };
 		BB078A6BD8C48C55D168F23F /* Pods-ZHKitDome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHKitDome.release.xcconfig"; path = "Target Support Files/Pods-ZHKitDome/Pods-ZHKitDome.release.xcconfig"; sourceTree = "<group>"; };
 		F38CCB52CC6029F4D0807FEA /* Pods-ZHKitDome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHKitDome.debug.xcconfig"; path = "Target Support Files/Pods-ZHKitDome/Pods-ZHKitDome.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,6 +93,7 @@
 		9C2BABE7274203A80007C244 /* ZHKitDome */ = {
 			isa = PBXGroup;
 			children = (
+				9CF33BAD2772B59600AC1D54 /* Manager */,
 				9C0B5AE02747884500095003 /* Extension */,
 				9C2BABE8274203A80007C244 /* AppDelegate.swift */,
 				9C2BABEA274203A80007C244 /* SceneDelegate.swift */,
@@ -101,6 +104,14 @@
 				9C2BABF6274203A80007C244 /* Info.plist */,
 			);
 			path = ZHKitDome;
+			sourceTree = "<group>";
+		};
+		9CF33BAD2772B59600AC1D54 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				9CF33BB02772B68F00AC1D54 /* ZHWebSocketManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		D70693EC97B3C1CEBB93FA48 /* Pods */ = {
@@ -245,6 +256,7 @@
 				9C7F6610277033B40025CA56 /* UIImage+Extension.swift in Sources */,
 				9C2BABEB274203A80007C244 /* SceneDelegate.swift in Sources */,
 				9C7F6606277032BC0025CA56 /* UIButton+Extension.swift in Sources */,
+				9CF33BB12772B68F00AC1D54 /* ZHWebSocketManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

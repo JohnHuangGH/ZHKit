@@ -7,5 +7,7 @@ target 'ZHKitDome' do
 
   # Pods for ZHKitDome
   pod 'SnapKit'
+  pod 'SocketRocket'
+  pod 'Alamofire'
 
 end
