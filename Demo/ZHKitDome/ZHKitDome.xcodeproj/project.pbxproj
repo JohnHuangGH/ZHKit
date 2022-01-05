@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		514017F6E38BCA3A4CBD24D6 /* Pods_ZHKitDome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C4E435DD0035F5E353AF13 /* Pods_ZHKitDome.framework */; };
 		9C0B5AE42747892900095003 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0B5AE32747892900095003 /* UIDevice+Extension.swift */; };
+		9C0E06032783F7590079A733 /* ZHNetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E06022783F7590079A733 /* ZHNetManager.swift */; };
 		9C2BABE9274203A80007C244 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2BABE8274203A80007C244 /* AppDelegate.swift */; };
 		9C2BABEB274203A80007C244 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2BABEA274203A80007C244 /* SceneDelegate.swift */; };
 		9C2BABED274203A80007C244 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2BABEC274203A80007C244 /* ViewController.swift */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		51C4E435DD0035F5E353AF13 /* Pods_ZHKitDome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZHKitDome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C0B5AE32747892900095003 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
+		9C0E06022783F7590079A733 /* ZHNetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHNetManager.swift; sourceTree = "<group>"; };
 		9C2BABE5274203A80007C244 /* ZHKitDome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZHKitDome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C2BABE8274203A80007C244 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C2BABEA274203A80007C244 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				9CF33BB02772B68F00AC1D54 /* ZHWebSocketManager.swift */,
+				9C0E06022783F7590079A733 /* ZHNetManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				CLASSPREFIX = ZH;
 				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
@@ -247,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C7F660C277033400025CA56 /* Date+Ectension.swift in Sources */,
+				9C0E06032783F7590079A733 /* ZHNetManager.swift in Sources */,
 				9C7F660E2770338E0025CA56 /* String+Extension.swift in Sources */,
 				9C7F6608277033100025CA56 /* UIView+Extension.swift in Sources */,
 				9C2BABED274203A80007C244 /* ViewController.swift in Sources */,
