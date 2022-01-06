@@ -1,0 +1,24 @@
+PODS:
+  - Alamofire (5.4.4)
+  - SnapKit (5.0.1)
+  - SocketRocket (0.6.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - SnapKit
+  - SocketRocket
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - SnapKit
+    - SocketRocket
+
+SPEC CHECKSUMS:
+  Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
+
+PODFILE CHECKSUM: 4b693805dd9a26e69239e10d4d3fb7dd91fde78f
+
+COCOAPODS: 1.10.2
