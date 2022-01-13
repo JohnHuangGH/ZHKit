@@ -18,41 +18,198 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1000" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Tf-ya-dzf">
                     <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgimg" translatesAutoresizingMaskIntoConstraints="NO" id="Ufq-yh-T6O">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zSH-zS-vBJ">
                             <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
-                        </imageView>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgimg" translatesAutoresizingMaskIntoConstraints="NO" id="Ufq-yh-T6O">
+                                    <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                                </imageView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wv9-1P-nmc" customClass="ZHDrawBoardMarkView" customModule="ZHDrawBoardDemo" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="Ufq-yh-T6O" firstAttribute="top" secondItem="zSH-zS-vBJ" secondAttribute="top" id="3do-VL-OmM"/>
+                                <constraint firstAttribute="trailing" secondItem="wv9-1P-nmc" secondAttribute="trailing" id="7YE-mc-T4V"/>
+                                <constraint firstAttribute="bottom" secondItem="Ufq-yh-T6O" secondAttribute="bottom" id="B2l-zq-rd6"/>
+                                <constraint firstAttribute="trailing" secondItem="Ufq-yh-T6O" secondAttribute="trailing" id="I5q-YO-9gh"/>
+                                <constraint firstItem="Ufq-yh-T6O" firstAttribute="leading" secondItem="zSH-zS-vBJ" secondAttribute="leading" id="Iz8-ht-F28"/>
+                                <constraint firstItem="wv9-1P-nmc" firstAttribute="leading" secondItem="zSH-zS-vBJ" secondAttribute="leading" id="T1v-JS-Q8k"/>
+                                <constraint firstAttribute="bottom" secondItem="wv9-1P-nmc" secondAttribute="bottom" id="ZL3-n7-RWl"/>
+                                <constraint firstItem="wv9-1P-nmc" firstAttribute="top" secondItem="zSH-zS-vBJ" secondAttribute="top" id="tWh-u8-ABg"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="Ufq-yh-T6O" firstAttribute="top" secondItem="8Tf-ya-dzf" secondAttribute="top" id="W7F-a8-FNa"/>
-                        <constraint firstItem="Ufq-yh-T6O" firstAttribute="leading" secondItem="8Tf-ya-dzf" secondAttribute="leading" id="cLO-mL-hSY"/>
-                        <constraint firstAttribute="trailing" secondItem="Ufq-yh-T6O" secondAttribute="trailing" id="g5f-Yl-PXM"/>
-                        <constraint firstAttribute="bottom" secondItem="Ufq-yh-T6O" secondAttribute="bottom" id="vIk-p4-98G"/>
+                        <constraint firstAttribute="bottom" secondItem="zSH-zS-vBJ" secondAttribute="bottom" id="04u-3K-fFc"/>
+                        <constraint firstItem="zSH-zS-vBJ" firstAttribute="leading" secondItem="8Tf-ya-dzf" secondAttribute="leading" id="CNk-Zt-hh8"/>
+                        <constraint firstItem="zSH-zS-vBJ" firstAttribute="top" secondItem="8Tf-ya-dzf" secondAttribute="top" id="PQm-dx-3FZ"/>
+                        <constraint firstAttribute="trailing" secondItem="zSH-zS-vBJ" secondAttribute="trailing" id="YMC-cl-C4N"/>
                     </constraints>
                     <viewLayoutGuide key="contentLayoutGuide" id="GhP-zI-e38"/>
                     <viewLayoutGuide key="frameLayoutGuide" id="soH-d0-MSH"/>
                 </scrollView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aId-jo-W6Q" customClass="ZHDrawBoardOptionBar" customModule="ZHDrawBoardDemo" customModuleProvider="target">
+                    <rect key="frame" x="50" y="315" width="567" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HF5-Pb-Scf">
+                            <rect key="frame" x="20" y="4" width="60" height="42"/>
+                            <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="gBO-p9-nHW"/>
+                            </constraints>
+                            <state key="normal" title="画笔"/>
+                            <state key="selected">
+                                <color key="titleColor" systemColor="systemGreenColor"/>
+                            </state>
+                            <connections>
+                                <action selector="penBtnClickWithSender:" destination="zaC-FF-053" eventType="touchUpInside" id="fkE-dq-MAA"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NKj-Do-Vxp">
+                            <rect key="frame" x="114" y="10" width="30" height="30"/>
+                            <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                            <state key="normal" title="细"/>
+                            <state key="selected" title="粗">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="lineWidthBtnClick:" destination="zaC-FF-053" eventType="touchUpInside" id="fTG-tQ-1BZ"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q3u-4s-kcb">
+                            <rect key="frame" x="82" y="10" width="30" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="Qwr-s7-zKj"/>
+                                <constraint firstAttribute="width" constant="30" id="dJw-NW-Nvg"/>
+                            </constraints>
+                            <connections>
+                                <action selector="colorBtnClick:" destination="zaC-FF-053" eventType="touchUpInside" id="PKt-bS-6GB"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ub-jL-n20">
+                            <rect key="frame" x="355" y="4" width="60" height="42"/>
+                            <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                            <state key="normal" title="上一步">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="disabled">
+                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" systemColor="systemGreenColor"/>
+                            </state>
+                            <connections>
+                                <action selector="previousBtnClick:" destination="zaC-FF-053" eventType="touchUpInside" id="9Mu-TS-ZdG"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r7N-QA-6sd">
+                            <rect key="frame" x="421" y="4" width="60" height="42"/>
+                            <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                            <state key="normal" title="下一步">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="disabled">
+                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" systemColor="systemGreenColor"/>
+                            </state>
+                            <connections>
+                                <action selector="nextBtnClick:" destination="zaC-FF-053" eventType="touchUpInside" id="xKj-pu-TEI"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WdO-jX-rWO">
+                            <rect key="frame" x="487" y="4" width="60" height="42"/>
+                            <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                            <state key="normal" title="清除">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="disabled">
+                                <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" systemColor="systemGreenColor"/>
+                            </state>
+                            <connections>
+                                <action selector="clearBtnClick:" destination="zaC-FF-053" eventType="touchUpInside" id="oXa-jN-fxS"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="r7N-QA-6sd" firstAttribute="bottom" secondItem="1Ub-jL-n20" secondAttribute="bottom" id="EdT-Om-pKK"/>
+                        <constraint firstItem="q3u-4s-kcb" firstAttribute="leading" secondItem="HF5-Pb-Scf" secondAttribute="trailing" constant="2" id="GI1-OB-FeM"/>
+                        <constraint firstItem="HF5-Pb-Scf" firstAttribute="top" secondItem="aId-jo-W6Q" secondAttribute="top" constant="4" id="I5J-p3-1ab"/>
+                        <constraint firstItem="q3u-4s-kcb" firstAttribute="centerY" secondItem="HF5-Pb-Scf" secondAttribute="centerY" id="Jvr-ua-knI"/>
+                        <constraint firstItem="WdO-jX-rWO" firstAttribute="leading" secondItem="r7N-QA-6sd" secondAttribute="trailing" constant="6" id="LEo-SS-YLv"/>
+                        <constraint firstItem="NKj-Do-Vxp" firstAttribute="bottom" secondItem="q3u-4s-kcb" secondAttribute="bottom" id="N6G-5e-NOz"/>
+                        <constraint firstItem="1Ub-jL-n20" firstAttribute="bottom" secondItem="HF5-Pb-Scf" secondAttribute="bottom" id="NJa-xP-G0D"/>
+                        <constraint firstAttribute="height" constant="50" id="Q7S-eP-XxL"/>
+                        <constraint firstItem="r7N-QA-6sd" firstAttribute="width" secondItem="1Ub-jL-n20" secondAttribute="width" id="Xmw-ew-Adc"/>
+                        <constraint firstItem="NKj-Do-Vxp" firstAttribute="top" secondItem="q3u-4s-kcb" secondAttribute="top" id="Z22-Dk-lg9"/>
+                        <constraint firstItem="r7N-QA-6sd" firstAttribute="top" secondItem="1Ub-jL-n20" secondAttribute="top" id="ZKt-eO-syT"/>
+                        <constraint firstItem="r7N-QA-6sd" firstAttribute="leading" secondItem="1Ub-jL-n20" secondAttribute="trailing" constant="6" id="aOu-QP-UuQ"/>
+                        <constraint firstItem="1Ub-jL-n20" firstAttribute="top" secondItem="HF5-Pb-Scf" secondAttribute="top" id="cP6-AA-mOh"/>
+                        <constraint firstItem="WdO-jX-rWO" firstAttribute="top" secondItem="r7N-QA-6sd" secondAttribute="top" id="eYI-QH-BlO"/>
+                        <constraint firstAttribute="trailing" secondItem="WdO-jX-rWO" secondAttribute="trailing" constant="20" id="jat-9G-fIt"/>
+                        <constraint firstItem="HF5-Pb-Scf" firstAttribute="leading" secondItem="aId-jo-W6Q" secondAttribute="leading" constant="20" id="kn5-Px-48Y"/>
+                        <constraint firstItem="NKj-Do-Vxp" firstAttribute="leading" secondItem="q3u-4s-kcb" secondAttribute="trailing" constant="2" id="oiZ-0z-E53"/>
+                        <constraint firstItem="1Ub-jL-n20" firstAttribute="width" secondItem="HF5-Pb-Scf" secondAttribute="width" id="rB3-L2-j2A"/>
+                        <constraint firstItem="WdO-jX-rWO" firstAttribute="width" secondItem="r7N-QA-6sd" secondAttribute="width" id="tH7-RE-NGQ"/>
+                        <constraint firstAttribute="bottom" secondItem="HF5-Pb-Scf" secondAttribute="bottom" constant="4" id="v62-ej-eL1"/>
+                        <constraint firstItem="NKj-Do-Vxp" firstAttribute="width" secondItem="q3u-4s-kcb" secondAttribute="width" id="wxs-h8-UZn"/>
+                        <constraint firstItem="WdO-jX-rWO" firstAttribute="bottom" secondItem="r7N-QA-6sd" secondAttribute="bottom" id="xkC-Fa-LwT"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="clearBtn" destination="WdO-jX-rWO" id="edi-qM-CNw"/>
+                        <outlet property="nextBtn" destination="r7N-QA-6sd" id="OPb-sv-qNk"/>
+                        <outlet property="penBtn" destination="HF5-Pb-Scf" id="juT-TF-JgZ"/>
+                        <outlet property="previousBtn" destination="1Ub-jL-n20" id="Hbr-AA-txv"/>
+                    </connections>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Pys-ja-Ij2"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="8Tf-ya-dzf" firstAttribute="leading" secondItem="zaC-FF-053" secondAttribute="leading" id="0Mu-mY-VmA"/>
-                <constraint firstItem="Ufq-yh-T6O" firstAttribute="width" secondItem="zaC-FF-053" secondAttribute="width" id="2CO-fo-yjW"/>
                 <constraint firstAttribute="trailing" secondItem="8Tf-ya-dzf" secondAttribute="trailing" id="5Ct-zA-lZq"/>
                 <constraint firstAttribute="bottom" secondItem="8Tf-ya-dzf" secondAttribute="bottom" id="5aF-EX-EQ9"/>
-                <constraint firstItem="Ufq-yh-T6O" firstAttribute="height" secondItem="zaC-FF-053" secondAttribute="height" id="ffq-of-FiO"/>
+                <constraint firstItem="aId-jo-W6Q" firstAttribute="leading" secondItem="Pys-ja-Ij2" secondAttribute="leading" constant="50" id="Ipa-EO-f6n"/>
+                <constraint firstItem="zSH-zS-vBJ" firstAttribute="width" secondItem="zaC-FF-053" secondAttribute="width" id="Q7w-fq-7K5"/>
+                <constraint firstItem="zSH-zS-vBJ" firstAttribute="height" secondItem="zaC-FF-053" secondAttribute="height" id="hSq-7g-G0N"/>
+                <constraint firstItem="Pys-ja-Ij2" firstAttribute="bottom" secondItem="aId-jo-W6Q" secondAttribute="bottom" constant="10" id="iPE-Pn-hNO"/>
+                <constraint firstItem="Pys-ja-Ij2" firstAttribute="trailing" secondItem="aId-jo-W6Q" secondAttribute="trailing" constant="50" id="oB4-tW-neg"/>
                 <constraint firstItem="8Tf-ya-dzf" firstAttribute="top" secondItem="zaC-FF-053" secondAttribute="top" id="oBE-zD-3od"/>
             </constraints>
             <connections>
                 <outlet property="bgImgv" destination="Ufq-yh-T6O" id="Q1O-5r-s6M"/>
+                <outlet property="markView" destination="wv9-1P-nmc" id="kyn-vy-Qg8"/>
+                <outlet property="optionBar" destination="aId-jo-W6Q" id="z84-im-guO"/>
+                <outlet property="scrollContainer" destination="zSH-zS-vBJ" id="sNm-Wn-pdc"/>
                 <outlet property="scrollView" destination="8Tf-ya-dzf" id="jgh-IP-lXp"/>
             </connections>
-            <point key="canvasLocation" x="-355" y="-137"/>
+            <point key="canvasLocation" x="-355.7721139430285" y="-138.40000000000001"/>
         </view>
     </objects>
     <resources>
         <image name="bgimg" width="640" height="400"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
