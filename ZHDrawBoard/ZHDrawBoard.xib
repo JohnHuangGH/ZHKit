@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -61,6 +61,9 @@
                                 <constraint firstAttribute="width" constant="60" id="gBO-p9-nHW"/>
                             </constraints>
                             <state key="normal" title="画笔"/>
+                            <state key="disabled">
+                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
                             <state key="selected">
                                 <color key="titleColor" systemColor="systemGreenColor"/>
                             </state>
@@ -138,11 +141,29 @@
                                 <action selector="clearBtnClick:" destination="zaC-FF-053" eventType="touchUpInside" id="oXa-jN-fxS"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kkf-0F-PyT">
+                            <rect key="frame" x="285" y="4" width="60" height="42"/>
+                            <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                            <state key="normal" title="点选">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="disabled">
+                                <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" systemColor="systemGreenColor"/>
+                            </state>
+                            <connections>
+                                <action selector="selBtnClick:" destination="zaC-FF-053" eventType="touchUpInside" id="x1X-ZB-9Bs"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
+                        <constraint firstItem="kkf-0F-PyT" firstAttribute="width" secondItem="1Ub-jL-n20" secondAttribute="width" id="9d5-Wn-Gp1"/>
                         <constraint firstItem="r7N-QA-6sd" firstAttribute="bottom" secondItem="1Ub-jL-n20" secondAttribute="bottom" id="EdT-Om-pKK"/>
                         <constraint firstItem="q3u-4s-kcb" firstAttribute="leading" secondItem="HF5-Pb-Scf" secondAttribute="trailing" constant="2" id="GI1-OB-FeM"/>
+                        <constraint firstItem="kkf-0F-PyT" firstAttribute="top" secondItem="1Ub-jL-n20" secondAttribute="top" id="GR3-tA-ted"/>
                         <constraint firstItem="HF5-Pb-Scf" firstAttribute="top" secondItem="aId-jo-W6Q" secondAttribute="top" constant="4" id="I5J-p3-1ab"/>
                         <constraint firstItem="q3u-4s-kcb" firstAttribute="centerY" secondItem="HF5-Pb-Scf" secondAttribute="centerY" id="Jvr-ua-knI"/>
                         <constraint firstItem="WdO-jX-rWO" firstAttribute="leading" secondItem="r7N-QA-6sd" secondAttribute="trailing" constant="6" id="LEo-SS-YLv"/>
@@ -153,6 +174,7 @@
                         <constraint firstItem="NKj-Do-Vxp" firstAttribute="top" secondItem="q3u-4s-kcb" secondAttribute="top" id="Z22-Dk-lg9"/>
                         <constraint firstItem="r7N-QA-6sd" firstAttribute="top" secondItem="1Ub-jL-n20" secondAttribute="top" id="ZKt-eO-syT"/>
                         <constraint firstItem="r7N-QA-6sd" firstAttribute="leading" secondItem="1Ub-jL-n20" secondAttribute="trailing" constant="6" id="aOu-QP-UuQ"/>
+                        <constraint firstItem="1Ub-jL-n20" firstAttribute="leading" secondItem="kkf-0F-PyT" secondAttribute="trailing" constant="10" id="cDi-CU-PfC"/>
                         <constraint firstItem="1Ub-jL-n20" firstAttribute="top" secondItem="HF5-Pb-Scf" secondAttribute="top" id="cP6-AA-mOh"/>
                         <constraint firstItem="WdO-jX-rWO" firstAttribute="top" secondItem="r7N-QA-6sd" secondAttribute="top" id="eYI-QH-BlO"/>
                         <constraint firstAttribute="trailing" secondItem="WdO-jX-rWO" secondAttribute="trailing" constant="20" id="jat-9G-fIt"/>
@@ -163,10 +185,11 @@
                         <constraint firstAttribute="bottom" secondItem="HF5-Pb-Scf" secondAttribute="bottom" constant="4" id="v62-ej-eL1"/>
                         <constraint firstItem="NKj-Do-Vxp" firstAttribute="width" secondItem="q3u-4s-kcb" secondAttribute="width" id="wxs-h8-UZn"/>
                         <constraint firstItem="WdO-jX-rWO" firstAttribute="bottom" secondItem="r7N-QA-6sd" secondAttribute="bottom" id="xkC-Fa-LwT"/>
+                        <constraint firstItem="kkf-0F-PyT" firstAttribute="bottom" secondItem="1Ub-jL-n20" secondAttribute="bottom" id="yLe-T0-4as"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="5"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="5"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -174,6 +197,7 @@
                         <outlet property="nextBtn" destination="r7N-QA-6sd" id="OPb-sv-qNk"/>
                         <outlet property="penBtn" destination="HF5-Pb-Scf" id="juT-TF-JgZ"/>
                         <outlet property="previousBtn" destination="1Ub-jL-n20" id="Hbr-AA-txv"/>
+                        <outlet property="selBtn" destination="kkf-0F-PyT" id="rVv-L1-Wq0"/>
                     </connections>
                 </view>
             </subviews>
