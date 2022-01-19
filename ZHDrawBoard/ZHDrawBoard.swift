@@ -68,8 +68,8 @@ class ZHDrawBoardContainer: UIView {
             self?.markView.option = .text
             self?.scrollView.isScrollEnabled = false
         }
-        optionBar.lineAct = {[weak self] sender in
-            self?.markView.option = .line
+        optionBar.circleAct = {[weak self] sender in
+            self?.markView.option = .circle
             self?.scrollView.isScrollEnabled = false
         }
         optionBar.rectAct = {[weak self] sender in
@@ -80,6 +80,10 @@ class ZHDrawBoardContainer: UIView {
             self?.markView.option = .arrow
             self?.scrollView.isScrollEnabled = false
         }
+        optionBar.lineAct = {[weak self] sender in
+            self?.markView.option = .line
+            self?.scrollView.isScrollEnabled = false
+        }
         
         optionBar.singleSelAct = {[weak self] sender in
             self?.markView.option = .singleSelect
@@ -87,10 +91,11 @@ class ZHDrawBoardContainer: UIView {
         }
         optionBar.multiSelAct = {[weak self] sender in
             self?.markView.option = .multiSelect
+            self?.scrollView.isScrollEnabled = true
         }
+        
         optionBar.previousAct = {[weak self] sender in
             sender.isEnabled = self?.markView.previous() ?? false
-            
         }
         optionBar.nextAct = {[weak self] sender in
             sender.isEnabled = self?.markView.next() ?? false

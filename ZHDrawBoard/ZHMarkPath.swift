@@ -9,19 +9,15 @@ import UIKit
 
 class ZHMarkPath: ZHBasePath {
     
-    override func addLine(to point: CGPoint) {
+    override func draw(to point: CGPoint) {
         markPoints.append(point)
-        super.addLine(to: point)
+        addLine(to: point)
     }
     
-    convenience init(width: CGFloat, color: UIColor, points: [CGPoint], offset: CGPoint, capStyle: CGLineCap = .round, joinStyle: CGLineJoin = .round) {
-        self.init(width: width, color: color, capStyle: capStyle, joinStyle: joinStyle)
-    
-        for (idx, point) in points.enumerated() {
-            let p = CGPoint(x: point.x + offset.x, y: point.y + offset.y)
-            idx == 0 ? move(to: p) : addLine(to: p)
-        }
-    }
+//    override func addLine(to point: CGPoint) {
+//        markPoints.append(point)
+//        super.addLine(to: point)
+//    }
     
 //    func clickRect() -> CGRect {
 //        if markPoints.count < 2 { return .zero }
