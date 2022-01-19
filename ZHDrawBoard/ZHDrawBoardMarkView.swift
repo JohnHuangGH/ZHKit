@@ -11,6 +11,7 @@ enum ZHDrawBoardOption {
     case pen
     case text
     case line
+    case circle
     case rect
     case arrow
     case singleSelect
@@ -53,14 +54,10 @@ class ZHDrawBoardMarkView: UIView {
     }
     private var showPaths: [ZHBasePath] = []
     
-//    private var selectedPath: ZHBasePath?
     private var selectedView: ZHMarkSelectedView?{
         didSet{
-            if selectedView == nil, let selView = oldValue, selView.movedRect != .zero, let path = selView.paths.last, let selPath = selView.selectedPath  {
-                selPath.moved = true
-                let movedPath = ZHMarkPath(width: path.lineWidth, color: path.lineColor, points: path.markPoints, offset: selView.movedRect.origin)
-                movedPath.preMovePath = selPath
-                drawPaths.append(movedPath)
+            if selectedView == nil, let selView = oldValue {
+                selView.selectedPaths.forEach{$0.isSelectedPath = false}
             }
         }
     }
@@ -69,7 +66,10 @@ class ZHDrawBoardMarkView: UIView {
         if showPaths.count <= 0 {
             return false
         }
-        
+        clearSelectedPath()
+        if let lastPath = showPaths.last, let preMovePath = lastPath.preMovePath {
+            preMovePath.moved = false
+        }
         showPaths.removeLast()
         setNeedsDisplay()
         return showPaths.count > 0
@@ -79,7 +79,11 @@ class ZHDrawBoardMarkView: UIView {
         if showPaths.count == drawPaths.count {
             return false
         }
-        showPaths.append(drawPaths[showPaths.count])
+        let nextPath = drawPaths[showPaths.count]
+        if let preMovePath = nextPath.preMovePath {
+            preMovePath.moved = true
+        }
+        showPaths.append(nextPath)
         setNeedsDisplay()
         return showPaths.count < drawPaths.count
     }
@@ -88,6 +92,7 @@ class ZHDrawBoardMarkView: UIView {
         option = .pen
         drawPaths.removeAll()
         clearSelectedPath()
+        setNeedsDisplay()
     }
 }
 
@@ -126,8 +131,15 @@ extension ZHDrawBoardMarkView {
             }
             let path = ZHLinePath(width: lineWidth, color: lineColor, point: touchPoint)
             drawPaths.append(path)
+        case .circle:
+            if drawPaths.count != showPaths.count {
+                drawPaths = showPaths
+            }
+            let path = ZHCirclePath(width: lineWidth, color: lineColor, point: touchPoint)
+            drawPaths.append(path)
         case .singleSelect:
             clearSelectedPath()
+            setNeedsDisplay()
             //0.倒序遍历，后绘制的优先被选中
             //1.是否落在涂鸦路径上
             for (i, path) in showPaths.reversed().enumerated() {
@@ -156,13 +168,10 @@ extension ZHDrawBoardMarkView {
         guard let touch = touches.first else { return }
         let touchPoint = touch.location(in: self)
         switch option {
-        case .pen:
+        case .pen, .line, .circle:
             guard let path = drawPaths.last else { return }
-            path.addLine(to: touchPoint)
-            setNeedsDisplay()
-        case .line:
-            guard let path = drawPaths.last as? ZHLinePath else { return }
-            path.drawLine(to: touchPoint)
+//            path.addLine(to: touchPoint)
+            path.draw(to: touchPoint)
             setNeedsDisplay()
         default:
             break
@@ -173,7 +182,7 @@ extension ZHDrawBoardMarkView {
         if isZooming { return }
         guard let path = drawPaths.last else { return }
         switch option {
-        case .pen, .line:
+        case .pen, .line, .circle:
             path.isValid = true//如果是缩放，会走began和moved，不走ended
         default:
             break
@@ -181,24 +190,31 @@ extension ZHDrawBoardMarkView {
     }
     
     private func clearSelectedPath(){
-        selectedView?.selectedPath?.isSelectedPath = false
+        if selectedView == nil { return }
+        selectedView?.selectedPaths.forEach{$0.isSelectedPath = false}
         selectedView?.removeFromSuperview()
         selectedView = nil
         
-//        selectedPath?.isSelectedPath = false
-//        selectedPath = nil
-        
-        setNeedsDisplay()
+//        setNeedsDisplay()
     }
     
     private func refreshSelectedPath(path: ZHBasePath, insetIndx: Int){
         path.isSelectedPath = true
         let selView = ZHMarkSelectedView(path: path)
+        selView.movedHandle = {[weak self] in
+            for (i, showPath) in $0.showPaths.enumerated() {
+                let selPath = $0.selectedPaths[i]
+                selPath.isSelectedPath = false
+                selPath.moved = true
+                let movedPath = ZHMarkPath(width: showPath.lineWidth, color: showPath.lineColor, points: showPath.markPoints, offset: selView.movedRect.origin)
+                movedPath.isSelectedPath = true
+                movedPath.preMovePath = selPath
+                $0.selectedPaths[i] = movedPath
+                self?.drawPaths.append(movedPath)
+            }
+        }
         self.selectedView = selView
         addSubview(selView)
-        
-//        selectedPath = path
-//        path.isSelectedPath = true
         
         setNeedsDisplay()
     }

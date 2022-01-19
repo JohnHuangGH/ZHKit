@@ -184,7 +184,7 @@
                             <rect key="frame" x="174" y="8" width="40" height="34"/>
                             <color key="backgroundColor" systemColor="systemIndigoColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <state key="normal" title="直线">
+                            <state key="normal" title="圆形">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <state key="disabled">
@@ -194,7 +194,7 @@
                                 <color key="titleColor" systemColor="systemGreenColor"/>
                             </state>
                             <connections>
-                                <action selector="lineBtnClick:" destination="aId-jo-W6Q" eventType="touchUpInside" id="WdE-kE-puR"/>
+                                <action selector="circleBtnClick:" destination="aId-jo-W6Q" eventType="touchUpInside" id="FgP-qc-xAb"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Da6-il-3jE">
@@ -248,6 +248,23 @@
                                 <action selector="arrowBtnClick:" destination="aId-jo-W6Q" eventType="touchUpInside" id="6wu-ye-u21"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Zq-Df-YbD">
+                            <rect key="frame" x="306" y="8" width="40" height="34"/>
+                            <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="直线">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="disabled">
+                                <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" systemColor="systemGreenColor"/>
+                            </state>
+                            <connections>
+                                <action selector="lineBtnClick:" destination="aId-jo-W6Q" eventType="touchUpInside" id="vnQ-XF-VpW"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
@@ -262,6 +279,7 @@
                         <constraint firstItem="Da6-il-3jE" firstAttribute="bottom" secondItem="6dJ-fl-otg" secondAttribute="bottom" id="ER0-6A-5xe"/>
                         <constraint firstItem="r7N-QA-6sd" firstAttribute="bottom" secondItem="1Ub-jL-n20" secondAttribute="bottom" id="EdT-Om-pKK"/>
                         <constraint firstItem="MQq-eQ-KvQ" firstAttribute="bottom" secondItem="kkf-0F-PyT" secondAttribute="bottom" id="F8i-TY-5GY"/>
+                        <constraint firstItem="5Zq-Df-YbD" firstAttribute="width" secondItem="iKC-2V-Lwv" secondAttribute="width" id="FtO-WX-h79"/>
                         <constraint firstItem="q3u-4s-kcb" firstAttribute="leading" secondItem="HF5-Pb-Scf" secondAttribute="trailing" constant="2" id="GI1-OB-FeM"/>
                         <constraint firstItem="kkf-0F-PyT" firstAttribute="top" secondItem="1Ub-jL-n20" secondAttribute="top" id="GR3-tA-ted"/>
                         <constraint firstItem="HF5-Pb-Scf" firstAttribute="top" secondItem="aId-jo-W6Q" secondAttribute="top" constant="8" id="I5J-p3-1ab"/>
@@ -282,13 +300,16 @@
                         <constraint firstItem="NKj-Do-Vxp" firstAttribute="centerY" secondItem="q3u-4s-kcb" secondAttribute="centerY" id="cq3-qc-3gP"/>
                         <constraint firstItem="WdO-jX-rWO" firstAttribute="top" secondItem="r7N-QA-6sd" secondAttribute="top" id="eYI-QH-BlO"/>
                         <constraint firstItem="MQq-eQ-KvQ" firstAttribute="width" secondItem="kkf-0F-PyT" secondAttribute="width" id="enR-l3-KYk"/>
+                        <constraint firstItem="5Zq-Df-YbD" firstAttribute="top" secondItem="iKC-2V-Lwv" secondAttribute="top" id="ilV-9L-MNW"/>
                         <constraint firstAttribute="trailing" secondItem="WdO-jX-rWO" secondAttribute="trailing" constant="10" id="jat-9G-fIt"/>
                         <constraint firstItem="q3u-4s-kcb" firstAttribute="centerY" secondItem="HF5-Pb-Scf" secondAttribute="centerY" id="kca-VK-7Rx"/>
                         <constraint firstItem="iKC-2V-Lwv" firstAttribute="leading" secondItem="Da6-il-3jE" secondAttribute="trailing" constant="4" id="kfA-4G-cVT"/>
                         <constraint firstItem="HF5-Pb-Scf" firstAttribute="leading" secondItem="aId-jo-W6Q" secondAttribute="leading" constant="10" id="kn5-Px-48Y"/>
+                        <constraint firstItem="5Zq-Df-YbD" firstAttribute="leading" secondItem="iKC-2V-Lwv" secondAttribute="trailing" constant="4" id="lHK-hu-3j2"/>
                         <constraint firstItem="6dJ-fl-otg" firstAttribute="top" secondItem="Xs4-u2-mxB" secondAttribute="top" id="oZa-zc-g3X"/>
                         <constraint firstItem="6dJ-fl-otg" firstAttribute="bottom" secondItem="Xs4-u2-mxB" secondAttribute="bottom" id="pXt-ft-7Hx"/>
                         <constraint firstItem="1Ub-jL-n20" firstAttribute="width" secondItem="HF5-Pb-Scf" secondAttribute="width" id="rB3-L2-j2A"/>
+                        <constraint firstItem="5Zq-Df-YbD" firstAttribute="bottom" secondItem="iKC-2V-Lwv" secondAttribute="bottom" id="sbb-bX-ozB"/>
                         <constraint firstItem="WdO-jX-rWO" firstAttribute="width" secondItem="r7N-QA-6sd" secondAttribute="width" id="tH7-RE-NGQ"/>
                         <constraint firstAttribute="bottom" secondItem="HF5-Pb-Scf" secondAttribute="bottom" constant="8" id="v62-ej-eL1"/>
                         <constraint firstItem="Xs4-u2-mxB" firstAttribute="bottom" secondItem="HF5-Pb-Scf" secondAttribute="bottom" id="wGA-Nz-sIs"/>
@@ -305,8 +326,9 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="arrowBtn" destination="iKC-2V-Lwv" id="iOU-en-OCq"/>
+                        <outlet property="circleBtn" destination="6dJ-fl-otg" id="J3D-xi-Wlj"/>
                         <outlet property="clearBtn" destination="WdO-jX-rWO" id="edi-qM-CNw"/>
-                        <outlet property="lineBtn" destination="6dJ-fl-otg" id="hxi-oF-Fhb"/>
+                        <outlet property="lineBtn" destination="5Zq-Df-YbD" id="yCK-Ev-m4Y"/>
                         <outlet property="multiSelBtn" destination="MQq-eQ-KvQ" id="J1H-Kz-Vry"/>
                         <outlet property="nextBtn" destination="r7N-QA-6sd" id="OPb-sv-qNk"/>
                         <outlet property="penBtn" destination="HF5-Pb-Scf" id="juT-TF-JgZ"/>

@@ -9,9 +9,13 @@ import UIKit
 
 class ZHMarkSelectedView: UIView {
     
-    var selectedPath: ZHBasePath?
+    var movedHandle: ((_ selectedView: ZHMarkSelectedView)->Void)?
+    
+    var selectedPaths: [ZHBasePath] = []
+    var showPaths: [ZHBasePath] = []
+    private var showBgPaths: [ZHBasePath] = []
+    
     var originalRect: CGRect = .zero
-    var paths: [ZHBasePath] = []
     var movedRect: CGRect = .zero
     
     convenience init(path: ZHBasePath) {
@@ -27,7 +31,7 @@ class ZHMarkSelectedView: UIView {
         let viewRect = CGRect(x: viewX, y: viewY, width: viewW, height: viewH)
         
         self.init(frame: viewRect)
-        selectedPath = path
+        selectedPaths.append(path)
         originalRect = viewRect
         backgroundColor = .clear
         
@@ -35,10 +39,28 @@ class ZHMarkSelectedView: UIView {
         addGestureRecognizer(pan)
         
         let offset = CGPoint(x: -viewRect.origin.x, y: -viewRect.origin.y)
-        let selPath = ZHMarkPath(width: selPathLineW, color: path.lineColor, points: path.markPoints, offset: offset)
-        let selBgPath = ZHMarkPath(width: selPathLineW + selBgPathLineW, color: .red, points: path.markPoints, offset: offset)
         
-        self.paths = [selBgPath, selPath]
+        
+        if path.isKind(of: ZHMarkPath.self) {
+            let showBgPath = ZHMarkPath(width: selPathLineW + selBgPathLineW, color: .red, points: path.markPoints, offset: offset)
+            let showPath = ZHMarkPath(width: selPathLineW, color: path.lineColor, points: path.markPoints, offset: offset)
+            
+            showBgPaths.append(showBgPath)
+            showPaths.append(showPath)
+        }else if path.isKind(of: ZHCirclePath.self) {
+            let showBgPath = ZHCirclePath(width: selPathLineW + selBgPathLineW, color: .red, points: path.markPoints, offset: offset)
+            let showPath = ZHCirclePath(width: selPathLineW, color: path.lineColor, points: path.markPoints, offset: offset)
+            
+            showBgPaths.append(showBgPath)
+            showPaths.append(showPath)
+        }else if path.isKind(of: ZHLinePath.self) {
+            let showBgPath = ZHLinePath(width: selPathLineW + selBgPathLineW, color: .red, points: path.markPoints, offset: offset)
+            let showPath = ZHLinePath(width: selPathLineW, color: path.lineColor, points: path.markPoints, offset: offset)
+            
+            showBgPaths.append(showBgPath)
+            showPaths.append(showPath)
+        }
+        
         
         let dashRect = CGRect(x: 0, y: 0, width: viewW, height: viewH)
         let dashRectLayer = CAShapeLayer.zh_DrawDashRect(frame: dashRect, lineWidth: dashLineW, color: .red)
@@ -49,15 +71,19 @@ class ZHMarkSelectedView: UIView {
         self.init()
         backgroundColor = .clear
         
-        self.paths = paths
+        showPaths = paths
         
         
     }
     
     override func draw(_ rect: CGRect) {
-        paths.forEach {
-            $0.lineColor.set()
-            $0.stroke()
+        for (idx, showPath) in showPaths.enumerated() {
+            let showBgPath = showBgPaths[idx]
+            showBgPath.lineColor.set()
+            showBgPath.stroke()
+            
+            showPath.lineColor.set()
+            showPath.stroke()
         }
     }
     
@@ -71,6 +97,9 @@ class ZHMarkSelectedView: UIView {
         rect.origin = CGPoint(x: p.x - panBeginPoint.x, y: p.y - panBeginPoint.y)
         movedRect = rect
         self.frame = rect
+        if recognizer.state == .ended {
+            movedHandle?(self)
+        }
     }
     
     func reset(){

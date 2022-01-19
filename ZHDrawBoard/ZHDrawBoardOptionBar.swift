@@ -12,10 +12,12 @@ import UIKit
     var penAct: ((_ sender: UIButton)->Void)?
     var lineColorAct: ((_ sender: UIButton)->Void)?
     var lineWidthAct: ((_ sender: UIButton)->Void)?
+    
     var textAct: ((_ sender: UIButton)->Void)?
-    var lineAct: ((_ sender: UIButton)->Void)?
+    var circleAct: ((_ sender: UIButton)->Void)?
     var rectAct: ((_ sender: UIButton)->Void)?
     var arrowAct: ((_ sender: UIButton)->Void)?
+    var lineAct: ((_ sender: UIButton)->Void)?
     
     var singleSelAct: ((_ sender: UIButton)->Void)?
     var multiSelAct: ((_ sender: UIButton)->Void)?
@@ -26,9 +28,10 @@ import UIKit
     
     @IBOutlet weak var penBtn: UIButton!
     @IBOutlet weak var textBtn: UIButton!
-    @IBOutlet weak var lineBtn: UIButton!
+    @IBOutlet weak var circleBtn: UIButton!
     @IBOutlet weak var rectBtn: UIButton!
     @IBOutlet weak var arrowBtn: UIButton!
+    @IBOutlet weak var lineBtn: UIButton!
     
     @IBOutlet weak var singleSelBtn: UIButton!
     @IBOutlet weak var multiSelBtn: UIButton!
@@ -73,10 +76,10 @@ import UIKit
         sender.isSelected = true
         textAct?(sender)
     }
-    @IBAction func lineBtnClick(_ sender: UIButton) {
+    @IBAction func circleBtnClick(_ sender: UIButton) {
         resetSelectedBtns()
         sender.isSelected = true
-        lineAct?(sender)
+        circleAct?(sender)
     }
     @IBAction func rectBtnClick(_ sender: UIButton) {
         resetSelectedBtns()
@@ -87,6 +90,11 @@ import UIKit
         resetSelectedBtns()
         sender.isSelected = true
         arrowAct?(sender)
+    }
+    @IBAction func lineBtnClick(_ sender: UIButton) {
+        resetSelectedBtns()
+        sender.isSelected = true
+        lineAct?(sender)
     }
     
     @IBAction func singleSelBtnClick(_ sender: UIButton) {
@@ -110,6 +118,7 @@ import UIKit
     }
     
     @IBAction func clearBtnClick(_ sender: UIButton) {
+        resetSelectedBtns()
         reset()
         clearAct?(sender)
     }
@@ -117,9 +126,10 @@ import UIKit
     private func resetSelectedBtns(){
         penBtn.isSelected = false
         textBtn.isSelected = false
-        lineBtn.isSelected = false
+        circleBtn.isSelected = false
         rectBtn.isSelected = false
         arrowBtn.isSelected = false
+        lineBtn.isSelected = false
         singleSelBtn.isSelected = false
         multiSelBtn.isSelected = false
     }

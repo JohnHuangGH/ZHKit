@@ -7,7 +7,11 @@
 
 import UIKit
 
-class ZHBasePath: UIBezierPath {
+protocol ZHBasePathProtocol {
+    func draw(to point: CGPoint)
+}
+
+class ZHBasePath: UIBezierPath, ZHBasePathProtocol {
     
     var lineColor: UIColor = .black
     var markPoints: [CGPoint] = []
@@ -30,11 +34,28 @@ class ZHBasePath: UIBezierPath {
     convenience init(width: CGFloat, color: UIColor, point: CGPoint, capStyle: CGLineCap = .round, joinStyle: CGLineJoin = .round) {
         self.init(width: width, color: color, capStyle: capStyle, joinStyle: joinStyle)
         
+        begin(to: point)
+    }
+    
+    convenience init(width: CGFloat, color: UIColor, points: [CGPoint], offset: CGPoint, capStyle: CGLineCap = .round, joinStyle: CGLineJoin = .round) {
+        self.init(width: width, color: color, capStyle: capStyle, joinStyle: joinStyle)
+    
+        for (idx, point) in points.enumerated() {
+            let p = CGPoint(x: point.x + offset.x, y: point.y + offset.y)
+            idx == 0 ? begin(to: p) : draw(to: p)
+        }
+    }
+    
+    func getOffsetPath(width: CGFloat, color: UIColor, offset: CGPoint) {
+        
+//        let path = type(of: self).init(width: width, color: color, points: markPoints, offset: offset)
+//        return self
+    }
+    
+    func begin(to point: CGPoint) {
+        markPoints.append(point)
         move(to: point)
     }
     
-    override func move(to point: CGPoint) {
-        markPoints.append(point)
-        super.move(to: point)
-    }
+    func draw(to point: CGPoint) {}
 }

@@ -21,6 +21,7 @@
 		9CC62CFA2796A32C00A6FE1E /* ZHBasePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC62CF92796A32C00A6FE1E /* ZHBasePath.swift */; };
 		9CC62CFC2796A83A00A6FE1E /* ZHDrawBoardOptionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC62CFB2796A83A00A6FE1E /* ZHDrawBoardOptionBar.swift */; };
 		9CC62CFE2796AAEA00A6FE1E /* ZHDrawBoardMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC62CFD2796AAEA00A6FE1E /* ZHDrawBoardMarkView.swift */; };
+		9CE0A7D92797E147004E6B4C /* ZHCirclePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0A7D82797E147004E6B4C /* ZHCirclePath.swift */; };
 		9CE1A5992795429D00BD7930 /* ZHMarkSelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1A5982795429D00BD7930 /* ZHMarkSelectedView.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		9CC62CF92796A32C00A6FE1E /* ZHBasePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHBasePath.swift; sourceTree = "<group>"; };
 		9CC62CFB2796A83A00A6FE1E /* ZHDrawBoardOptionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHDrawBoardOptionBar.swift; sourceTree = "<group>"; };
 		9CC62CFD2796AAEA00A6FE1E /* ZHDrawBoardMarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHDrawBoardMarkView.swift; sourceTree = "<group>"; };
+		9CE0A7D82797E147004E6B4C /* ZHCirclePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHCirclePath.swift; sourceTree = "<group>"; };
 		9CE1A5982795429D00BD7930 /* ZHMarkSelectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHMarkSelectedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,10 +94,11 @@
 				9C22107C2791750200ADDB88 /* CALayer+Extension.swift */,
 				9C000434278EC71C00775F6D /* ZHDrawBoard.swift */,
 				9C000433278EC71C00775F6D /* ZHDrawBoard.xib */,
-				9CC62CFD2796AAEA00A6FE1E /* ZHDrawBoardMarkView.swift */,
 				9CC62CFB2796A83A00A6FE1E /* ZHDrawBoardOptionBar.swift */,
+				9CC62CFD2796AAEA00A6FE1E /* ZHDrawBoardMarkView.swift */,
 				9CC62CF92796A32C00A6FE1E /* ZHBasePath.swift */,
 				9C4D25F227902948007128EC /* ZHMarkPath.swift */,
+				9CE0A7D82797E147004E6B4C /* ZHCirclePath.swift */,
 				9CC62CF7279693E600A6FE1E /* ZHLinePath.swift */,
 				9CE1A5982795429D00BD7930 /* ZHMarkSelectedView.swift */,
 			);
@@ -177,6 +180,7 @@
 			files = (
 				9C000436278EC71C00775F6D /* ZHDrawBoard.swift in Sources */,
 				9CC62CFA2796A32C00A6FE1E /* ZHBasePath.swift in Sources */,
+				9CE0A7D92797E147004E6B4C /* ZHCirclePath.swift in Sources */,
 				9C00041D278EAF6E00775F6D /* ViewController.swift in Sources */,
 				9CC62CFE2796AAEA00A6FE1E /* ZHDrawBoardMarkView.swift in Sources */,
 				9CC62CFC2796A83A00A6FE1E /* ZHDrawBoardOptionBar.swift in Sources */,
