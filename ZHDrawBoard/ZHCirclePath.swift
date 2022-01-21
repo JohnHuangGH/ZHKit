@@ -15,28 +15,27 @@ class ZHCirclePath: ZHBasePath {
         let center = CGPoint(x: (firstP.x + point.x)/2, y: (firstP.y + point.y)/2)
         let radius: CGFloat = sqrt(pow((firstP.x - point.x), 2) + pow((firstP.y - point.y), 2))/2
         var startAngle: CGFloat = 0
-        if firstP.x == point.x {
-            startAngle = .pi * 0.5 + .pi * (firstP.y > point.y ? 0 : 1)
-        }else if firstP.y == point.y {
-            startAngle = .pi * 0.5 + .pi * (firstP.x > point.x ? -0.5 : 0.5)
-        }else{
-            let x = sqrt(pow((firstP.x - point.x), 2))
-            let y = sqrt(pow((firstP.y - point.y), 2))
-            if firstP.x < point.x {
-                if firstP.y < point.y {
-                    startAngle = .pi * 1 + atan2(y, x)
-                }else{
-                    startAngle = .pi * 1 - atan2(y, x)
-                }
+        
+        let x = sqrt(pow((firstP.x - point.x), 2))
+        let y = sqrt(pow((firstP.y - point.y), 2))
+        if firstP.x < point.x {
+            if firstP.y < point.y {
+                startAngle = .pi * 1 + atan2(y, x)
             }else{
-                if firstP.y < point.y {
-                    startAngle = .pi * 0 - atan2(y, x)
-                }else{
-                    startAngle = .pi * 0 + atan2(y, x)
-                }
+                startAngle = .pi * 1 - atan2(y, x)
+            }
+        }else{
+            if firstP.y < point.y {
+                startAngle = .pi * 0 - atan2(y, x)
+            }else{
+                startAngle = .pi * 0 + atan2(y, x)
             }
         }
         addArc(withCenter: center, radius: radius, startAngle: startAngle, endAngle: startAngle + .pi * 2, clockwise: true)
         markPoints = [firstP, point]
+    }
+    
+    override func draw() {
+        stroke()
     }
 }

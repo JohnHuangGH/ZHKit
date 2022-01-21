@@ -1,5 +1,5 @@
 //
-//  ZHDrawBoardMarkView.swift
+//  ZHDrawView.swift
 //  ZHDrawBoardDemo
 //
 //  Created by NetInfo on 2022/1/12.
@@ -18,7 +18,7 @@ enum ZHDrawBoardOption {
     case multiSelect
 }
 
-class ZHDrawBoardMarkView: UIView {
+class ZHDrawView: UIView {
     
     var markStart: (()->Void)?
     
@@ -54,7 +54,7 @@ class ZHDrawBoardMarkView: UIView {
     }
     private var showPaths: [ZHBasePath] = []
     
-    private var selectedView: ZHMarkSelectedView?{
+    private var selectedView: ZHDrawSelectedView?{
         didSet{
             if selectedView == nil, let selView = oldValue {
                 selView.selectedPaths.forEach{$0.isSelectedPath = false}
@@ -97,18 +97,16 @@ class ZHDrawBoardMarkView: UIView {
 }
 
 // MARK: touches
-extension ZHDrawBoardMarkView {
+extension ZHDrawView {
     override func draw(_ rect: CGRect) {
         showPaths.forEach {
             if option == .singleSelect {
                 if !$0.isSelectedPath && !$0.moved {//未选中的才绘制，选中的在框选View中绘制
-                    $0.lineColor.set()
-                    $0.stroke()
+                    $0.draw()
                 }
             }else{
                 if !$0.moved {//未移动的才绘制
-                    $0.lineColor.set()
-                    $0.stroke()
+                    $0.draw()
                 }
             }
         }
@@ -119,23 +117,25 @@ extension ZHDrawBoardMarkView {
         guard let touch = touches.first else { return }
         let touchPoint = touch.location(in: self)
         switch option {
-        case .pen:
+        case .pen, .circle, .rect, .arrow, .line:
             if drawPaths.count != showPaths.count {
                 drawPaths = showPaths
             }
-            let path = ZHMarkPath(width: lineWidth, color: lineColor, point: touchPoint)
-            drawPaths.append(path)
-        case .line:
-            if drawPaths.count != showPaths.count {
-                drawPaths = showPaths
+            var path: ZHBasePath
+            switch option {
+            case .pen:
+                path = ZHMarkPath(width: lineWidth, color: lineColor, point: touchPoint)
+            case .circle:
+                path = ZHCirclePath(width: lineWidth, color: lineColor, point: touchPoint)
+            case .rect:
+                path = ZHRectPath(width: lineWidth, color: lineColor, point: touchPoint)
+            case .arrow:
+                path = ZHArrowPath(width: lineWidth, color: lineColor, point: touchPoint)
+            case .line:
+                path = ZHLinePath(width: lineWidth, color: lineColor, point: touchPoint)
+            default:
+                path = ZHBasePath(width: lineWidth, color: lineColor, point: touchPoint)
             }
-            let path = ZHLinePath(width: lineWidth, color: lineColor, point: touchPoint)
-            drawPaths.append(path)
-        case .circle:
-            if drawPaths.count != showPaths.count {
-                drawPaths = showPaths
-            }
-            let path = ZHCirclePath(width: lineWidth, color: lineColor, point: touchPoint)
             drawPaths.append(path)
         case .singleSelect:
             clearSelectedPath()
@@ -143,7 +143,7 @@ extension ZHDrawBoardMarkView {
             //0.倒序遍历，后绘制的优先被选中
             //1.是否落在涂鸦路径上
             for (i, path) in showPaths.reversed().enumerated() {
-                if path.contains(touchPoint) {
+                if !path.moved && path.contains(touchPoint) {
                     //3.刷新
                     refreshSelectedPath(path: path, insetIndx: showPaths.count - i - 1)
                     return
@@ -152,7 +152,7 @@ extension ZHDrawBoardMarkView {
             //2.是否落在涂鸦框内
             for (i, path) in showPaths.reversed().enumerated() {
                 let pathRect = path.cgPath.boundingBox
-                if pathRect.contains(touchPoint) {
+                if !path.moved && pathRect.contains(touchPoint) {
                     //3.刷新
                     refreshSelectedPath(path: path, insetIndx: showPaths.count - i - 1)
                     return
@@ -168,9 +168,8 @@ extension ZHDrawBoardMarkView {
         guard let touch = touches.first else { return }
         let touchPoint = touch.location(in: self)
         switch option {
-        case .pen, .line, .circle:
+        case .pen, .circle, .rect, .arrow, .line:
             guard let path = drawPaths.last else { return }
-//            path.addLine(to: touchPoint)
             path.draw(to: touchPoint)
             setNeedsDisplay()
         default:
@@ -182,7 +181,7 @@ extension ZHDrawBoardMarkView {
         if isZooming { return }
         guard let path = drawPaths.last else { return }
         switch option {
-        case .pen, .line, .circle:
+        case .pen, .circle, .rect, .arrow, .line:
             path.isValid = true//如果是缩放，会走began和moved，不走ended
         default:
             break
@@ -200,13 +199,13 @@ extension ZHDrawBoardMarkView {
     
     private func refreshSelectedPath(path: ZHBasePath, insetIndx: Int){
         path.isSelectedPath = true
-        let selView = ZHMarkSelectedView(path: path)
+        let selView = ZHDrawSelectedView(path: path)
         selView.movedHandle = {[weak self] in
             for (i, showPath) in $0.showPaths.enumerated() {
                 let selPath = $0.selectedPaths[i]
                 selPath.isSelectedPath = false
                 selPath.moved = true
-                let movedPath = ZHMarkPath(width: showPath.lineWidth, color: showPath.lineColor, points: showPath.markPoints, offset: selView.movedRect.origin)
+                let movedPath = showPath.offset(to: selView.movedRect.origin)
                 movedPath.isSelectedPath = true
                 movedPath.preMovePath = selPath
                 $0.selectedPaths[i] = movedPath

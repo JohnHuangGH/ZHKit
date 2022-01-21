@@ -1,5 +1,5 @@
 //
-//  ZHMarkSelectedView.swift
+//  ZHDrawSelectedView.swift
 //  ZHDrawBoardDemo
 //
 //  Created by NetInfo on 2022/1/17.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ZHMarkSelectedView: UIView {
+class ZHDrawSelectedView: UIView {
     
-    var movedHandle: ((_ selectedView: ZHMarkSelectedView)->Void)?
+    var movedHandle: ((_ selectedView: ZHDrawSelectedView)->Void)?
     
     var selectedPaths: [ZHBasePath] = []
     var showPaths: [ZHBasePath] = []
@@ -19,15 +19,16 @@ class ZHMarkSelectedView: UIView {
     var movedRect: CGRect = .zero
     
     convenience init(path: ZHBasePath) {
-        let selPathLineW = path.lineWidth
+        let isArrowPath = path.isKind(of: ZHArrowPath.self)
+        let selPathLineW = isArrowPath ? 0 : path.lineWidth//箭头是fill
         let selBgPathLineW: CGFloat = 4
         let dashLineW: CGFloat = 2
         
-        let pathRect = path.cgPath.boundingBox
-        let viewX = pathRect.origin.x - selPathLineW - dashLineW * 0.5
-        let viewY = pathRect.origin.y - selPathLineW - dashLineW * 0.5
-        let viewW = pathRect.size.width + selBgPathLineW * 2 + dashLineW
-        let viewH = pathRect.size.height + selBgPathLineW * 2 + dashLineW
+        let pathRect = path.cgPath.boundingBoxOfPath //boundingBox包括控制点，boundingBoxOfPath不包括控制点（这里圆的绘制起始点不固定，或许跟控制点相关？用boundingBoxOfPath更为准确）
+        let viewX = pathRect.origin.x - (selPathLineW + selBgPathLineW + dashLineW) * 0.5
+        let viewY = pathRect.origin.y - (selPathLineW + selBgPathLineW + dashLineW) * 0.5
+        let viewW = pathRect.size.width + selPathLineW + selBgPathLineW + dashLineW
+        let viewH = pathRect.size.height + selPathLineW + selBgPathLineW + dashLineW
         let viewRect = CGRect(x: viewX, y: viewY, width: viewW, height: viewH)
         
         self.init(frame: viewRect)
@@ -40,26 +41,13 @@ class ZHMarkSelectedView: UIView {
         
         let offset = CGPoint(x: -viewRect.origin.x, y: -viewRect.origin.y)
         
+        let showBgPath = path.offset(to: offset)
+        showBgPath.lineWidth = selPathLineW + selBgPathLineW
+        showBgPath.lineColor = .red
+        showBgPaths.append(showBgPath)
         
-        if path.isKind(of: ZHMarkPath.self) {
-            let showBgPath = ZHMarkPath(width: selPathLineW + selBgPathLineW, color: .red, points: path.markPoints, offset: offset)
-            let showPath = ZHMarkPath(width: selPathLineW, color: path.lineColor, points: path.markPoints, offset: offset)
-            
-            showBgPaths.append(showBgPath)
-            showPaths.append(showPath)
-        }else if path.isKind(of: ZHCirclePath.self) {
-            let showBgPath = ZHCirclePath(width: selPathLineW + selBgPathLineW, color: .red, points: path.markPoints, offset: offset)
-            let showPath = ZHCirclePath(width: selPathLineW, color: path.lineColor, points: path.markPoints, offset: offset)
-            
-            showBgPaths.append(showBgPath)
-            showPaths.append(showPath)
-        }else if path.isKind(of: ZHLinePath.self) {
-            let showBgPath = ZHLinePath(width: selPathLineW + selBgPathLineW, color: .red, points: path.markPoints, offset: offset)
-            let showPath = ZHLinePath(width: selPathLineW, color: path.lineColor, points: path.markPoints, offset: offset)
-            
-            showBgPaths.append(showBgPath)
-            showPaths.append(showPath)
-        }
+        let showPath = path.offset(to: offset)
+        showPaths.append(showPath)
         
         
         let dashRect = CGRect(x: 0, y: 0, width: viewW, height: viewH)
@@ -79,11 +67,9 @@ class ZHMarkSelectedView: UIView {
     override func draw(_ rect: CGRect) {
         for (idx, showPath) in showPaths.enumerated() {
             let showBgPath = showBgPaths[idx]
-            showBgPath.lineColor.set()
-            showBgPath.stroke()
+            showBgPath.isKind(of: ZHArrowPath.self) ? showBgPath.stroke() : showBgPath.draw()
             
-            showPath.lineColor.set()
-            showPath.stroke()
+            showPath.draw()
         }
     }
     
