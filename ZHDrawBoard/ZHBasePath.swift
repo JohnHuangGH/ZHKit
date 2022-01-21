@@ -7,11 +7,7 @@
 
 import UIKit
 
-protocol ZHBasePathProtocol {
-    func draw(to point: CGPoint)
-}
-
-class ZHBasePath: UIBezierPath, ZHBasePathProtocol {
+class ZHBasePath: UIBezierPath {
     
     var lineColor: UIColor = .black
     var markPoints: [CGPoint] = []
@@ -37,19 +33,38 @@ class ZHBasePath: UIBezierPath, ZHBasePathProtocol {
         begin(to: point)
     }
     
-    convenience init(width: CGFloat, color: UIColor, points: [CGPoint], offset: CGPoint, capStyle: CGLineCap = .round, joinStyle: CGLineJoin = .round) {
-        self.init(width: width, color: color, capStyle: capStyle, joinStyle: joinStyle)
-    
-        for (idx, point) in points.enumerated() {
-            let p = CGPoint(x: point.x + offset.x, y: point.y + offset.y)
-            idx == 0 ? begin(to: p) : draw(to: p)
+    func offset(to point: CGPoint) -> Self {
+        guard let path = self.copy() as? ZHBasePath else { return self }
+        path.lineColor = lineColor
+        
+        path.removeAllPoints()
+        for (idx, p) in markPoints.enumerated() {
+            let offsetP = CGPoint(x: p.x + point.x, y: p.y + point.y)
+            idx == 0 ? path.begin(to: offsetP) : path.draw(to: offsetP)
         }
+        
+        return path as! Self
     }
     
-    func getOffsetPath(width: CGFloat, color: UIColor, offset: CGPoint) {
-        
-//        let path = type(of: self).init(width: width, color: color, points: markPoints, offset: offset)
-//        return self
+    func copyPath() -> Self {
+        guard let path = self.copy() as? ZHBasePath else { return self }
+        path.lineColor = lineColor
+        path.markPoints = markPoints
+        path.isSelectedPath = isSelectedPath
+        path.isValid = isValid
+        path.preMovePath = preMovePath
+        path.moved = moved
+        return path as! Self
+    }
+    
+    override func stroke() {
+        lineColor.set()
+        super.stroke()
+    }
+    
+    override func fill() {
+        lineColor.set()
+        super.fill()
     }
     
     func begin(to point: CGPoint) {
@@ -57,5 +72,8 @@ class ZHBasePath: UIBezierPath, ZHBasePathProtocol {
         move(to: point)
     }
     
+    /// 由子类实现
     func draw(to point: CGPoint) {}
+    
+    func draw() {}
 }

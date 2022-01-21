@@ -19,7 +19,7 @@ class ZHDrawBoard: UIView {
     
     private func loadContainerFormNib(){
         container = (Bundle.main.loadNibNamed("ZHDrawBoard", owner: nil, options: nil)?.first as!ZHDrawBoardContainer)
-        container.frame = self.frame
+        container.frame = UIScreen.main.bounds
         addSubview(container)
     }
 }
@@ -31,7 +31,7 @@ class ZHDrawBoardContainer: UIView {
     
     @IBOutlet weak var scrollContainer: UIView!
     @IBOutlet weak var bgImgv: UIImageView!
-    @IBOutlet weak var markView: ZHDrawBoardMarkView!
+    @IBOutlet weak var markView: ZHDrawView!
     
     @IBOutlet weak var optionBar: ZHDrawBoardOptionBar!
     
