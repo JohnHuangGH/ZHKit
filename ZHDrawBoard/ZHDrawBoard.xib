@@ -47,6 +47,7 @@
                         <constraint firstItem="zSH-zS-vBJ" firstAttribute="leading" secondItem="8Tf-ya-dzf" secondAttribute="leading" id="CNk-Zt-hh8"/>
                         <constraint firstItem="zSH-zS-vBJ" firstAttribute="top" secondItem="8Tf-ya-dzf" secondAttribute="top" id="PQm-dx-3FZ"/>
                         <constraint firstAttribute="trailing" secondItem="zSH-zS-vBJ" secondAttribute="trailing" id="YMC-cl-C4N"/>
+                        <constraint firstItem="zSH-zS-vBJ" firstAttribute="width" secondItem="8Tf-ya-dzf" secondAttribute="width" id="haj-ew-LEB"/>
                     </constraints>
                     <viewLayoutGuide key="contentLayoutGuide" id="GhP-zI-e38"/>
                     <viewLayoutGuide key="frameLayoutGuide" id="soH-d0-MSH"/>
@@ -340,13 +341,12 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Pys-ja-Ij2"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="8Tf-ya-dzf" firstAttribute="leading" secondItem="zaC-FF-053" secondAttribute="leading" id="0Mu-mY-VmA"/>
-                <constraint firstAttribute="trailing" secondItem="8Tf-ya-dzf" secondAttribute="trailing" id="5Ct-zA-lZq"/>
+                <constraint firstItem="8Tf-ya-dzf" firstAttribute="leading" secondItem="Pys-ja-Ij2" secondAttribute="leading" id="0Mu-mY-VmA"/>
+                <constraint firstItem="Pys-ja-Ij2" firstAttribute="trailing" secondItem="8Tf-ya-dzf" secondAttribute="trailing" id="5Ct-zA-lZq"/>
                 <constraint firstAttribute="bottom" secondItem="8Tf-ya-dzf" secondAttribute="bottom" id="5aF-EX-EQ9"/>
                 <constraint firstItem="aId-jo-W6Q" firstAttribute="leading" secondItem="Pys-ja-Ij2" secondAttribute="leading" constant="30" id="Ipa-EO-f6n"/>
-                <constraint firstItem="zSH-zS-vBJ" firstAttribute="width" secondItem="zaC-FF-053" secondAttribute="width" id="Q7w-fq-7K5"/>
                 <constraint firstItem="zSH-zS-vBJ" firstAttribute="height" secondItem="zaC-FF-053" secondAttribute="height" id="hSq-7g-G0N"/>
                 <constraint firstItem="Pys-ja-Ij2" firstAttribute="bottom" secondItem="aId-jo-W6Q" secondAttribute="bottom" constant="10" id="iPE-Pn-hNO"/>
                 <constraint firstItem="Pys-ja-Ij2" firstAttribute="trailing" secondItem="aId-jo-W6Q" secondAttribute="trailing" constant="30" id="oB4-tW-neg"/>
@@ -364,9 +364,6 @@
     </objects>
     <resources>
         <image name="bgimg" width="640" height="400"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

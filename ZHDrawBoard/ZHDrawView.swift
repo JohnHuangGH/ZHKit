@@ -47,9 +47,6 @@ class ZHDrawView: UIView {
     private var drawPaths: [ZHBasePath] = []{
         didSet{
             showPaths = drawPaths
-            if oldValue.count == 0, drawPaths.count > 0 {
-                markStart?()
-            }
         }
     }
     private var showPaths: [ZHBasePath] = []
@@ -96,7 +93,7 @@ class ZHDrawView: UIView {
     }
 }
 
-// MARK: touches
+// MARK: Touches
 extension ZHDrawView {
     override func draw(_ rect: CGRect) {
         showPaths.forEach {
@@ -183,11 +180,17 @@ extension ZHDrawView {
         switch option {
         case .pen, .circle, .rect, .arrow, .line:
             path.isValid = true//如果是缩放，会走began和moved，不走ended
+            if drawPaths.count == 1 {
+                markStart?()
+            }
         default:
             break
         }
     }
-    
+}
+
+// MARK: Private
+extension ZHDrawView {
     private func clearSelectedPath(){
         if selectedView == nil { return }
         selectedView?.selectedPaths.forEach{$0.isSelectedPath = false}

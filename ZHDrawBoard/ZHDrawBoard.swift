@@ -48,11 +48,13 @@ class ZHDrawBoardContainer: UIView {
     }
     
     func setupUI(){
-        scrollView.backgroundColor = .black
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.maximumZoomScale = 10
         scrollView.delegate = self
+        
+//        print(bgImgv.image?.size)
+//        bgImgv.image?.imageOrientation = .up
         
         optionBar.penAct = {[weak self] sender in
             self?.markView.option = .pen
