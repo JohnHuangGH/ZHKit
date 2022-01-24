@@ -41,12 +41,14 @@ class ZHDrawSelectedView: UIView {
         
         let offset = CGPoint(x: -viewRect.origin.x, y: -viewRect.origin.y)
         
-        let showBgPath = path.offset(to: offset)
+        let showBgPath = path.copyPath()
+        showBgPath.offset(to: offset)
         showBgPath.lineWidth = selPathLineW + selBgPathLineW
         showBgPath.lineColor = .red
         showBgPaths.append(showBgPath)
         
-        let showPath = path.offset(to: offset)
+        let showPath = path.copyPath()
+        showPath.offset(to: offset)
         showPaths.append(showPath)
         
         
@@ -67,7 +69,7 @@ class ZHDrawSelectedView: UIView {
     override func draw(_ rect: CGRect) {
         for (idx, showPath) in showPaths.enumerated() {
             let showBgPath = showBgPaths[idx]
-            showBgPath.isKind(of: ZHArrowPath.self) ? showBgPath.stroke() : showBgPath.draw()
+            (showBgPath.isKind(of: ZHArrowPath.self) || showBgPath.isKind(of: ZHTextPath.self)) ? showBgPath.stroke() : showBgPath.draw()
             
             showPath.draw()
         }

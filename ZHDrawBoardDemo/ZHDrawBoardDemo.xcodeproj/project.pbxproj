@@ -18,6 +18,7 @@
 		9C000436278EC71C00775F6D /* ZHDrawBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C000434278EC71C00775F6D /* ZHDrawBoard.swift */; };
 		9C4D25F327902948007128EC /* ZHMarkPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4D25F227902948007128EC /* ZHMarkPath.swift */; };
 		9CA7B300279A9514009D4309 /* ZHExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7B2FF279A9514009D4309 /* ZHExtension.swift */; };
+		9CADE7DF279E52D80084B482 /* ZHTextPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CADE7DE279E52D80084B482 /* ZHTextPath.swift */; };
 		9CC62CF8279693E600A6FE1E /* ZHLinePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC62CF7279693E600A6FE1E /* ZHLinePath.swift */; };
 		9CC62CFA2796A32C00A6FE1E /* ZHBasePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC62CF92796A32C00A6FE1E /* ZHBasePath.swift */; };
 		9CC62CFC2796A83A00A6FE1E /* ZHDrawBoardOptionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC62CFB2796A83A00A6FE1E /* ZHDrawBoardOptionBar.swift */; };
@@ -42,6 +43,7 @@
 		9C000434278EC71C00775F6D /* ZHDrawBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHDrawBoard.swift; sourceTree = "<group>"; };
 		9C4D25F227902948007128EC /* ZHMarkPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHMarkPath.swift; sourceTree = "<group>"; };
 		9CA7B2FF279A9514009D4309 /* ZHExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHExtension.swift; sourceTree = "<group>"; };
+		9CADE7DE279E52D80084B482 /* ZHTextPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHTextPath.swift; sourceTree = "<group>"; };
 		9CC62CF7279693E600A6FE1E /* ZHLinePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHLinePath.swift; sourceTree = "<group>"; };
 		9CC62CF92796A32C00A6FE1E /* ZHBasePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHBasePath.swift; sourceTree = "<group>"; };
 		9CC62CFB2796A83A00A6FE1E /* ZHDrawBoardOptionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHDrawBoardOptionBar.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				9CE0A7DA27993E4D004E6B4C /* ZHRectPath.swift */,
 				9CE0A7DC27994869004E6B4C /* ZHArrowPath.swift */,
 				9CC62CF7279693E600A6FE1E /* ZHLinePath.swift */,
+				9CADE7DE279E52D80084B482 /* ZHTextPath.swift */,
 				9CA7B2FF279A9514009D4309 /* ZHExtension.swift */,
 			);
 			name = ZHDrawBoard;
@@ -197,6 +200,7 @@
 				9CC62CFC2796A83A00A6FE1E /* ZHDrawBoardOptionBar.swift in Sources */,
 				9CC62CF8279693E600A6FE1E /* ZHLinePath.swift in Sources */,
 				9CE0A7DB27993E4D004E6B4C /* ZHRectPath.swift in Sources */,
+				9CADE7DF279E52D80084B482 /* ZHTextPath.swift in Sources */,
 				9C000419278EAF6E00775F6D /* AppDelegate.swift in Sources */,
 				9CE1A5992795429D00BD7930 /* ZHDrawSelectedView.swift in Sources */,
 				9C4D25F327902948007128EC /* ZHMarkPath.swift in Sources */,

@@ -11,12 +11,15 @@ class ZHBasePath: UIBezierPath {
     
     var lineColor: UIColor = .black
     var markPoints: [CGPoint] = []
+    
+    /// 是否正在选中
     var isSelectedPath: Bool = false
-    
-    var isValid: Bool = false //有效的，正常绘制的，非缩放产生的
-    
-    var preMovePath: ZHBasePath?
+    /// 是否有效的，正常绘制的，非缩放产生的
+    var isValid: Bool = false
+    /// 是否已移动
     var moved: Bool = false
+    /// 移动前的path
+    var preMovePath: ZHBasePath?
 
     
     convenience init(width: CGFloat, color: UIColor, capStyle: CGLineCap = .round, joinStyle: CGLineJoin = .round) {
@@ -33,27 +36,20 @@ class ZHBasePath: UIBezierPath {
         begin(to: point)
     }
     
-    func offset(to point: CGPoint) -> Self {
-        guard let path = self.copy() as? ZHBasePath else { return self }
-        path.lineColor = lineColor
-        
-        path.removeAllPoints()
-        for (idx, p) in markPoints.enumerated() {
+    func offset(to point: CGPoint) {
+        removeAllPoints()
+        let points = markPoints
+        markPoints.removeAll()
+        for (idx, p) in points.enumerated() {
             let offsetP = CGPoint(x: p.x + point.x, y: p.y + point.y)
-            idx == 0 ? path.begin(to: offsetP) : path.draw(to: offsetP)
+            idx == 0 ? begin(to: offsetP) : draw(to: offsetP)
         }
-        
-        return path as! Self
     }
     
     func copyPath() -> Self {
         guard let path = self.copy() as? ZHBasePath else { return self }
         path.lineColor = lineColor
         path.markPoints = markPoints
-        path.isSelectedPath = isSelectedPath
-        path.isValid = isValid
-        path.preMovePath = preMovePath
-        path.moved = moved
         return path as! Self
     }
     
