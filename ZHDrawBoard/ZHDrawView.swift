@@ -134,6 +134,22 @@ extension ZHDrawView {
                 path = ZHBasePath(width: lineWidth, color: lineColor, point: touchPoint)
             }
             drawPaths.append(path)
+        case .text:
+            if drawPaths.count != showPaths.count {
+                drawPaths = showPaths
+            }
+            let path = ZHTextPath(width: lineWidth, color: lineColor, point: touchPoint)
+            
+            showTextAlert {[weak self] text in
+                path.text = text
+                path.draw(to: touchPoint)
+                path.isValid = true
+                self?.drawPaths.append(path)
+                self?.setNeedsDisplay()
+                if (self?.drawPaths.count ?? 0) == 1 {
+                    self?.markStart?()
+                }
+            }
         case .singleSelect:
             clearSelectedPath()
             setNeedsDisplay()
@@ -208,7 +224,8 @@ extension ZHDrawView {
                 let selPath = $0.selectedPaths[i]
                 selPath.isSelectedPath = false
                 selPath.moved = true
-                let movedPath = showPath.offset(to: selView.movedRect.origin)
+                let movedPath = showPath.copyPath()
+                movedPath.offset(to: selView.movedRect.origin)
                 movedPath.isSelectedPath = true
                 movedPath.preMovePath = selPath
                 $0.selectedPaths[i] = movedPath
@@ -219,5 +236,23 @@ extension ZHDrawView {
         addSubview(selView)
         
         setNeedsDisplay()
+    }
+    
+    private func showTextAlert(confirmHandle: ((_ text: String)->Void)?){
+        guard let curVC = zh_CurrentVC() else { return }
+        let alertVC = UIAlertController(title: "添加文字标绘", message: nil, preferredStyle: .alert)
+        alertVC.addTextField { tf in
+            tf.placeholder = "请输入文字"
+        }
+        
+        let actL = UIAlertAction(title: "取消", style: .destructive, handler: nil)
+        let actR = UIAlertAction(title: "确认", style: .default) { act in
+            if let tf = alertVC.textFields?.first, let text = tf.text {
+                confirmHandle?(text)
+            }
+        }
+        alertVC.addAction(actL)
+        alertVC.addAction(actR)
+        curVC.present(alertVC, animated: true, completion: nil)
     }
 }

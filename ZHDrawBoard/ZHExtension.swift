@@ -34,3 +34,14 @@ extension UIColor {
                        alpha: 1)
     }
 }
+
+extension UIResponder {
+    func zh_CurrentVC() -> UIViewController? {
+        guard let nextResponder = self.next else { return nil }
+        if let vc = nextResponder as? UIViewController {
+            return vc
+        }else{
+            return nextResponder.zh_CurrentVC()
+        }
+    }
+}
