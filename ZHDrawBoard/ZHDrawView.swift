@@ -171,8 +171,9 @@ extension ZHDrawView {
                     return
                 }
             }
-        default:
-            break
+        case .multiSelect:
+            let path = ZHMarkPath(width: 4, color: .red, point: touchPoint)
+            drawPaths.append(path)
         }
     }
     
@@ -181,7 +182,7 @@ extension ZHDrawView {
         guard let touch = touches.first else { return }
         let touchPoint = touch.location(in: self)
         switch option {
-        case .pen, .circle, .rect, .arrow, .line:
+        case .pen, .circle, .rect, .arrow, .line, .multiSelect:
             guard let path = drawPaths.last else { return }
             path.draw(to: touchPoint)
             setNeedsDisplay()
@@ -199,6 +200,25 @@ extension ZHDrawView {
             if drawPaths.count == 1 {
                 markStart?()
             }
+        case .multiSelect:
+            drawPaths.removeLast()
+            setNeedsDisplay()
+            
+            path.close()
+            var selPaths: [ZHBasePath] = []
+//            showPaths.forEach { showPath in
+//                var inside: ObjCBool = ObjCBool(false)
+//                if let arr = showPath.findIntersections(withClosedPath: path, andBeginsInside: &inside), (arr.count > 0 || inside.boolValue) {
+//                    selPaths.append(showPath)
+//                }
+//            }
+            for showPath in showPaths {
+                var inside: ObjCBool = ObjCBool(false)
+                if let arr = showPath.findIntersections(withClosedPath: path, andBeginsInside: &inside), (arr.count > 0 || inside.boolValue) {
+                    selPaths.append(showPath)
+                }
+            }
+            print(selPaths.count)
         default:
             break
         }

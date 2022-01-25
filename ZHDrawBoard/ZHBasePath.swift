@@ -47,10 +47,10 @@ class ZHBasePath: UIBezierPath {
     }
     
     func copyPath() -> Self {
-        guard let path = self.copy() as? ZHBasePath else { return self }
+        guard let path = self.copy() as? Self else { return self }
         path.lineColor = lineColor
         path.markPoints = markPoints
-        return path as! Self
+        return path
     }
     
     override func stroke() {

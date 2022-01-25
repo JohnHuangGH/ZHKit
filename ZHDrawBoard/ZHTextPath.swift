@@ -42,7 +42,7 @@ class ZHTextPath: ZHBasePath {
     }
     
     override func copyPath() -> Self {
-        let path = super.copyPath()
+        guard let path = super.copyPath() as? Self else { return self }
         path.text = text
         return path
     }
