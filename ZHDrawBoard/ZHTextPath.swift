@@ -11,6 +11,15 @@ class ZHTextPath: ZHBasePath {
     
     var text: String = ""
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override init() {
+        super.init()
+        self.isFill = true
+    }
+    
     override func draw(to point: CGPoint) {
         let font = lineWidth == 4 ? UIFont.systemFont(ofSize: 20) : UIFont.boldSystemFont(ofSize: 22)
         let attributes = [NSAttributedString.Key.font: font]
@@ -45,9 +54,5 @@ class ZHTextPath: ZHBasePath {
         guard let path = super.copyPath() as? Self else { return self }
         path.text = text
         return path
-    }
-    
-    override func draw() {
-        fill()
     }
 }

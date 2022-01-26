@@ -11,6 +11,7 @@ class ZHBasePath: UIBezierPath {
     
     var lineColor: UIColor = .black
     var markPoints: [CGPoint] = []
+    var isFill: Bool = false
     
     /// 是否正在选中
     var isSelectedPath: Bool = false
@@ -50,6 +51,7 @@ class ZHBasePath: UIBezierPath {
         guard let path = self.copy() as? Self else { return self }
         path.lineColor = lineColor
         path.markPoints = markPoints
+        path.isFill = isFill
         return path
     }
     
@@ -67,9 +69,11 @@ class ZHBasePath: UIBezierPath {
         markPoints.append(point)
         move(to: point)
     }
+    /// draw(_ rect: CGRect)中调用此方法进行绘制
+    func draw() {
+        isFill ? fill() : stroke()
+    }
     
     /// 由子类实现
     func draw(to point: CGPoint) {}
-    
-    func draw() {}
 }

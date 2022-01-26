@@ -20,8 +20,4 @@ class ZHRectPath: ZHBasePath {
         addLine(to: firstP)
         markPoints = [firstP, point]
     }
-    
-    override func draw() {
-        stroke()
-    }
 }

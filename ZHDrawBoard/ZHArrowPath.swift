@@ -8,6 +8,16 @@
 import UIKit
 
 class ZHArrowPath: ZHBasePath {
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override init() {
+        super.init()
+        self.isFill = true
+    }
+    
     override func draw(to p1: CGPoint) {
         guard let p0 = markPoints.first, p0 != p1 else { return }
         removeAllPoints()
@@ -71,9 +81,5 @@ class ZHArrowPath: ZHBasePath {
         addLine(to: p6)
         addLine(to: p0)
         markPoints = [p0, p1]
-    }
-    
-    override func draw() {
-        fill()
     }
 }
