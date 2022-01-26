@@ -19,13 +19,16 @@ enum ZHDrawBoardOption {
 }
 
 class ZHDrawView: UIView {
+    /// 第一笔绘制
+    var firstMark: (()->Void)?
     
-    var markStart: (()->Void)?
+    var markBegan: (()->Void)?
+    var markEnded: (()->Void)?
     
     var option: ZHDrawBoardOption = .pen {
         didSet{
             if oldValue == .singleSelect, option != .singleSelect {
-                clearSelectedPath()
+                clearSelected()
                 setNeedsDisplay()
             }
         }
@@ -63,7 +66,7 @@ class ZHDrawView: UIView {
         if showPaths.count <= 0 {
             return false
         }
-        clearSelectedPath()
+        clearSelected()
         if let lastPath = showPaths.last, let preMovePath = lastPath.preMovePath {
             preMovePath.moved = false
         }
@@ -88,7 +91,7 @@ class ZHDrawView: UIView {
     func clear() {
         option = .pen
         drawPaths.removeAll()
-        clearSelectedPath()
+        clearSelected()
         setNeedsDisplay()
     }
 }
@@ -97,15 +100,9 @@ class ZHDrawView: UIView {
 extension ZHDrawView {
     override func draw(_ rect: CGRect) {
         showPaths.forEach {
-            if option == .singleSelect {
-                if !$0.isSelectedPath && !$0.moved {//未选中的才绘制，选中的在框选View中绘制
-                    $0.draw()
-                }
-            }else{
-                if !$0.moved {//未移动的才绘制
-                    $0.draw()
-                }
-            }
+            if $0.moved { return }//未移动的才绘制
+            if (option == .singleSelect || option == .multiSelect) && $0.isSelectedPath { return }//未选中的才绘制，选中的在框选View中绘制
+            $0.draw()
         }
     }
     
@@ -115,9 +112,7 @@ extension ZHDrawView {
         let touchPoint = touch.location(in: self)
         switch option {
         case .pen, .circle, .rect, .arrow, .line:
-            if drawPaths.count != showPaths.count {
-                drawPaths = showPaths
-            }
+            syncDrawPath()
             var path: ZHBasePath
             switch option {
             case .pen:
@@ -135,9 +130,7 @@ extension ZHDrawView {
             }
             drawPaths.append(path)
         case .text:
-            if drawPaths.count != showPaths.count {
-                drawPaths = showPaths
-            }
+            syncDrawPath()
             let path = ZHTextPath(width: lineWidth, color: lineColor, point: touchPoint)
             
             showTextAlert {[weak self] text in
@@ -147,27 +140,27 @@ extension ZHDrawView {
                 self?.drawPaths.append(path)
                 self?.setNeedsDisplay()
                 if (self?.drawPaths.count ?? 0) == 1 {
-                    self?.markStart?()
+                    self?.firstMark?()
                 }
             }
         case .singleSelect:
-            clearSelectedPath()
+            clearSelected()
             setNeedsDisplay()
             //0.倒序遍历，后绘制的优先被选中
             //1.是否落在涂鸦路径上
-            for (i, path) in showPaths.reversed().enumerated() {
+            for path in showPaths.reversed() {
                 if !path.moved && path.contains(touchPoint) {
                     //3.刷新
-                    refreshSelectedPath(path: path, insetIndx: showPaths.count - i - 1)
+                    refreshSelected(paths: [path])
                     return
                 }
             }
             //2.是否落在涂鸦框内
-            for (i, path) in showPaths.reversed().enumerated() {
+            for path in showPaths.reversed() {
                 let pathRect = path.cgPath.boundingBox
                 if !path.moved && pathRect.contains(touchPoint) {
                     //3.刷新
-                    refreshSelectedPath(path: path, insetIndx: showPaths.count - i - 1)
+                    refreshSelected(paths: [path])
                     return
                 }
             }
@@ -198,27 +191,25 @@ extension ZHDrawView {
         case .pen, .circle, .rect, .arrow, .line:
             path.isValid = true//如果是缩放，会走began和moved，不走ended
             if drawPaths.count == 1 {
-                markStart?()
+                firstMark?()
             }
         case .multiSelect:
             drawPaths.removeLast()
+            clearSelected()
             setNeedsDisplay()
             
             path.close()
             var selPaths: [ZHBasePath] = []
-//            showPaths.forEach { showPath in
-//                var inside: ObjCBool = ObjCBool(false)
-//                if let arr = showPath.findIntersections(withClosedPath: path, andBeginsInside: &inside), (arr.count > 0 || inside.boolValue) {
-//                    selPaths.append(showPath)
-//                }
-//            }
             for showPath in showPaths {
+                if showPath.moved { continue }
                 var inside: ObjCBool = ObjCBool(false)
                 if let arr = showPath.findIntersections(withClosedPath: path, andBeginsInside: &inside), (arr.count > 0 || inside.boolValue) {
                     selPaths.append(showPath)
                 }
             }
-            print(selPaths.count)
+            if selPaths.count > 0 {
+                refreshSelected(paths: selPaths)
+            }
         default:
             break
         }
@@ -227,37 +218,34 @@ extension ZHDrawView {
 
 // MARK: Private
 extension ZHDrawView {
-    private func clearSelectedPath(){
+    /// 清空选中
+    private func clearSelected(){
         if selectedView == nil { return }
         selectedView?.selectedPaths.forEach{$0.isSelectedPath = false}
         selectedView?.removeFromSuperview()
         selectedView = nil
-        
-//        setNeedsDisplay()
     }
     
-    private func refreshSelectedPath(path: ZHBasePath, insetIndx: Int){
-        path.isSelectedPath = true
-        let selView = ZHDrawSelectedView(path: path)
-        selView.movedHandle = {[weak self] in
-            for (i, showPath) in $0.showPaths.enumerated() {
-                let selPath = $0.selectedPaths[i]
-                selPath.isSelectedPath = false
-                selPath.moved = true
-                let movedPath = showPath.copyPath()
-                movedPath.offset(to: selView.movedRect.origin)
-                movedPath.isSelectedPath = true
-                movedPath.preMovePath = selPath
-                $0.selectedPaths[i] = movedPath
-                self?.drawPaths.append(movedPath)
-            }
+    /// 刷新选中
+    private func refreshSelected(paths: [ZHBasePath]){
+        let selView = ZHDrawSelectedView(paths: paths) {[weak self] movedPaths in
+            self?.syncDrawPath()
+            self?.drawPaths += movedPaths
         }
-        self.selectedView = selView
+        selectedView = selView
         addSubview(selView)
         
         setNeedsDisplay()
     }
     
+    /// 同步显示paths到绘制paths
+    private func syncDrawPath(){
+        if drawPaths.count != showPaths.count {
+            drawPaths = showPaths
+        }
+    }
+    
+    /// 文本输入弹窗
     private func showTextAlert(confirmHandle: ((_ text: String)->Void)?){
         guard let curVC = zh_CurrentVC() else { return }
         let alertVC = UIAlertController(title: "添加文字标绘", message: nil, preferredStyle: .alert)

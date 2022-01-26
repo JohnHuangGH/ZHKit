@@ -39,7 +39,7 @@ class ZHDrawBoardContainer: UIView {
         super.awakeFromNib()
         
         setupUI()
-        markView.markStart = {[weak self] in
+        markView.firstMark = {[weak self] in
             self?.optionBar.singleSelBtn.isEnabled = true
             self?.optionBar.multiSelBtn.isEnabled = true
             self?.optionBar.previousBtn.isEnabled = true
