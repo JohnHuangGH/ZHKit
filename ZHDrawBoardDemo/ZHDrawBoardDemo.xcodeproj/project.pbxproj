@@ -41,7 +41,7 @@
 		9C22C3C6279FEE3A006E4836 /* DKUIBezierPathIntersectionPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C3A9279FEE3A006E4836 /* DKUIBezierPathIntersectionPoint.m */; };
 		9C22C3C8279FEE3A006E4836 /* bezierclip.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C3AE279FEE3A006E4836 /* bezierclip.cxx */; };
 		9C22C3CA279FEF2B006E4836 /* ClippingBezier-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C22C3C9279FEF2B006E4836 /* ClippingBezier-Info.plist */; };
-		9C4D25F327902948007128EC /* ZHMarkPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4D25F227902948007128EC /* ZHMarkPath.swift */; };
+		9C4D25F327902948007128EC /* ZHPenPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4D25F227902948007128EC /* ZHPenPath.swift */; };
 		9CA7B300279A9514009D4309 /* ZHExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7B2FF279A9514009D4309 /* ZHExtension.swift */; };
 		9CADE7DF279E52D80084B482 /* ZHTextPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CADE7DE279E52D80084B482 /* ZHTextPath.swift */; };
 		9CC62CF8279693E600A6FE1E /* ZHLinePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC62CF7279693E600A6FE1E /* ZHLinePath.swift */; };
@@ -126,7 +126,7 @@
 		9C22C3AD279FEE3A006E4836 /* interval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interval.h; sourceTree = "<group>"; };
 		9C22C3AE279FEE3A006E4836 /* bezierclip.cxx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = bezierclip.cxx; sourceTree = "<group>"; };
 		9C22C3C9279FEF2B006E4836 /* ClippingBezier-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ClippingBezier-Info.plist"; sourceTree = "<group>"; };
-		9C4D25F227902948007128EC /* ZHMarkPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHMarkPath.swift; sourceTree = "<group>"; };
+		9C4D25F227902948007128EC /* ZHPenPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHPenPath.swift; sourceTree = "<group>"; };
 		9CA7B2FF279A9514009D4309 /* ZHExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHExtension.swift; sourceTree = "<group>"; };
 		9CADE7DE279E52D80084B482 /* ZHTextPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHTextPath.swift; sourceTree = "<group>"; };
 		9CC62CF7279693E600A6FE1E /* ZHLinePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHLinePath.swift; sourceTree = "<group>"; };
@@ -203,7 +203,7 @@
 				9CC62CFD2796AAEA00A6FE1E /* ZHDrawView.swift */,
 				9CE1A5982795429D00BD7930 /* ZHDrawSelectedView.swift */,
 				9CC62CF92796A32C00A6FE1E /* ZHBasePath.swift */,
-				9C4D25F227902948007128EC /* ZHMarkPath.swift */,
+				9C4D25F227902948007128EC /* ZHPenPath.swift */,
 				9CE0A7D82797E147004E6B4C /* ZHCirclePath.swift */,
 				9CE0A7DA27993E4D004E6B4C /* ZHRectPath.swift */,
 				9CE0A7DC27994869004E6B4C /* ZHArrowPath.swift */,
@@ -435,7 +435,7 @@
 				9C22C3C0279FEE3A006E4836 /* DKVector.m in Sources */,
 				9C22C3B0279FEE3A006E4836 /* transforms.cpp in Sources */,
 				9CE1A5992795429D00BD7930 /* ZHDrawSelectedView.swift in Sources */,
-				9C4D25F327902948007128EC /* ZHMarkPath.swift in Sources */,
+				9C4D25F327902948007128EC /* ZHPenPath.swift in Sources */,
 				9C22C3B3279FEE3A006E4836 /* bezier-utils.cpp in Sources */,
 				9C22C3BA279FEE3A006E4836 /* point.cpp in Sources */,
 				9C00041B278EAF6E00775F6D /* SceneDelegate.swift in Sources */,

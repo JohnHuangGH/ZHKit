@@ -19,6 +19,7 @@ enum ZHDrawBoardOption {
 }
 
 class ZHDrawView: UIView {
+    var markRect: CGRect = .zero
     /// 第一笔绘制
     var firstMark: (()->Void)?
     
@@ -94,6 +95,10 @@ class ZHDrawView: UIView {
         clearSelected()
         setNeedsDisplay()
     }
+    
+    @objc private func deleteBtnClick(sender: UIButton){
+        
+    }
 }
 
 // MARK: Touches
@@ -116,7 +121,7 @@ extension ZHDrawView {
             var path: ZHBasePath
             switch option {
             case .pen:
-                path = ZHMarkPath(width: lineWidth, color: lineColor, point: touchPoint)
+                path = ZHPenPath(width: lineWidth, color: lineColor, point: touchPoint)
             case .circle:
                 path = ZHCirclePath(width: lineWidth, color: lineColor, point: touchPoint)
             case .rect:
@@ -165,7 +170,7 @@ extension ZHDrawView {
                 }
             }
         case .multiSelect:
-            let path = ZHMarkPath(width: 4, color: .red, point: touchPoint)
+            let path = ZHPenPath(width: 4, color: .red, point: touchPoint)
             drawPaths.append(path)
         }
     }
