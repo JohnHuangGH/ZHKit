@@ -7,19 +7,20 @@
 
 import UIKit
 
-let kSelBgPathLineW: CGFloat = 4
-let kDashLineW: CGFloat = 2
+fileprivate let kSelBgPathLineW: CGFloat = 4
+fileprivate let kDashLineW: CGFloat = 2
 
 class ZHDrawSelectedView: UIView {
     
-    var movedHandle: ((_ movedPaths: [ZHBasePath])->Void)?
-    
     var selectedPaths: [ZHBasePath] = []
-    var showPaths: [ZHBasePath] = []
+    
+    private var movedHandle: ((_ movedPaths: [ZHBasePath])->Void)?
+    
+    private var showPaths: [ZHBasePath] = []
     private var showBgPaths: [ZHBasePath] = []
     
-    var originalRect: CGRect = .zero
-    var movedRect: CGRect = .zero
+    private var originalRect: CGRect = .zero
+    private var movedRect: CGRect = .zero
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

@@ -45,6 +45,14 @@ class ZHDrawBoardContainer: UIView {
             self?.optionBar.previousBtn.isEnabled = true
             self?.optionBar.clearBtn.isEnabled = true
         }
+        guard let img = bgImgv.image else { return }
+        print("img:\(img.size)\nscreen:\(UIScreen.main.bounds.size)")
+        let screenRect = UIScreen.main.bounds
+        if (img.size.width/img.size.height)/(screenRect.width/screenRect.height) > 1 {//横向
+//            markView.markRect = CGRect(x: 0, y: <#T##CGFloat#>, width: screenRect.width, height: <#T##CGFloat#>)
+        }else{//纵向
+//            markView.markRect = CGRect(x: <#T##CGFloat#>, y: 0, width: <#T##CGFloat#>, height: screenRect.height)
+        }
     }
     
     func setupUI(){

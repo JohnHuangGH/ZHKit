@@ -87,8 +87,8 @@
 		8F5A0558A1BA9581BE6057E63CC90872 /* UIBezierPath+Trim.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIBezierPath+Trim.h"; path = "PerformanceBezier/UIBezierPath+Trim.h"; sourceTree = "<group>"; };
 		905A3CB0C5E0ABEC4F384AFA5478939B /* UIBezierPathProperties.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UIBezierPathProperties.h; path = PerformanceBezier/UIBezierPathProperties.h; sourceTree = "<group>"; };
 		9478A82B8F602B7F61BD20D85F444BB1 /* UIBezierPath+Equals.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIBezierPath+Equals.m"; path = "PerformanceBezier/UIBezierPath+Equals.m"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9F8D9A7927B51AC8DBC08986F80C9BCD /* PerformanceBezier.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PerformanceBezier.framework; path = PerformanceBezier.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9F8D9A7927B51AC8DBC08986F80C9BCD /* PerformanceBezier.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PerformanceBezier.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A49373667D501FF1A56DEFCC71C20559 /* UIBezierPath+Ahmed.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIBezierPath+Ahmed.m"; path = "PerformanceBezier/UIBezierPath+Ahmed.m"; sourceTree = "<group>"; };
 		A4A78F7C91D500B464A66C7608344E14 /* UIBezierPath+Trim.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIBezierPath+Trim.m"; path = "PerformanceBezier/UIBezierPath+Trim.m"; sourceTree = "<group>"; };
 		A7237C4C7FC8256EC6AB1CC22BF4B71D /* UIBezierPath+Uncached.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIBezierPath+Uncached.m"; path = "PerformanceBezier/UIBezierPath+Uncached.m"; sourceTree = "<group>"; };
@@ -99,7 +99,7 @@
 		B901C369A50144847681BB543F0AD24E /* UIBezierPath+Description.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIBezierPath+Description.h"; path = "PerformanceBezier/UIBezierPath+Description.h"; sourceTree = "<group>"; };
 		CB3431A3A2CB3BFB64E551A0772C0B10 /* PerformanceBezier.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = PerformanceBezier.modulemap; sourceTree = "<group>"; };
 		D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		D276936835D39485806E20E9CBFCF9F5 /* Pods_ZHDrawBoardDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ZHDrawBoardDemo.framework; path = "Pods-ZHDrawBoardDemo.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D276936835D39485806E20E9CBFCF9F5 /* Pods_ZHDrawBoardDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZHDrawBoardDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E160D0BA81EC09DD462E03F4DDA010BF /* UIBezierPath+Description.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIBezierPath+Description.m"; path = "PerformanceBezier/UIBezierPath+Description.m"; sourceTree = "<group>"; };
 		E37C91B566B4D8CAA360F2D345511C6F /* UIBezierPath+NSOSX_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIBezierPath+NSOSX_Private.h"; path = "PerformanceBezier/UIBezierPath+NSOSX_Private.h"; sourceTree = "<group>"; };
 		E3E8C574C9C5805499A0B561CF874F22 /* PerformanceBezier-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "PerformanceBezier-Info.plist"; sourceTree = "<group>"; };
@@ -222,7 +222,6 @@
 				2916508F7D15A2C83CDB90505FFF8B28 /* UIBezierPathProperties.m */,
 				E9487CCF5AEAD59C557FBB5A2478D44A /* Support Files */,
 			);
-			name = PerformanceBezier;
 			path = PerformanceBezier;
 			sourceTree = "<group>";
 		};
@@ -334,7 +333,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1320;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 9.3";
@@ -429,7 +428,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/PerformanceBezier/PerformanceBezier-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/PerformanceBezier/PerformanceBezier-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -629,7 +628,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/PerformanceBezier/PerformanceBezier-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/PerformanceBezier/PerformanceBezier-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
