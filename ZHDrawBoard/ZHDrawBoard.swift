@@ -48,11 +48,19 @@ class ZHDrawBoardContainer: UIView {
         guard let img = bgImgv.image else { return }
         print("img:\(img.size)\nscreen:\(UIScreen.main.bounds.size)")
         let screenRect = UIScreen.main.bounds
-        if (img.size.width/img.size.height)/(screenRect.width/screenRect.height) > 1 {//横向
-//            markView.markRect = CGRect(x: 0, y: <#T##CGFloat#>, width: screenRect.width, height: <#T##CGFloat#>)
+        
+        let safeAreaInsets = UIApplication.shared.windows[0].safeAreaInsets
+        let width = screenRect.width - (safeAreaInsets.left + safeAreaInsets.right)
+        if (img.size.width/img.size.height)/(width/screenRect.height) > 1 {//横向
+            let h = img.size.height / img.size.width * width
+            let y = (screenRect.height - h)/2.0
+            markView.markRect = CGRect(x: 0, y: y, width: width, height: h)
         }else{//纵向
-//            markView.markRect = CGRect(x: <#T##CGFloat#>, y: 0, width: <#T##CGFloat#>, height: screenRect.height)
+            let w = img.size.width / img.size.height * screenRect.height
+            let x = (width - w)/2.0
+            markView.markRect = CGRect(x: x, y: 0, width: w, height: screenRect.height)
         }
+        print(markView.markRect)
     }
     
     func setupUI(){
@@ -104,11 +112,11 @@ class ZHDrawBoardContainer: UIView {
             self?.scrollView.isScrollEnabled = true
         }
         
-        optionBar.previousAct = {[weak self] sender in
-            sender.isEnabled = self?.markView.previous() ?? false
+        optionBar.previousAct = {[weak self] handle in
+            handle(self?.markView.previous() ?? false)
         }
-        optionBar.nextAct = {[weak self] sender in
-            sender.isEnabled = self?.markView.next() ?? false
+        optionBar.nextAct = {[weak self] handle in
+            handle(self?.markView.next() ?? false)
         }
         optionBar.clearAct = {[weak self] sender in
             self?.markView.clear()

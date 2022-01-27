@@ -42,6 +42,7 @@
 		9C22C3C8279FEE3A006E4836 /* bezierclip.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C3AE279FEE3A006E4836 /* bezierclip.cxx */; };
 		9C22C3CA279FEF2B006E4836 /* ClippingBezier-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C22C3C9279FEF2B006E4836 /* ClippingBezier-Info.plist */; };
 		9C4D25F327902948007128EC /* ZHPenPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4D25F227902948007128EC /* ZHPenPath.swift */; };
+		9C9FA1E227A23017005DB885 /* bgimgW.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C9FA1E127A23017005DB885 /* bgimgW.png */; };
 		9CA7B300279A9514009D4309 /* ZHExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7B2FF279A9514009D4309 /* ZHExtension.swift */; };
 		9CADE7DF279E52D80084B482 /* ZHTextPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CADE7DE279E52D80084B482 /* ZHTextPath.swift */; };
 		9CC62CF8279693E600A6FE1E /* ZHLinePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC62CF7279693E600A6FE1E /* ZHLinePath.swift */; };
@@ -127,6 +128,7 @@
 		9C22C3AE279FEE3A006E4836 /* bezierclip.cxx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = bezierclip.cxx; sourceTree = "<group>"; };
 		9C22C3C9279FEF2B006E4836 /* ClippingBezier-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ClippingBezier-Info.plist"; sourceTree = "<group>"; };
 		9C4D25F227902948007128EC /* ZHPenPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHPenPath.swift; sourceTree = "<group>"; };
+		9C9FA1E127A23017005DB885 /* bgimgW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgimgW.png; sourceTree = "<group>"; };
 		9CA7B2FF279A9514009D4309 /* ZHExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHExtension.swift; sourceTree = "<group>"; };
 		9CADE7DE279E52D80084B482 /* ZHTextPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHTextPath.swift; sourceTree = "<group>"; };
 		9CC62CF7279693E600A6FE1E /* ZHLinePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHLinePath.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			children = (
 				9C22C376279FEE3A006E4836 /* ClippingBezier */,
 				5217BB9A279CFB7300948175 /* bgimg.png */,
+				9C9FA1E127A23017005DB885 /* bgimgW.png */,
 				9C000433278EC71C00775F6D /* ZHDrawBoard.xib */,
 				9C000434278EC71C00775F6D /* ZHDrawBoard.swift */,
 				9CC62CFB2796A83A00A6FE1E /* ZHDrawBoardOptionBar.swift */,
@@ -350,6 +353,7 @@
 			files = (
 				9C000435278EC71C00775F6D /* ZHDrawBoard.xib in Resources */,
 				9C22C3CA279FEF2B006E4836 /* ClippingBezier-Info.plist in Resources */,
+				9C9FA1E227A23017005DB885 /* bgimgW.png in Resources */,
 				9C000425278EAF6E00775F6D /* LaunchScreen.storyboard in Resources */,
 				9C22C3BC279FEE3A006E4836 /* BezierUtilsLicense in Resources */,
 				9C000422278EAF6E00775F6D /* Assets.xcassets in Resources */,

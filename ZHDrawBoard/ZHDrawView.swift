@@ -63,6 +63,20 @@ class ZHDrawView: UIView {
         }
     }
     
+    lazy var deleteBtn: UIButton = {
+        let btn = UIButton(type: .custom)
+        btn.frame = .zero
+        btn.backgroundColor = .red
+        btn.addTarget(self, action: #selector(deleteBtnClick(sender:)), for: .touchUpInside)
+        btn.isHidden = true
+        return btn
+    }()
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        addSubview(deleteBtn)
+    }
+    
     @discardableResult func previous() -> Bool {
         if showPaths.count <= 0 {
             return false
@@ -97,7 +111,13 @@ class ZHDrawView: UIView {
     }
     
     @objc private func deleteBtnClick(sender: UIButton){
-        
+        guard let selView = selectedView else { return }
+        for path in selView.selectedPaths {
+            path.deleted()
+            drawPaths.removeAll{$0.isDeleted}
+        }
+        clearSelected()
+        setNeedsDisplay()
     }
 }
 
@@ -115,24 +135,11 @@ extension ZHDrawView {
         if isZooming { return }
         guard let touch = touches.first else { return }
         let touchPoint = touch.location(in: self)
+        if !markRect.contains(touchPoint) { return }
         switch option {
         case .pen, .circle, .rect, .arrow, .line:
             syncDrawPath()
-            var path: ZHBasePath
-            switch option {
-            case .pen:
-                path = ZHPenPath(width: lineWidth, color: lineColor, point: touchPoint)
-            case .circle:
-                path = ZHCirclePath(width: lineWidth, color: lineColor, point: touchPoint)
-            case .rect:
-                path = ZHRectPath(width: lineWidth, color: lineColor, point: touchPoint)
-            case .arrow:
-                path = ZHArrowPath(width: lineWidth, color: lineColor, point: touchPoint)
-            case .line:
-                path = ZHLinePath(width: lineWidth, color: lineColor, point: touchPoint)
-            default:
-                path = ZHBasePath(width: lineWidth, color: lineColor, point: touchPoint)
-            }
+            let path = createPath(point: touchPoint)
             drawPaths.append(path)
         case .text:
             syncDrawPath()
@@ -141,12 +148,9 @@ extension ZHDrawView {
             showTextAlert {[weak self] text in
                 path.text = text
                 path.draw(to: touchPoint)
-                path.isValid = true
+                self?.finishDraw(path: path)
                 self?.drawPaths.append(path)
                 self?.setNeedsDisplay()
-                if (self?.drawPaths.count ?? 0) == 1 {
-                    self?.firstMark?()
-                }
             }
         case .singleSelect:
             clearSelected()
@@ -179,9 +183,18 @@ extension ZHDrawView {
         if isZooming { return }
         guard let touch = touches.first else { return }
         let touchPoint = touch.location(in: self)
+        guard let path = drawPaths.last else { return }
+        if !markRect.contains(touchPoint) {
+            finishDraw(path: path)
+            return
+        }
+        if path.isFinish {
+            let newPath = createPath(point: touchPoint)
+            drawPaths.append(newPath)
+        }
+        guard let path = drawPaths.last else { return }
         switch option {
         case .pen, .circle, .rect, .arrow, .line, .multiSelect:
-            guard let path = drawPaths.last else { return }
             path.draw(to: touchPoint)
             setNeedsDisplay()
         default:
@@ -194,10 +207,8 @@ extension ZHDrawView {
         guard let path = drawPaths.last else { return }
         switch option {
         case .pen, .circle, .rect, .arrow, .line:
-            path.isValid = true//如果是缩放，会走began和moved，不走ended
-            if drawPaths.count == 1 {
-                firstMark?()
-            }
+            //如果是缩放，会走began和moved，不走ended
+            finishDraw(path: path)
         case .multiSelect:
             drawPaths.removeLast()
             clearSelected()
@@ -223,12 +234,40 @@ extension ZHDrawView {
 
 // MARK: Private
 extension ZHDrawView {
+    ///开启新绘制路径
+    private func createPath(point: CGPoint) -> ZHBasePath {
+        var path: ZHBasePath
+        switch option {
+        case .pen:
+            path = ZHPenPath(width: lineWidth, color: lineColor, point: point)
+        case .circle:
+            path = ZHCirclePath(width: lineWidth, color: lineColor, point: point)
+        case .rect:
+            path = ZHRectPath(width: lineWidth, color: lineColor, point: point)
+        case .arrow:
+            path = ZHArrowPath(width: lineWidth, color: lineColor, point: point)
+        case .line:
+            path = ZHLinePath(width: lineWidth, color: lineColor, point: point)
+        default:
+            path = ZHBasePath(width: lineWidth, color: lineColor, point: point)
+        }
+        return path
+    }
+    /// 完成当前绘制路径
+    private func finishDraw(path: ZHBasePath){
+        path.isValid = true
+        path.isFinish = true
+        if drawPaths.count == 1 {
+            firstMark?()
+        }
+    }
     /// 清空选中
     private func clearSelected(){
         if selectedView == nil { return }
         selectedView?.selectedPaths.forEach{$0.isSelectedPath = false}
         selectedView?.removeFromSuperview()
         selectedView = nil
+        deleteBtn.isHidden = true
     }
     
     /// 刷新选中
@@ -239,6 +278,8 @@ extension ZHDrawView {
         }
         selectedView = selView
         addSubview(selView)
+        deleteBtn.frame = CGRect(x: selView.center.x-10, y: selView.frame.maxY + 10, width: 20, height: 20)
+        deleteBtn.isHidden = false
         
         setNeedsDisplay()
     }

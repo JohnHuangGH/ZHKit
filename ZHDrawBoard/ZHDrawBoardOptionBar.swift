@@ -22,8 +22,8 @@ import UIKit
     var singleSelAct: ((_ sender: UIButton)->Void)?
     var multiSelAct: ((_ sender: UIButton)->Void)?
     
-    var previousAct: ((_ sender: UIButton)->Void)?
-    var nextAct: ((_ sender: UIButton)->Void)?
+    var previousAct: (((_ previousOn: Bool)->Void)->Void)?
+    var nextAct: (((_ nextOn: Bool)->Void)->Void)?
     var clearAct: ((_ sender: UIButton)->Void)?
     
     @IBOutlet weak var penBtn: UIButton!
@@ -54,6 +54,10 @@ import UIKit
         previousBtn.isEnabled = false
         nextBtn.isEnabled = false
         clearBtn.isEnabled = false
+    }
+    
+    func previousOff(){
+        
     }
     
     @IBAction private func penBtnClick(sender: UIButton){
@@ -110,11 +114,23 @@ import UIKit
     
     @IBAction func previousBtnClick(_ sender: UIButton) {
         nextBtn.isEnabled = true
-        previousAct?(sender)
+        previousAct?({ previousOn in
+            sender.isEnabled = previousOn
+            if !previousOn {
+                self.singleSelBtn.isEnabled = false
+                self.multiSelBtn.isEnabled = false
+            }
+        })
     }
     @IBAction func nextBtnClick(_ sender: UIButton) {
-        previousBtn.isEnabled = true
-        nextAct?(sender)
+        if !previousBtn.isEnabled {
+            previousBtn.isEnabled = true
+            singleSelBtn.isEnabled = true
+            multiSelBtn.isEnabled = true
+        }
+        nextAct?({ nextOn in
+            sender.isEnabled = nextOn
+        })
     }
     
     @IBAction func clearBtnClick(_ sender: UIButton) {
