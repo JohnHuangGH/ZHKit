@@ -31,6 +31,8 @@ class ZHDrawSelectedView: UIView {
         backgroundColor = .clear
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction(recognizer:)))
         addGestureRecognizer(pan)
+        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(pinchAction(recognizer:)))
+        addGestureRecognizer(pinch)
         
         let dashRect = CGRect(origin: .zero, size: frame.size)
         let dashRectLayer = CAShapeLayer.zh_DrawDashRect(frame: dashRect, lineWidth: kDashLineW, color: .red)
@@ -111,6 +113,14 @@ class ZHDrawSelectedView: UIView {
                 selectedPaths[i] = movedPath
             }
             movedHandle?(selectedPaths)
+        }
+    }
+    
+    @objc private func pinchAction(recognizer: UIPinchGestureRecognizer){
+        let scale = recognizer.scale
+        transform = CGAffineTransform(scaleX: scale, y: scale)
+        if recognizer.state == .ended {
+            
         }
     }
 }
