@@ -45,6 +45,7 @@ class ZHDrawBoardContainer: UIView {
             self?.optionBar.previousBtn.isEnabled = true
             self?.optionBar.clearBtn.isEnabled = true
         }
+        
         guard let img = bgImgv.image else { return }
         print("img:\(img.size)\nscreen:\(UIScreen.main.bounds.size)")
         let screenRect = UIScreen.main.bounds
@@ -68,9 +69,6 @@ class ZHDrawBoardContainer: UIView {
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.maximumZoomScale = 10
         scrollView.delegate = self
-        
-//        print(bgImgv.image?.size)
-//        bgImgv.image?.imageOrientation = .up
         
         optionBar.penAct = {[weak self] sender in
             self?.markView.option = .pen
