@@ -13,6 +13,8 @@ class ZHBasePath: UIBezierPath {
     var markPoints: [CGPoint] = []
     var isFill: Bool = false
     
+    /// 已结束绘制（或超出画板）
+    var isFinish: Bool = false
     /// 是否正在选中
     var isSelectedPath: Bool = false
     /// 是否有效的，正常绘制的，非缩放产生的
@@ -21,6 +23,8 @@ class ZHBasePath: UIBezierPath {
     var moved: Bool = false
     /// 移动前的path
     var preMovePath: ZHBasePath?
+    /// 已删除
+    var isDeleted: Bool = false
 
     
     convenience init(width: CGFloat, color: UIColor, capStyle: CGLineCap = .round, joinStyle: CGLineJoin = .round) {
@@ -53,6 +57,12 @@ class ZHBasePath: UIBezierPath {
         path.markPoints = markPoints
         path.isFill = isFill
         return path
+    }
+    
+    func deleted(){
+        isDeleted = true
+        guard let prePath = preMovePath else { return }
+        prePath.deleted()
     }
     
     override func stroke() {
