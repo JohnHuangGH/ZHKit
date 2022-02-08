@@ -55,7 +55,7 @@ class ZHDrawView: UIView {
     }
     private var showPaths: [ZHBasePath] = []
     
-    private var selectedView: ZHDrawSelectedView?{
+    private var selectedView: ZHSelectedView?{
         didSet{
             if selectedView == nil, let selView = oldValue {
                 selView.selectedPaths.forEach{$0.isSelectedPath = false}
@@ -269,7 +269,7 @@ extension ZHDrawView {
     
     /// 刷新选中
     private func refreshSelected(paths: [ZHBasePath]){
-        let selView = ZHDrawSelectedView(paths: paths) {[weak self] movedPaths in
+        let selView = ZHSelectedView(paths: paths) {[weak self] movedPaths in
             self?.syncDrawPath()
             self?.drawPaths += movedPaths
         } deleteHandle: {[weak self] in
