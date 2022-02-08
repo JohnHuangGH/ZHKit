@@ -63,18 +63,8 @@ class ZHDrawView: UIView {
         }
     }
     
-    lazy var deleteBtn: UIButton = {
-        let btn = UIButton(type: .custom)
-        btn.frame = .zero
-        btn.backgroundColor = .red
-        btn.addTarget(self, action: #selector(deleteBtnClick(sender:)), for: .touchUpInside)
-        btn.isHidden = true
-        return btn
-    }()
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        addSubview(deleteBtn)
     }
     
     @discardableResult func previous() -> Bool {
@@ -109,16 +99,6 @@ class ZHDrawView: UIView {
         clearSelected()
         setNeedsDisplay()
     }
-    
-    @objc private func deleteBtnClick(sender: UIButton){
-        guard let selView = selectedView else { return }
-        for path in selView.selectedPaths {
-            path.deleted()
-            drawPaths.removeAll{$0.isDeleted}
-        }
-        clearSelected()
-        setNeedsDisplay()
-    }
 }
 
 // MARK: Touches
@@ -148,31 +128,14 @@ extension ZHDrawView {
             showTextAlert {[weak self] text in
                 path.text = text
                 path.draw(to: touchPoint)
-                self?.finishDraw(path: path)
                 self?.drawPaths.append(path)
+                self?.finishDraw(path: path)
                 self?.setNeedsDisplay()
             }
         case .singleSelect:
             clearSelected()
             setNeedsDisplay()
-            //0.倒序遍历，后绘制的优先被选中
-            //1.是否落在涂鸦路径上
-            for path in showPaths.reversed() {
-                if !path.moved && path.contains(touchPoint) {
-                    //3.刷新
-                    refreshSelected(paths: [path])
-                    return
-                }
-            }
-            //2.是否落在涂鸦框内
-            for path in showPaths.reversed() {
-                let pathRect = path.cgPath.boundingBox
-                if !path.moved && pathRect.contains(touchPoint) {
-                    //3.刷新
-                    refreshSelected(paths: [path])
-                    return
-                }
-            }
+            checkSingleSelect(touchPoint: touchPoint)
         case .multiSelect:
             let path = ZHPenPath(width: 4, color: .red, point: touchPoint)
             drawPaths.append(path)
@@ -184,11 +147,11 @@ extension ZHDrawView {
         guard let touch = touches.first else { return }
         let touchPoint = touch.location(in: self)
         guard let path = drawPaths.last else { return }
-        if !markRect.contains(touchPoint) {
+        if option != .multiSelect, !markRect.contains(touchPoint) {//超出范围，结束当前绘制
             finishDraw(path: path)
             return
         }
-        if path.isFinish {
+        if path.isFinish {//超出范围后重新回到绘制区域，开启新绘制
             let newPath = createPath(point: touchPoint)
             drawPaths.append(newPath)
         }
@@ -202,12 +165,11 @@ extension ZHDrawView {
         }
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {//如果是缩放，会走began和moved，不走ended
         if isZooming { return }
         guard let path = drawPaths.last else { return }
         switch option {
         case .pen, .circle, .rect, .arrow, .line:
-            //如果是缩放，会走began和moved，不走ended
             finishDraw(path: path)
         case .multiSelect:
             drawPaths.removeLast()
@@ -215,17 +177,7 @@ extension ZHDrawView {
             setNeedsDisplay()
             
             path.close()
-            var selPaths: [ZHBasePath] = []
-            for showPath in showPaths {
-                if showPath.moved { continue }
-                var inside: ObjCBool = ObjCBool(false)
-                if let arr = showPath.findIntersections(withClosedPath: path, andBeginsInside: &inside), (arr.count > 0 || inside.boolValue) {
-                    selPaths.append(showPath)
-                }
-            }
-            if selPaths.count > 0 {
-                refreshSelected(paths: selPaths)
-            }
+            checkMultiSelect(path: path)
         default:
             break
         }
@@ -261,13 +213,54 @@ extension ZHDrawView {
             firstMark?()
         }
     }
+    
+    /// 判定落点是否在绘制路径上或者绘制路径的有效选中区内
+    private func checkSingleSelect(touchPoint: CGPoint){
+        //0.倒序遍历，后绘制的优先被选中
+        //1.是否落在涂鸦路径上
+        for path in showPaths.reversed() {
+            if !path.moved && path.contains(touchPoint) {
+                //3.刷新
+                refreshSelected(paths: [path])
+                return
+            }
+        }
+        //2.是否落在涂鸦框内
+        for path in showPaths.reversed() {
+            let pathRect = path.cgPath.boundingBox
+            if !path.moved && pathRect.contains(touchPoint) {
+                //3.刷新
+                refreshSelected(paths: [path])
+                return
+            }
+        }
+    }
+    /// 判定圈选路径是否包含绘制路径
+    private func checkMultiSelect(path: ZHBasePath){
+        if path.markPoints.count == 1 {//作单选判定
+            checkSingleSelect(touchPoint: path.markPoints[0])
+            return
+        }
+        
+        var selPaths: [ZHBasePath] = []
+        for showPath in showPaths {
+            if showPath.moved { continue }
+            var inside: ObjCBool = ObjCBool(false)
+            if let arr = showPath.findIntersections(withClosedPath: path, andBeginsInside: &inside), (arr.count > 0 || inside.boolValue) {
+                selPaths.append(showPath)
+            }
+        }
+        if selPaths.count > 0 {
+            refreshSelected(paths: selPaths)
+        }
+    }
+    
     /// 清空选中
     private func clearSelected(){
         if selectedView == nil { return }
         selectedView?.selectedPaths.forEach{$0.isSelectedPath = false}
         selectedView?.removeFromSuperview()
         selectedView = nil
-        deleteBtn.isHidden = true
     }
     
     /// 刷新选中
@@ -275,12 +268,22 @@ extension ZHDrawView {
         let selView = ZHDrawSelectedView(paths: paths) {[weak self] movedPaths in
             self?.syncDrawPath()
             self?.drawPaths += movedPaths
+        } deleteHandle: {[weak self] in
+            self?.deleteSeleted()
         }
         selectedView = selView
         addSubview(selView)
-        deleteBtn.frame = CGRect(x: selView.center.x-10, y: selView.frame.maxY + 10, width: 20, height: 20)
-        deleteBtn.isHidden = false
         
+        setNeedsDisplay()
+    }
+    /// 删除选中
+    private func deleteSeleted(){
+        guard let selView = selectedView else { return }
+        for path in selView.selectedPaths {
+            path.deleted()
+            drawPaths.removeAll{$0.isDeleted}
+        }
+        clearSelected()
         setNeedsDisplay()
     }
     

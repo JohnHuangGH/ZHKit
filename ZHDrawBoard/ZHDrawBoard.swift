@@ -69,10 +69,10 @@ class ZHDrawBoardContainer: UIView {
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.maximumZoomScale = 10
         scrollView.delegate = self
+        drawAction(option: .pen)
         
         optionBar.penAct = {[weak self] sender in
-            self?.markView.option = .pen
-            self?.scrollView.isScrollEnabled = false
+            self?.drawAction(option: .pen)
         }
         optionBar.lineColorAct = {[weak self] sender in
             self?.markView.lineColor = sender.backgroundColor ?? .black
@@ -81,33 +81,26 @@ class ZHDrawBoardContainer: UIView {
             self?.markView.lineWidth = sender.isSelected ? 8 : 4
         }
         optionBar.textAct = {[weak self] sender in
-            self?.markView.option = .text
-            self?.scrollView.isScrollEnabled = false
+            self?.drawAction(option: .text)
         }
         optionBar.circleAct = {[weak self] sender in
-            self?.markView.option = .circle
-            self?.scrollView.isScrollEnabled = false
+            self?.drawAction(option: .circle)
         }
         optionBar.rectAct = {[weak self] sender in
-            self?.markView.option = .rect
-            self?.scrollView.isScrollEnabled = false
+            self?.drawAction(option: .rect)
         }
         optionBar.arrowAct = {[weak self] sender in
-            self?.markView.option = .arrow
-            self?.scrollView.isScrollEnabled = false
+            self?.drawAction(option: .arrow)
         }
         optionBar.lineAct = {[weak self] sender in
-            self?.markView.option = .line
-            self?.scrollView.isScrollEnabled = false
+            self?.drawAction(option: .line)
         }
         
         optionBar.singleSelAct = {[weak self] sender in
-            self?.markView.option = .singleSelect
-            self?.scrollView.isScrollEnabled = true
+            self?.seleteAction(option: .singleSelect)
         }
         optionBar.multiSelAct = {[weak self] sender in
-            self?.markView.option = .multiSelect
-            self?.scrollView.isScrollEnabled = true
+            self?.seleteAction(option: .multiSelect)
         }
         
         optionBar.previousAct = {[weak self] handle in
@@ -118,7 +111,18 @@ class ZHDrawBoardContainer: UIView {
         }
         optionBar.clearAct = {[weak self] sender in
             self?.markView.clear()
+            self?.drawAction(option: .pen)
         }
+    }
+    
+    func drawAction(option: ZHDrawBoardOption){
+        markView.option = option
+        scrollView.isScrollEnabled = false
+    }
+    
+    func seleteAction(option: ZHDrawBoardOption){
+        markView.option = option
+        scrollView.isScrollEnabled = true
     }
 }
 
