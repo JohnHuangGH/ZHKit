@@ -65,7 +65,7 @@
 		9CE0A7D92797E147004E6B4C /* ZHCirclePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0A7D82797E147004E6B4C /* ZHCirclePath.swift */; };
 		9CE0A7DB27993E4D004E6B4C /* ZHRectPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0A7DA27993E4D004E6B4C /* ZHRectPath.swift */; };
 		9CE0A7DD27994869004E6B4C /* ZHArrowPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0A7DC27994869004E6B4C /* ZHArrowPath.swift */; };
-		9CE1A5992795429D00BD7930 /* ZHDrawSelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1A5982795429D00BD7930 /* ZHDrawSelectedView.swift */; };
+		9CE1A5992795429D00BD7930 /* ZHSelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1A5982795429D00BD7930 /* ZHSelectedView.swift */; };
 		E4F3527550C085C7A8D63572 /* Pods_ZHDrawBoardDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3AD0F82D9A882F988F83C9 /* Pods_ZHDrawBoardDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -180,7 +180,7 @@
 		9CE0A7D82797E147004E6B4C /* ZHCirclePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHCirclePath.swift; sourceTree = "<group>"; };
 		9CE0A7DA27993E4D004E6B4C /* ZHRectPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHRectPath.swift; sourceTree = "<group>"; };
 		9CE0A7DC27994869004E6B4C /* ZHArrowPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHArrowPath.swift; sourceTree = "<group>"; };
-		9CE1A5982795429D00BD7930 /* ZHDrawSelectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHDrawSelectedView.swift; sourceTree = "<group>"; };
+		9CE1A5982795429D00BD7930 /* ZHSelectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHSelectedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,7 +247,7 @@
 				9C000434278EC71C00775F6D /* ZHDrawBoard.swift */,
 				9CC62CFB2796A83A00A6FE1E /* ZHDrawBoardOptionBar.swift */,
 				9CC62CFD2796AAEA00A6FE1E /* ZHDrawView.swift */,
-				9CE1A5982795429D00BD7930 /* ZHDrawSelectedView.swift */,
+				9CE1A5982795429D00BD7930 /* ZHSelectedView.swift */,
 				9CC62CF92796A32C00A6FE1E /* ZHBasePath.swift */,
 				9C4D25F227902948007128EC /* ZHPenPath.swift */,
 				9CE0A7D82797E147004E6B4C /* ZHCirclePath.swift */,
@@ -525,7 +525,7 @@
 				9C22C3BB279FEE3A006E4836 /* DKUIBezierPathClippedSegment.m in Sources */,
 				9C22C3C0279FEE3A006E4836 /* DKVector.m in Sources */,
 				9C22C3B0279FEE3A006E4836 /* transforms.cpp in Sources */,
-				9CE1A5992795429D00BD7930 /* ZHDrawSelectedView.swift in Sources */,
+				9CE1A5992795429D00BD7930 /* ZHSelectedView.swift in Sources */,
 				9C4D25F327902948007128EC /* ZHPenPath.swift in Sources */,
 				9C22C3B3279FEE3A006E4836 /* bezier-utils.cpp in Sources */,
 				9C22C3BA279FEE3A006E4836 /* point.cpp in Sources */,

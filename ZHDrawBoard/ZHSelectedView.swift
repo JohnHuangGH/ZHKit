@@ -1,5 +1,5 @@
 //
-//  ZHDrawSelectedView.swift
+//  ZHSelectedView.swift
 //  ZHDrawBoardDemo
 //
 //  Created by NetInfo on 2022/1/17.
@@ -10,7 +10,7 @@ import UIKit
 fileprivate let kSelBgPathLineW: CGFloat = 4
 fileprivate let kDashLineW: CGFloat = 2
 
-class ZHDrawSelectedView: UIView {
+class ZHSelectedView: UIView {
     
     var selectedPaths: [ZHBasePath] = []
     
@@ -179,7 +179,7 @@ class ZHDrawSelectedView: UIView {
     }
 }
 
-extension ZHDrawSelectedView: UIGestureRecognizerDelegate {
+extension ZHSelectedView: UIGestureRecognizerDelegate {
     override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         if gestureRecognizer.isKind(of: UIPinchGestureRecognizer.self) {
             return selectedPaths.count == 1
