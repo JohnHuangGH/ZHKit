@@ -84,6 +84,7 @@ class ZHDrawView: UIView {
         if showPaths.count == drawPaths.count {
             return false
         }
+        clearSelected()
         let nextPath = drawPaths[showPaths.count]
         if let preMovePath = nextPath.preMovePath {
             preMovePath.moved = true
@@ -116,6 +117,9 @@ extension ZHDrawView {
         guard let touch = touches.first else { return }
         let touchPoint = touch.location(in: self)
         if !markRect.contains(touchPoint) { return }
+        if let lastPath = drawPaths.last, !lastPath.isFinish {//移除被打断的多选路径
+            drawPaths.removeLast()
+        }
         switch option {
         case .pen, .circle, .rect, .arrow, .line:
             syncDrawPath()

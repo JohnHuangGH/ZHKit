@@ -126,6 +126,7 @@ class ZHDrawSelectedView: UIView {
                 movedPath.applyByCenter(transform: CGAffineTransform(translationX: movedRect.minX, y: movedRect.minY))
                 movedPath.isSelectedPath = true
                 movedPath.isValid = true
+                movedPath.isFinish = true
                 movedPath.preMovePath = selPath
                 selectedPaths[i] = movedPath
                 originalRect = movedRect
@@ -157,6 +158,7 @@ class ZHDrawSelectedView: UIView {
                 movedPath.applyByCenter(transform: CGAffineTransform(scaleX: scale, y: scale))
                 movedPath.isSelectedPath = true
                 movedPath.isValid = true
+                movedPath.isFinish = true
                 movedPath.preMovePath = selPath
                 selectedPaths[i] = movedPath
             }

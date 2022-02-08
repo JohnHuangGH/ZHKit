@@ -65,3 +65,18 @@ extension Array where Self.Element == CGRect {
         return CGRect(x: xMin, y: yMin, width: xMax - xMin, height: yMax - yMin)
     }
 }
+
+extension UIImage {
+    func zh_ScreenShot() -> UIImage? {
+        //截取整个屏幕
+        guard let window = UIApplication.shared.windows.first else { return nil }
+        // 用下面这行而不是UIGraphicsBeginImageContext()，因为前者支持Retina
+        UIGraphicsBeginImageContextWithOptions(window.bounds.size, false, 0.0)
+        window.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+       
+//        return UIImage.init(data: image?.jpegData(compressionQuality: 0.5) ?? Data()) //image
+        return image
+    }
+}
