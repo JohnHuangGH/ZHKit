@@ -3,323 +3,125 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1ED9F8FF2E35E48215FD84AF77E3B955 /* UIBezierPath+Clockwise.h in Headers */ = {isa = PBXBuildFile; fileRef = 6183633C8C7E051494FE6070F52A5540 /* UIBezierPath+Clockwise.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		26109238466342BD789B9E33EBC4A559 /* UIBezierPath+Performance.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E64D77FB53A1ED8EF442A5035E6CB7 /* UIBezierPath+Performance.m */; };
-		2A64E6FAF4832466517C40D6C7E20AB4 /* UIBezierPath+FirstLast.h in Headers */ = {isa = PBXBuildFile; fileRef = 09108E980D8FEF161822EEE4C0EB5271 /* UIBezierPath+FirstLast.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2B2A807E187BB41C5B2C2340ECEBE860 /* UIBezierPath+Description.m in Sources */ = {isa = PBXBuildFile; fileRef = E160D0BA81EC09DD462E03F4DDA010BF /* UIBezierPath+Description.m */; };
-		3644C7FDC1F1808F40B67CCEA2A490E8 /* UIBezierPath+NSOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = 15448C2CF6817CBD71651822613F5905 /* UIBezierPath+NSOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		430844ACDF49020AFA452E3990243B1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
-		482CEEE3A5810CDE1878636D050F859B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
-		4889E9AF8FA151FB6ABEE7EBC0CD7345 /* PerformanceBezier-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 62B7FBBBBDB48F43A34AE56D2E5BCF4E /* PerformanceBezier-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5009A2B06C5BCF5673875C0FFA8FBCC2 /* UIBezierPath+NSOSX.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D53D7B20B00262073E966FA853B9840 /* UIBezierPath+NSOSX.m */; };
-		5341764CFBF4D7CCC2CB0B65DFF54443 /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 75ACD40CA39172A7D308C4FE53FB38CB /* JRSwizzle.m */; };
-		593EE0BA09D0042C3C8C2EF73C017BC9 /* UIBezierPath+Center.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2A89C538B42C9530ECC39E925CFFB /* UIBezierPath+Center.m */; };
-		5BD7A3DF356E5289C1A5EB9D1BB266AF /* UIBezierPath+Trim.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F5A0558A1BA9581BE6057E63CC90872 /* UIBezierPath+Trim.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7EC0FECB4A60182181C3A29A5D17B644 /* UIBezierPath+Clockwise.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F767B5A3CCC7CC2F1FB365A0FB5919 /* UIBezierPath+Clockwise.m */; };
-		82AE367F68886DD64A617F009379303A /* UIBezierPath+Util.h in Headers */ = {isa = PBXBuildFile; fileRef = FD025E9CF128BC72787733BD1DC95359 /* UIBezierPath+Util.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8FF626CE5849F7573B3936B372A86261 /* UIBezierPath+Uncached.m in Sources */ = {isa = PBXBuildFile; fileRef = A7237C4C7FC8256EC6AB1CC22BF4B71D /* UIBezierPath+Uncached.m */; };
-		95A67A19AF80C807548A0637D5DD28CF /* JRSwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = A796CB52A484F830E4A95D31C15D132B /* JRSwizzle.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		9E1868A2F2EFF3FEE5C6B2E0B4D6D496 /* Pods-ZHDrawBoardDemo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 436E81D2326C4C31D0352499E9F5B0F8 /* Pods-ZHDrawBoardDemo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9E5C8BEB533582977A8A1765D7B8D393 /* UIBezierPath+Performance.h in Headers */ = {isa = PBXBuildFile; fileRef = A9595CBDE9C5D18E48B3D4ECC2B8C698 /* UIBezierPath+Performance.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A4AA4A0F9C58BC72AF81A475411F4DEC /* UIBezierPath+Description.h in Headers */ = {isa = PBXBuildFile; fileRef = B901C369A50144847681BB543F0AD24E /* UIBezierPath+Description.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AF792EAD7D66A480D8CB94D2A1E59E33 /* UIBezierPath+Ahmed.m in Sources */ = {isa = PBXBuildFile; fileRef = A49373667D501FF1A56DEFCC71C20559 /* UIBezierPath+Ahmed.m */; };
-		B349FFBD684F8282F567EC6C023DBE76 /* PerformanceBezier.h in Headers */ = {isa = PBXBuildFile; fileRef = 768C43382BC7CFA07963FBC47F6B355C /* PerformanceBezier.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B446921F13FE138CECFEBF70334BEE9B /* UIBezierPath+Equals.h in Headers */ = {isa = PBXBuildFile; fileRef = 09D9CA7677772153274315B9A5646045 /* UIBezierPath+Equals.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B84804944270CDC43D4AB9D54E2FA3C2 /* UIBezierPath+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E52C5C6F8CAE2AA24D72094DAF15FC /* UIBezierPath+Util.m */; };
-		C934DCF9EEBD04B1E215A2FB451B1A7D /* UIBezierPath+Ahmed.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C9266D56A52E1A52A749ACD9FA5AF30 /* UIBezierPath+Ahmed.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D343BF75EC533AE1F9E0D5A73C986B0E /* UIBezierPath+Center.h in Headers */ = {isa = PBXBuildFile; fileRef = B14D1B25AAF85054DFC08FD5ED8F9441 /* UIBezierPath+Center.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D40A9EE7C6AF32D7CD6FFF2449FB5EA5 /* PerformanceBezier-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EFBF576E1E8D1D8B16C65DD2B3F115A /* PerformanceBezier-dummy.m */; };
-		D9B91B0E8576D3728A480C33DF74535F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */; };
-		DBC6C63EC63FE858B91D3F6D9D7B51E2 /* UIBezierPath+Trim.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A78F7C91D500B464A66C7608344E14 /* UIBezierPath+Trim.m */; };
-		DCE91380AFA2D535D79435D57E1BB879 /* UIBezierPath+NSOSX_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E37C91B566B4D8CAA360F2D345511C6F /* UIBezierPath+NSOSX_Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		DDE91977A0705FE4C703A24F34C65783 /* UIBezierPath+Uncached.h in Headers */ = {isa = PBXBuildFile; fileRef = AE3D13AC12C907BF1FD21CFB1E0DA06C /* UIBezierPath+Uncached.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E59266847E51A07A709E2511A348D8FD /* UIBezierPath+Equals.m in Sources */ = {isa = PBXBuildFile; fileRef = 9478A82B8F602B7F61BD20D85F444BB1 /* UIBezierPath+Equals.m */; };
-		E62ECDCD8B334002D5CC75F22308E341 /* UIBezierPath+Performance_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F28508B442C27F2E1E85B7A7F007903 /* UIBezierPath+Performance_Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		E8E1FF2FAA33157F795F01CF8180777C /* Pods-ZHDrawBoardDemo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F28A3E9F9A5599F0283168D3E9D4C55 /* Pods-ZHDrawBoardDemo-dummy.m */; };
-		F03E87BBBD37E7FF030FA534F8F4AD66 /* UIBezierPathProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 905A3CB0C5E0ABEC4F384AFA5478939B /* UIBezierPathProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F51E254AF18048576FC5B470C7E2B67A /* UIBezierPath+FirstLast.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E78D974047CF5F1D61CA07CB439889B /* UIBezierPath+FirstLast.m */; };
-		F967D9F3908E806B9D0406A0A483ACEE /* UIBezierPathProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2916508F7D15A2C83CDB90505FFF8B28 /* UIBezierPathProperties.m */; };
+		0D3830398ACF36850DBB0E59E9E43121 /* Pods-ZHDrawBoardDemo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F01F32EBDF74D34EF5438408334E1AFE /* Pods-ZHDrawBoardDemo-dummy.m */; };
+		6ADC1058E2C4224D6E6B896B1B4A1078 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		B869B2F221F213D92EA5A0FD73EF3177 /* Pods-ZHDrawBoardDemo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A539A5D59CC3311E8373ADE0D55A4FE /* Pods-ZHDrawBoardDemo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		8FD79BD82F8BB920EB31C04B760093A2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 473929B2F94D59B5D1E1A2FEB95E934D;
-			remoteInfo = PerformanceBezier;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		09108E980D8FEF161822EEE4C0EB5271 /* UIBezierPath+FirstLast.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIBezierPath+FirstLast.h"; path = "PerformanceBezier/UIBezierPath+FirstLast.h"; sourceTree = "<group>"; };
-		09D9CA7677772153274315B9A5646045 /* UIBezierPath+Equals.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIBezierPath+Equals.h"; path = "PerformanceBezier/UIBezierPath+Equals.h"; sourceTree = "<group>"; };
-		11171D3F2B6329D968431BC4A65918E9 /* Pods-ZHDrawBoardDemo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ZHDrawBoardDemo.modulemap"; sourceTree = "<group>"; };
-		13512377D08BE68E5F577C4F48255E1D /* Pods-ZHDrawBoardDemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZHDrawBoardDemo-acknowledgements.markdown"; sourceTree = "<group>"; };
-		15448C2CF6817CBD71651822613F5905 /* UIBezierPath+NSOSX.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIBezierPath+NSOSX.h"; path = "PerformanceBezier/UIBezierPath+NSOSX.h"; sourceTree = "<group>"; };
-		182267351E12E19B96D88502E0D387F0 /* Pods-ZHDrawBoardDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZHDrawBoardDemo-acknowledgements.plist"; sourceTree = "<group>"; };
-		1EFBF576E1E8D1D8B16C65DD2B3F115A /* PerformanceBezier-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PerformanceBezier-dummy.m"; sourceTree = "<group>"; };
-		2916508F7D15A2C83CDB90505FFF8B28 /* UIBezierPathProperties.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = UIBezierPathProperties.m; path = PerformanceBezier/UIBezierPathProperties.m; sourceTree = "<group>"; };
-		2C9266D56A52E1A52A749ACD9FA5AF30 /* UIBezierPath+Ahmed.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIBezierPath+Ahmed.h"; path = "PerformanceBezier/UIBezierPath+Ahmed.h"; sourceTree = "<group>"; };
-		2F28A3E9F9A5599F0283168D3E9D4C55 /* Pods-ZHDrawBoardDemo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZHDrawBoardDemo-dummy.m"; sourceTree = "<group>"; };
-		32EDD9A2BC9B406F35B976D034527AB8 /* PerformanceBezier.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PerformanceBezier.release.xcconfig; sourceTree = "<group>"; };
-		3D53D7B20B00262073E966FA853B9840 /* UIBezierPath+NSOSX.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIBezierPath+NSOSX.m"; path = "PerformanceBezier/UIBezierPath+NSOSX.m"; sourceTree = "<group>"; };
-		436E81D2326C4C31D0352499E9F5B0F8 /* Pods-ZHDrawBoardDemo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZHDrawBoardDemo-umbrella.h"; sourceTree = "<group>"; };
-		543A4838C73AE021B6012E58ACCD03D4 /* PerformanceBezier.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PerformanceBezier.debug.xcconfig; sourceTree = "<group>"; };
-		5779800C148DAF5E99273B383E27DA40 /* Pods-ZHDrawBoardDemo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZHDrawBoardDemo-frameworks.sh"; sourceTree = "<group>"; };
-		58E4684F9438377F716ADA7F54E2C967 /* Pods-ZHDrawBoardDemo-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZHDrawBoardDemo-Info.plist"; sourceTree = "<group>"; };
-		5AA3992921E827E8377AC128BF6FBA84 /* PerformanceBezier-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PerformanceBezier-prefix.pch"; sourceTree = "<group>"; };
-		5BB2A89C538B42C9530ECC39E925CFFB /* UIBezierPath+Center.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIBezierPath+Center.m"; path = "PerformanceBezier/UIBezierPath+Center.m"; sourceTree = "<group>"; };
-		60F1F1E9A8A7EE196D959C390D6CE281 /* Pods-ZHDrawBoardDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZHDrawBoardDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		6183633C8C7E051494FE6070F52A5540 /* UIBezierPath+Clockwise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIBezierPath+Clockwise.h"; path = "PerformanceBezier/UIBezierPath+Clockwise.h"; sourceTree = "<group>"; };
-		62B7FBBBBDB48F43A34AE56D2E5BCF4E /* PerformanceBezier-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PerformanceBezier-umbrella.h"; sourceTree = "<group>"; };
-		68E52C5C6F8CAE2AA24D72094DAF15FC /* UIBezierPath+Util.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIBezierPath+Util.m"; path = "PerformanceBezier/UIBezierPath+Util.m"; sourceTree = "<group>"; };
-		74E64D77FB53A1ED8EF442A5035E6CB7 /* UIBezierPath+Performance.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIBezierPath+Performance.m"; path = "PerformanceBezier/UIBezierPath+Performance.m"; sourceTree = "<group>"; };
-		75ACD40CA39172A7D308C4FE53FB38CB /* JRSwizzle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JRSwizzle.m; path = PerformanceBezier/JRSwizzle.m; sourceTree = "<group>"; };
-		768C43382BC7CFA07963FBC47F6B355C /* PerformanceBezier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PerformanceBezier.h; path = PerformanceBezier/PerformanceBezier.h; sourceTree = "<group>"; };
-		7F28508B442C27F2E1E85B7A7F007903 /* UIBezierPath+Performance_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIBezierPath+Performance_Private.h"; path = "PerformanceBezier/UIBezierPath+Performance_Private.h"; sourceTree = "<group>"; };
-		82DE91C11F6404966C7CDD23597381A3 /* Pods-ZHDrawBoardDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZHDrawBoardDemo.release.xcconfig"; sourceTree = "<group>"; };
-		8E78D974047CF5F1D61CA07CB439889B /* UIBezierPath+FirstLast.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIBezierPath+FirstLast.m"; path = "PerformanceBezier/UIBezierPath+FirstLast.m"; sourceTree = "<group>"; };
-		8F5A0558A1BA9581BE6057E63CC90872 /* UIBezierPath+Trim.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIBezierPath+Trim.h"; path = "PerformanceBezier/UIBezierPath+Trim.h"; sourceTree = "<group>"; };
-		905A3CB0C5E0ABEC4F384AFA5478939B /* UIBezierPathProperties.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UIBezierPathProperties.h; path = PerformanceBezier/UIBezierPathProperties.h; sourceTree = "<group>"; };
-		9478A82B8F602B7F61BD20D85F444BB1 /* UIBezierPath+Equals.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIBezierPath+Equals.m"; path = "PerformanceBezier/UIBezierPath+Equals.m"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9F8D9A7927B51AC8DBC08986F80C9BCD /* PerformanceBezier.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PerformanceBezier.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A49373667D501FF1A56DEFCC71C20559 /* UIBezierPath+Ahmed.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIBezierPath+Ahmed.m"; path = "PerformanceBezier/UIBezierPath+Ahmed.m"; sourceTree = "<group>"; };
-		A4A78F7C91D500B464A66C7608344E14 /* UIBezierPath+Trim.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIBezierPath+Trim.m"; path = "PerformanceBezier/UIBezierPath+Trim.m"; sourceTree = "<group>"; };
-		A7237C4C7FC8256EC6AB1CC22BF4B71D /* UIBezierPath+Uncached.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIBezierPath+Uncached.m"; path = "PerformanceBezier/UIBezierPath+Uncached.m"; sourceTree = "<group>"; };
-		A796CB52A484F830E4A95D31C15D132B /* JRSwizzle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JRSwizzle.h; path = PerformanceBezier/JRSwizzle.h; sourceTree = "<group>"; };
-		A9595CBDE9C5D18E48B3D4ECC2B8C698 /* UIBezierPath+Performance.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIBezierPath+Performance.h"; path = "PerformanceBezier/UIBezierPath+Performance.h"; sourceTree = "<group>"; };
-		AE3D13AC12C907BF1FD21CFB1E0DA06C /* UIBezierPath+Uncached.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIBezierPath+Uncached.h"; path = "PerformanceBezier/UIBezierPath+Uncached.h"; sourceTree = "<group>"; };
-		B14D1B25AAF85054DFC08FD5ED8F9441 /* UIBezierPath+Center.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIBezierPath+Center.h"; path = "PerformanceBezier/UIBezierPath+Center.h"; sourceTree = "<group>"; };
-		B901C369A50144847681BB543F0AD24E /* UIBezierPath+Description.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIBezierPath+Description.h"; path = "PerformanceBezier/UIBezierPath+Description.h"; sourceTree = "<group>"; };
-		CB3431A3A2CB3BFB64E551A0772C0B10 /* PerformanceBezier.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = PerformanceBezier.modulemap; sourceTree = "<group>"; };
-		D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		D276936835D39485806E20E9CBFCF9F5 /* Pods_ZHDrawBoardDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZHDrawBoardDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E160D0BA81EC09DD462E03F4DDA010BF /* UIBezierPath+Description.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIBezierPath+Description.m"; path = "PerformanceBezier/UIBezierPath+Description.m"; sourceTree = "<group>"; };
-		E37C91B566B4D8CAA360F2D345511C6F /* UIBezierPath+NSOSX_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIBezierPath+NSOSX_Private.h"; path = "PerformanceBezier/UIBezierPath+NSOSX_Private.h"; sourceTree = "<group>"; };
-		E3E8C574C9C5805499A0B561CF874F22 /* PerformanceBezier-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "PerformanceBezier-Info.plist"; sourceTree = "<group>"; };
-		EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		F0F767B5A3CCC7CC2F1FB365A0FB5919 /* UIBezierPath+Clockwise.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIBezierPath+Clockwise.m"; path = "PerformanceBezier/UIBezierPath+Clockwise.m"; sourceTree = "<group>"; };
-		FD025E9CF128BC72787733BD1DC95359 /* UIBezierPath+Util.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIBezierPath+Util.h"; path = "PerformanceBezier/UIBezierPath+Util.h"; sourceTree = "<group>"; };
+		05D0D6521A4981848DAE08F3EA3BEFA2 /* Pods-ZHDrawBoardDemo-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZHDrawBoardDemo-Info.plist"; sourceTree = "<group>"; };
+		14C7D5C08A42B32F929021C3CDB876E0 /* Pods-ZHDrawBoardDemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZHDrawBoardDemo-acknowledgements.markdown"; sourceTree = "<group>"; };
+		5C8613D687AA2A34D748391E1963F748 /* Pods-ZHDrawBoardDemo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ZHDrawBoardDemo.modulemap"; sourceTree = "<group>"; };
+		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		7920208A5803AE2F83E3B7857E5CF89C /* Pods-ZHDrawBoardDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZHDrawBoardDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		9466913C9BA11197CB12280764B2960A /* Pods-ZHDrawBoardDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZHDrawBoardDemo-acknowledgements.plist"; sourceTree = "<group>"; };
+		9A539A5D59CC3311E8373ADE0D55A4FE /* Pods-ZHDrawBoardDemo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZHDrawBoardDemo-umbrella.h"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A867FB379F476118704B791768F39E0D /* Pods-ZHDrawBoardDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZHDrawBoardDemo.release.xcconfig"; sourceTree = "<group>"; };
+		D276936835D39485806E20E9CBFCF9F5 /* Pods_ZHDrawBoardDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ZHDrawBoardDemo.framework; path = "Pods-ZHDrawBoardDemo.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F01F32EBDF74D34EF5438408334E1AFE /* Pods-ZHDrawBoardDemo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZHDrawBoardDemo-dummy.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9E9F472A0FBE865C6DAB8183709E9CC8 /* Frameworks */ = {
+		DF1B91B8758DEE16AF56FD264A2B08F2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				430844ACDF49020AFA452E3990243B1F /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BE5291C356AA73746FA79CDE29418089 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				482CEEE3A5810CDE1878636D050F859B /* Foundation.framework in Frameworks */,
-				D9B91B0E8576D3728A480C33DF74535F /* UIKit.framework in Frameworks */,
+				6ADC1058E2C4224D6E6B896B1B4A1078 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
+		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				59DA5C1F72E1D5BABC43EACBA672C3BA /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		59DA5C1F72E1D5BABC43EACBA672C3BA /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */,
-				D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */,
+				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		621B74B1318BB536CB8D0E615724D2C6 /* Pods */ = {
+		95255B00D678F554F9BA5852F87EAECD /* Pods-ZHDrawBoardDemo */ = {
 			isa = PBXGroup;
 			children = (
-				CD8AE8BF955258CC688A5A4037F58034 /* PerformanceBezier */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		6F09BF9F0D2B108891BC5E8B6C7A9306 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				9F8D9A7927B51AC8DBC08986F80C9BCD /* PerformanceBezier.framework */,
-				D276936835D39485806E20E9CBFCF9F5 /* Pods_ZHDrawBoardDemo.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		9805319C59AEC09DD683C71F6C5BA961 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				ACF031B3D8A11055CF29803C08FA0724 /* Pods-ZHDrawBoardDemo */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		ACF031B3D8A11055CF29803C08FA0724 /* Pods-ZHDrawBoardDemo */ = {
-			isa = PBXGroup;
-			children = (
-				11171D3F2B6329D968431BC4A65918E9 /* Pods-ZHDrawBoardDemo.modulemap */,
-				13512377D08BE68E5F577C4F48255E1D /* Pods-ZHDrawBoardDemo-acknowledgements.markdown */,
-				182267351E12E19B96D88502E0D387F0 /* Pods-ZHDrawBoardDemo-acknowledgements.plist */,
-				2F28A3E9F9A5599F0283168D3E9D4C55 /* Pods-ZHDrawBoardDemo-dummy.m */,
-				5779800C148DAF5E99273B383E27DA40 /* Pods-ZHDrawBoardDemo-frameworks.sh */,
-				58E4684F9438377F716ADA7F54E2C967 /* Pods-ZHDrawBoardDemo-Info.plist */,
-				436E81D2326C4C31D0352499E9F5B0F8 /* Pods-ZHDrawBoardDemo-umbrella.h */,
-				60F1F1E9A8A7EE196D959C390D6CE281 /* Pods-ZHDrawBoardDemo.debug.xcconfig */,
-				82DE91C11F6404966C7CDD23597381A3 /* Pods-ZHDrawBoardDemo.release.xcconfig */,
+				5C8613D687AA2A34D748391E1963F748 /* Pods-ZHDrawBoardDemo.modulemap */,
+				14C7D5C08A42B32F929021C3CDB876E0 /* Pods-ZHDrawBoardDemo-acknowledgements.markdown */,
+				9466913C9BA11197CB12280764B2960A /* Pods-ZHDrawBoardDemo-acknowledgements.plist */,
+				F01F32EBDF74D34EF5438408334E1AFE /* Pods-ZHDrawBoardDemo-dummy.m */,
+				05D0D6521A4981848DAE08F3EA3BEFA2 /* Pods-ZHDrawBoardDemo-Info.plist */,
+				9A539A5D59CC3311E8373ADE0D55A4FE /* Pods-ZHDrawBoardDemo-umbrella.h */,
+				7920208A5803AE2F83E3B7857E5CF89C /* Pods-ZHDrawBoardDemo.debug.xcconfig */,
+				A867FB379F476118704B791768F39E0D /* Pods-ZHDrawBoardDemo.release.xcconfig */,
 			);
 			name = "Pods-ZHDrawBoardDemo";
 			path = "Target Support Files/Pods-ZHDrawBoardDemo";
-			sourceTree = "<group>";
-		};
-		CD8AE8BF955258CC688A5A4037F58034 /* PerformanceBezier */ = {
-			isa = PBXGroup;
-			children = (
-				A796CB52A484F830E4A95D31C15D132B /* JRSwizzle.h */,
-				75ACD40CA39172A7D308C4FE53FB38CB /* JRSwizzle.m */,
-				768C43382BC7CFA07963FBC47F6B355C /* PerformanceBezier.h */,
-				2C9266D56A52E1A52A749ACD9FA5AF30 /* UIBezierPath+Ahmed.h */,
-				A49373667D501FF1A56DEFCC71C20559 /* UIBezierPath+Ahmed.m */,
-				B14D1B25AAF85054DFC08FD5ED8F9441 /* UIBezierPath+Center.h */,
-				5BB2A89C538B42C9530ECC39E925CFFB /* UIBezierPath+Center.m */,
-				6183633C8C7E051494FE6070F52A5540 /* UIBezierPath+Clockwise.h */,
-				F0F767B5A3CCC7CC2F1FB365A0FB5919 /* UIBezierPath+Clockwise.m */,
-				B901C369A50144847681BB543F0AD24E /* UIBezierPath+Description.h */,
-				E160D0BA81EC09DD462E03F4DDA010BF /* UIBezierPath+Description.m */,
-				09D9CA7677772153274315B9A5646045 /* UIBezierPath+Equals.h */,
-				9478A82B8F602B7F61BD20D85F444BB1 /* UIBezierPath+Equals.m */,
-				09108E980D8FEF161822EEE4C0EB5271 /* UIBezierPath+FirstLast.h */,
-				8E78D974047CF5F1D61CA07CB439889B /* UIBezierPath+FirstLast.m */,
-				15448C2CF6817CBD71651822613F5905 /* UIBezierPath+NSOSX.h */,
-				3D53D7B20B00262073E966FA853B9840 /* UIBezierPath+NSOSX.m */,
-				E37C91B566B4D8CAA360F2D345511C6F /* UIBezierPath+NSOSX_Private.h */,
-				A9595CBDE9C5D18E48B3D4ECC2B8C698 /* UIBezierPath+Performance.h */,
-				74E64D77FB53A1ED8EF442A5035E6CB7 /* UIBezierPath+Performance.m */,
-				7F28508B442C27F2E1E85B7A7F007903 /* UIBezierPath+Performance_Private.h */,
-				8F5A0558A1BA9581BE6057E63CC90872 /* UIBezierPath+Trim.h */,
-				A4A78F7C91D500B464A66C7608344E14 /* UIBezierPath+Trim.m */,
-				AE3D13AC12C907BF1FD21CFB1E0DA06C /* UIBezierPath+Uncached.h */,
-				A7237C4C7FC8256EC6AB1CC22BF4B71D /* UIBezierPath+Uncached.m */,
-				FD025E9CF128BC72787733BD1DC95359 /* UIBezierPath+Util.h */,
-				68E52C5C6F8CAE2AA24D72094DAF15FC /* UIBezierPath+Util.m */,
-				905A3CB0C5E0ABEC4F384AFA5478939B /* UIBezierPathProperties.h */,
-				2916508F7D15A2C83CDB90505FFF8B28 /* UIBezierPathProperties.m */,
-				E9487CCF5AEAD59C557FBB5A2478D44A /* Support Files */,
-			);
-			path = PerformanceBezier;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
-				621B74B1318BB536CB8D0E615724D2C6 /* Pods */,
-				6F09BF9F0D2B108891BC5E8B6C7A9306 /* Products */,
-				9805319C59AEC09DD683C71F6C5BA961 /* Targets Support Files */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				DB90A86C99184556380B0FA426F04E11 /* Products */,
+				E11C8519DD2DC73369816113D79C9526 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		E9487CCF5AEAD59C557FBB5A2478D44A /* Support Files */ = {
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CB3431A3A2CB3BFB64E551A0772C0B10 /* PerformanceBezier.modulemap */,
-				1EFBF576E1E8D1D8B16C65DD2B3F115A /* PerformanceBezier-dummy.m */,
-				E3E8C574C9C5805499A0B561CF874F22 /* PerformanceBezier-Info.plist */,
-				5AA3992921E827E8377AC128BF6FBA84 /* PerformanceBezier-prefix.pch */,
-				62B7FBBBBDB48F43A34AE56D2E5BCF4E /* PerformanceBezier-umbrella.h */,
-				543A4838C73AE021B6012E58ACCD03D4 /* PerformanceBezier.debug.xcconfig */,
-				32EDD9A2BC9B406F35B976D034527AB8 /* PerformanceBezier.release.xcconfig */,
+				578452D2E740E91742655AC8F1636D1F /* iOS */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/PerformanceBezier";
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DB90A86C99184556380B0FA426F04E11 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D276936835D39485806E20E9CBFCF9F5 /* Pods_ZHDrawBoardDemo.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E11C8519DD2DC73369816113D79C9526 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				95255B00D678F554F9BA5852F87EAECD /* Pods-ZHDrawBoardDemo */,
+			);
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		95D224A4A020D3EE0EC7A89895F4C7BF /* Headers */ = {
+		DCD9FB9CA41617EC8681A88EB121450E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95A67A19AF80C807548A0637D5DD28CF /* JRSwizzle.h in Headers */,
-				B349FFBD684F8282F567EC6C023DBE76 /* PerformanceBezier.h in Headers */,
-				4889E9AF8FA151FB6ABEE7EBC0CD7345 /* PerformanceBezier-umbrella.h in Headers */,
-				C934DCF9EEBD04B1E215A2FB451B1A7D /* UIBezierPath+Ahmed.h in Headers */,
-				D343BF75EC533AE1F9E0D5A73C986B0E /* UIBezierPath+Center.h in Headers */,
-				1ED9F8FF2E35E48215FD84AF77E3B955 /* UIBezierPath+Clockwise.h in Headers */,
-				A4AA4A0F9C58BC72AF81A475411F4DEC /* UIBezierPath+Description.h in Headers */,
-				B446921F13FE138CECFEBF70334BEE9B /* UIBezierPath+Equals.h in Headers */,
-				2A64E6FAF4832466517C40D6C7E20AB4 /* UIBezierPath+FirstLast.h in Headers */,
-				3644C7FDC1F1808F40B67CCEA2A490E8 /* UIBezierPath+NSOSX.h in Headers */,
-				DCE91380AFA2D535D79435D57E1BB879 /* UIBezierPath+NSOSX_Private.h in Headers */,
-				9E5C8BEB533582977A8A1765D7B8D393 /* UIBezierPath+Performance.h in Headers */,
-				E62ECDCD8B334002D5CC75F22308E341 /* UIBezierPath+Performance_Private.h in Headers */,
-				5BD7A3DF356E5289C1A5EB9D1BB266AF /* UIBezierPath+Trim.h in Headers */,
-				DDE91977A0705FE4C703A24F34C65783 /* UIBezierPath+Uncached.h in Headers */,
-				82AE367F68886DD64A617F009379303A /* UIBezierPath+Util.h in Headers */,
-				F03E87BBBD37E7FF030FA534F8F4AD66 /* UIBezierPathProperties.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9689D18638C58FD755F61F5E997404DD /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9E1868A2F2EFF3FEE5C6B2E0B4D6D496 /* Pods-ZHDrawBoardDemo-umbrella.h in Headers */,
+				B869B2F221F213D92EA5A0FD73EF3177 /* Pods-ZHDrawBoardDemo-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		473929B2F94D59B5D1E1A2FEB95E934D /* PerformanceBezier */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A07BA3DAFACD8950FE72BF5C56EE6B78 /* Build configuration list for PBXNativeTarget "PerformanceBezier" */;
-			buildPhases = (
-				95D224A4A020D3EE0EC7A89895F4C7BF /* Headers */,
-				7902E85C8A7D7B75028C7C542CEA4AC4 /* Sources */,
-				BE5291C356AA73746FA79CDE29418089 /* Frameworks */,
-				C7465A037C37C0BB04B3B7B72950258A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = PerformanceBezier;
-			productName = PerformanceBezier;
-			productReference = 9F8D9A7927B51AC8DBC08986F80C9BCD /* PerformanceBezier.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		50239D506CAA6B221E34925C41A32922 /* Pods-ZHDrawBoardDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D93456BF1EB249C1460904636A12D0A1 /* Build configuration list for PBXNativeTarget "Pods-ZHDrawBoardDemo" */;
+			buildConfigurationList = 7535A98ED065B1BC2BD8AC407136F868 /* Build configuration list for PBXNativeTarget "Pods-ZHDrawBoardDemo" */;
 			buildPhases = (
-				9689D18638C58FD755F61F5E997404DD /* Headers */,
-				1AFAFCCEFCA93190CFF06A91E77D278D /* Sources */,
-				9E9F472A0FBE865C6DAB8183709E9CC8 /* Frameworks */,
-				12476CA13158C194B998B1BA1DDDEA60 /* Resources */,
+				DCD9FB9CA41617EC8681A88EB121450E /* Headers */,
+				0B6567DADF674E2149E036442B663E05 /* Sources */,
+				DF1B91B8758DEE16AF56FD264A2B08F2 /* Frameworks */,
+				CAA2E2F41F1BE1EBB4C9BB2CD3A4AFD8 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				ED0D22528AF2E84EB6311C67A8575E78 /* PBXTargetDependency */,
 			);
 			name = "Pods-ZHDrawBoardDemo";
 			productName = "Pods-ZHDrawBoardDemo";
@@ -333,10 +135,10 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1240;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -344,25 +146,17 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 6F09BF9F0D2B108891BC5E8B6C7A9306 /* Products */;
+			productRefGroup = DB90A86C99184556380B0FA426F04E11 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				473929B2F94D59B5D1E1A2FEB95E934D /* PerformanceBezier */,
 				50239D506CAA6B221E34925C41A32922 /* Pods-ZHDrawBoardDemo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		12476CA13158C194B998B1BA1DDDEA60 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C7465A037C37C0BB04B3B7B72950258A /* Resources */ = {
+		CAA2E2F41F1BE1EBB4C9BB2CD3A4AFD8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -372,75 +166,48 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1AFAFCCEFCA93190CFF06A91E77D278D /* Sources */ = {
+		0B6567DADF674E2149E036442B663E05 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8E1FF2FAA33157F795F01CF8180777C /* Pods-ZHDrawBoardDemo-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7902E85C8A7D7B75028C7C542CEA4AC4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5341764CFBF4D7CCC2CB0B65DFF54443 /* JRSwizzle.m in Sources */,
-				D40A9EE7C6AF32D7CD6FFF2449FB5EA5 /* PerformanceBezier-dummy.m in Sources */,
-				AF792EAD7D66A480D8CB94D2A1E59E33 /* UIBezierPath+Ahmed.m in Sources */,
-				593EE0BA09D0042C3C8C2EF73C017BC9 /* UIBezierPath+Center.m in Sources */,
-				7EC0FECB4A60182181C3A29A5D17B644 /* UIBezierPath+Clockwise.m in Sources */,
-				2B2A807E187BB41C5B2C2340ECEBE860 /* UIBezierPath+Description.m in Sources */,
-				E59266847E51A07A709E2511A348D8FD /* UIBezierPath+Equals.m in Sources */,
-				F51E254AF18048576FC5B470C7E2B67A /* UIBezierPath+FirstLast.m in Sources */,
-				5009A2B06C5BCF5673875C0FFA8FBCC2 /* UIBezierPath+NSOSX.m in Sources */,
-				26109238466342BD789B9E33EBC4A559 /* UIBezierPath+Performance.m in Sources */,
-				DBC6C63EC63FE858B91D3F6D9D7B51E2 /* UIBezierPath+Trim.m in Sources */,
-				8FF626CE5849F7573B3936B372A86261 /* UIBezierPath+Uncached.m in Sources */,
-				B84804944270CDC43D4AB9D54E2FA3C2 /* UIBezierPath+Util.m in Sources */,
-				F967D9F3908E806B9D0406A0A483ACEE /* UIBezierPathProperties.m in Sources */,
+				0D3830398ACF36850DBB0E59E9E43121 /* Pods-ZHDrawBoardDemo-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		ED0D22528AF2E84EB6311C67A8575E78 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PerformanceBezier;
-			target = 473929B2F94D59B5D1E1A2FEB95E934D /* PerformanceBezier */;
-			targetProxy = 8FD79BD82F8BB920EB31C04B760093A2 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
-		2959637DBCF07436777B1E502B8D4D9D /* Release */ = {
+		8843AAD3088FA50A9099E4E78EFF8187 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 32EDD9A2BC9B406F35B976D034527AB8 /* PerformanceBezier.release.xcconfig */;
+			baseConfigurationReference = A867FB379F476118704B791768F39E0D /* Pods-ZHDrawBoardDemo.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/PerformanceBezier/PerformanceBezier-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/PerformanceBezier/PerformanceBezier-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-ZHDrawBoardDemo/Pods-ZHDrawBoardDemo-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/PerformanceBezier/PerformanceBezier.modulemap";
-				PRODUCT_MODULE_NAME = PerformanceBezier;
-				PRODUCT_NAME = PerformanceBezier;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ZHDrawBoardDemo/Pods-ZHDrawBoardDemo.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -514,43 +281,6 @@
 			};
 			name = Debug;
 		};
-		9D9E93A11AE2CC0B539C647620D141C0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 60F1F1E9A8A7EE196D959C390D6CE281 /* Pods-ZHDrawBoardDemo.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-ZHDrawBoardDemo/Pods-ZHDrawBoardDemo-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ZHDrawBoardDemo/Pods-ZHDrawBoardDemo.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		9E406C6AAF85E580207CD97B0044DEAB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -613,43 +343,9 @@
 			};
 			name = Release;
 		};
-		A57C24970144AE40D6C3F140E9437C98 /* Debug */ = {
+		D1F3A1761C0FB312510FA162AB67DE23 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 543A4838C73AE021B6012E58ACCD03D4 /* PerformanceBezier.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/PerformanceBezier/PerformanceBezier-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/PerformanceBezier/PerformanceBezier-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/PerformanceBezier/PerformanceBezier.modulemap";
-				PRODUCT_MODULE_NAME = PerformanceBezier;
-				PRODUCT_NAME = PerformanceBezier;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		C3AAEA28783D6A74329D0BB725A25C68 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 82DE91C11F6404966C7CDD23597381A3 /* Pods-ZHDrawBoardDemo.release.xcconfig */;
+			baseConfigurationReference = 7920208A5803AE2F83E3B7857E5CF89C /* Pods-ZHDrawBoardDemo.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -679,11 +375,10 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
@@ -697,20 +392,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A07BA3DAFACD8950FE72BF5C56EE6B78 /* Build configuration list for PBXNativeTarget "PerformanceBezier" */ = {
+		7535A98ED065B1BC2BD8AC407136F868 /* Build configuration list for PBXNativeTarget "Pods-ZHDrawBoardDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A57C24970144AE40D6C3F140E9437C98 /* Debug */,
-				2959637DBCF07436777B1E502B8D4D9D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D93456BF1EB249C1460904636A12D0A1 /* Build configuration list for PBXNativeTarget "Pods-ZHDrawBoardDemo" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9D9E93A11AE2CC0B539C647620D141C0 /* Debug */,
-				C3AAEA28783D6A74329D0BB725A25C68 /* Release */,
+				D1F3A1761C0FB312510FA162AB67DE23 /* Debug */,
+				8843AAD3088FA50A9099E4E78EFF8187 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

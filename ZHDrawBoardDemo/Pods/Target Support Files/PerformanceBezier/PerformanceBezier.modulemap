@@ -1,6 +1,0 @@
-framework module PerformanceBezier {
-  umbrella header "PerformanceBezier-umbrella.h"
-
-  export *
-  module * { export * }
-}
