@@ -6,6 +6,6 @@ target 'ZHDrawBoardDemo' do
   use_frameworks!
 
   # Pods for ZHDrawBoardDemo
-  pod 'PerformanceBezier'
+#  pod 'PerformanceBezier'
 
 end

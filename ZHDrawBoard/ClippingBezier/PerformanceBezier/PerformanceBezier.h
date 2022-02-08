@@ -13,19 +13,19 @@
 // is a dependency of another SPM package, then the SWIFT_PACKAGE seems to not be
 // set when building that dependency. So instead, we'll choose based off of Cocoapods
 
-#if COCOAPODS
-#import <PerformanceBezier/UIBezierPath+Center.h>
-#import <PerformanceBezier/UIBezierPath+Clockwise.h>
-#import <PerformanceBezier/UIBezierPath+Description.h>
-#import <PerformanceBezier/UIBezierPath+Equals.h>
-#import <PerformanceBezier/UIBezierPath+NSOSX.h>
-#import <PerformanceBezier/UIBezierPath+Ahmed.h>
-#import <PerformanceBezier/UIBezierPath+Performance.h>
-#import <PerformanceBezier/UIBezierPath+Trim.h>
-#import <PerformanceBezier/UIBezierPath+Util.h>
-#import <PerformanceBezier/UIBezierPathProperties.h>
-#import <Foundation/Foundation.h>
-#else
+//#if COCOAPODS
+//#import <PerformanceBezier/UIBezierPath+Center.h>
+//#import <PerformanceBezier/UIBezierPath+Clockwise.h>
+//#import <PerformanceBezier/UIBezierPath+Description.h>
+//#import <PerformanceBezier/UIBezierPath+Equals.h>
+//#import <PerformanceBezier/UIBezierPath+NSOSX.h>
+//#import <PerformanceBezier/UIBezierPath+Ahmed.h>
+//#import <PerformanceBezier/UIBezierPath+Performance.h>
+//#import <PerformanceBezier/UIBezierPath+Trim.h>
+//#import <PerformanceBezier/UIBezierPath+Util.h>
+//#import <PerformanceBezier/UIBezierPathProperties.h>
+//#import <Foundation/Foundation.h>
+//#else
 #import "UIBezierPath+Center.h"
 #import "UIBezierPath+Clockwise.h"
 #import "UIBezierPath+Description.h"
@@ -37,4 +37,4 @@
 #import "UIBezierPath+Util.h"
 #import "UIBezierPathProperties.h"
 #import <Foundation/Foundation.h>
-#endif
+//#endif
