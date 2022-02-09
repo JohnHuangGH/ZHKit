@@ -31,6 +31,9 @@
                             <constraint firstItem="qK8-e4-b95" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="kZD-CQ-8Vs"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="drawBoard" destination="qK8-e4-b95" id="jF7-2y-TXQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

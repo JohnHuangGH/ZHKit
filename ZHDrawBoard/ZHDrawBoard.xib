@@ -21,7 +21,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zSH-zS-vBJ">
                             <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgimg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ufq-yh-T6O">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ufq-yh-T6O">
                                     <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                                 </imageView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wv9-1P-nmc" customClass="ZHDrawView" customModule="ZHDrawBoardDemo" customModuleProvider="target">
@@ -363,7 +363,6 @@
         </view>
     </objects>
     <resources>
-        <image name="bgimg.png" width="1920" height="1200"/>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

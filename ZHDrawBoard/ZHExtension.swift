@@ -67,8 +67,20 @@ extension Array where Self.Element == CGRect {
 }
 
 extension UIImage {
-    func zh_ScreenShot() -> UIImage? {
-        //截取整个屏幕
+    /// 纯色图片
+    class func zh_PureColorImage(color: UIColor, size: CGSize) -> UIImage {
+        let rect = CGRect(origin: .zero, size: size)
+        UIGraphicsBeginImageContext(size)
+        let context = UIGraphicsGetCurrentContext()
+        context?.setFillColor(color.cgColor)
+        context?.fill(rect)
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return image
+    }
+    
+    /// 屏幕截图
+    class func zh_ScreenShot() -> UIImage? {
         guard let window = UIApplication.shared.windows.first else { return nil }
         // 用下面这行而不是UIGraphicsBeginImageContext()，因为前者支持Retina
         UIGraphicsBeginImageContextWithOptions(window.bounds.size, false, 0.0)
