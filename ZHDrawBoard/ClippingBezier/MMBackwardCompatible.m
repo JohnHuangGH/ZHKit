@@ -7,7 +7,7 @@
 //
 
 #import "MMBackwardCompatible.h"
-#import "JRSwizzle.h"
+#import "ClippingBezierJRSwizzle.h"
 #import <objc/runtime.h>
 #import <objc/message.h>
 

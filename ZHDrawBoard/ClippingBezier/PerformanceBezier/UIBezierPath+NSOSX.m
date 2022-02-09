@@ -7,7 +7,7 @@
 //
 
 #import "UIBezierPath+NSOSX.h"
-#import "JRSwizzle.h"
+#import "PerformanceBezierJRSwizzle.h"
 #import "UIBezierPath+NSOSX_Private.h"
 #import "UIBezierPath+Performance_Private.h"
 #import "UIBezierPath+Performance.h"

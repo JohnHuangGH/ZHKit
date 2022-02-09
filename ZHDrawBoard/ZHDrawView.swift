@@ -55,6 +55,8 @@ class ZHDrawView: UIView {
     }
     private var showPaths: [ZHBasePath] = []
     
+    private var multiSelPath: ZHBasePath?
+    
     private var selectedView: ZHSelectedView?{
         didSet{
             if selectedView == nil, let selView = oldValue {
@@ -110,6 +112,7 @@ extension ZHDrawView {
             if (option == .singleSelect || option == .multiSelect) && $0.isSelectedPath { return }//未选中的才绘制，选中的在框选View中绘制
             $0.draw()
         }
+        multiSelPath?.draw()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -141,8 +144,7 @@ extension ZHDrawView {
             setNeedsDisplay()
             checkSingleSelect(touchPoint: touchPoint)
         case .multiSelect:
-            let path = ZHPenPath(width: 4, color: .red, point: touchPoint)
-            drawPaths.append(path)
+            multiSelPath = ZHPenPath(width: 4, color: .red, point: touchPoint)
         }
     }
     
@@ -150,19 +152,24 @@ extension ZHDrawView {
         if isZooming { return }
         guard let touch = touches.first else { return }
         let touchPoint = touch.location(in: self)
-        guard let path = drawPaths.last else { return }
-        if option != .multiSelect, !markRect.contains(touchPoint) {//超出范围，结束当前绘制
-            finishDraw(path: path)
-            return
-        }
-        if path.isFinish {//超出范围后重新回到绘制区域，开启新绘制
-            let newPath = createPath(point: touchPoint)
-            drawPaths.append(newPath)
-        }
-        guard let path = drawPaths.last else { return }
         switch option {
-        case .pen, .circle, .rect, .arrow, .line, .multiSelect:
+        case .pen, .circle, .rect, .arrow, .line:
+            guard let path = drawPaths.last else { return }
+            if !markRect.contains(touchPoint) {//超出范围，结束当前绘制
+                finishDraw(path: path)
+                return
+            }
+            if path.isFinish {//超出范围后重新回到绘制区域，开启新绘制
+                let newPath = createPath(point: touchPoint)
+                drawPaths.append(newPath)
+                newPath.draw(to: touchPoint)
+                setNeedsDisplay()
+                return
+            }
             path.draw(to: touchPoint)
+            setNeedsDisplay()
+        case .multiSelect:
+            multiSelPath?.draw(to: touchPoint)
             setNeedsDisplay()
         default:
             break
@@ -171,12 +178,13 @@ extension ZHDrawView {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {//如果是缩放，会走began和moved，不走ended
         if isZooming { return }
-        guard let path = drawPaths.last else { return }
         switch option {
         case .pen, .circle, .rect, .arrow, .line:
+            guard let path = drawPaths.last else { return }
             finishDraw(path: path)
         case .multiSelect:
-            drawPaths.removeLast()
+            guard let path = multiSelPath else { return }
+            multiSelPath = nil
             clearSelected()
             setNeedsDisplay()
             
