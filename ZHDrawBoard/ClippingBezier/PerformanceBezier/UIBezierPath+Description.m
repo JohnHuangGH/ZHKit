@@ -7,7 +7,7 @@
 //
 
 #import "UIBezierPath+Description.h"
-#import "JRSwizzle.h"
+#import "PerformanceBezierJRSwizzle.h"
 #import "UIBezierPath+NSOSX.h"
 
 #define kShowSwift YES
