@@ -232,6 +232,8 @@
 				9C000421278EAF6E00775F6D /* Assets.xcassets */,
 				9C000423278EAF6E00775F6D /* LaunchScreen.storyboard */,
 				9C000426278EAF6E00775F6D /* Info.plist */,
+				5217BB9A279CFB7300948175 /* bgimg.png */,
+				9C9FA1E127A23017005DB885 /* bgimgW.png */,
 			);
 			path = ZHDrawBoardDemo;
 			sourceTree = "<group>";
@@ -241,8 +243,6 @@
 			children = (
 				9C22C376279FEE3A006E4836 /* ClippingBezier */,
 				9C22C30C279FEA4B006E4836 /* ZHDrawBoardDemo-Bridging-Header.h */,
-				5217BB9A279CFB7300948175 /* bgimg.png */,
-				9C9FA1E127A23017005DB885 /* bgimgW.png */,
 				9C000433278EC71C00775F6D /* ZHDrawBoard.xib */,
 				9C000434278EC71C00775F6D /* ZHDrawBoard.swift */,
 				9CC62CFB2796A83A00A6FE1E /* ZHDrawBoardOptionBar.swift */,

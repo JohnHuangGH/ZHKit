@@ -8,6 +8,12 @@
 import UIKit
 
 class ZHDrawBoard: UIView {
+    
+    var image: UIImage?{
+        didSet{
+            container.bgImgv.image = image ?? UIImage.zh_PureColorImage(color: .white, size: UIScreen.main.bounds.size)
+        }
+    }
 
     private var container: ZHDrawBoardContainer!
     
@@ -17,10 +23,22 @@ class ZHDrawBoard: UIView {
         loadContainerFormNib()
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        loadContainerFormNib()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
     private func loadContainerFormNib(){
-        container = (Bundle.main.loadNibNamed("ZHDrawBoard", owner: nil, options: nil)?.first as!ZHDrawBoardContainer)
+        container = (Bundle.main.loadNibNamed("ZHDrawBoard", owner: nil, options: nil)?.first as! ZHDrawBoardContainer)
         container.frame = UIScreen.main.bounds
         addSubview(container)
+
+        image = nil
     }
 }
 
@@ -47,7 +65,7 @@ class ZHDrawBoardContainer: UIView {
         }
         
         guard let img = bgImgv.image else { return }
-        print("img:\(img.size)\nscreen:\(UIScreen.main.bounds.size)")
+//        print("img:\(img.size)\nscreen:\(UIScreen.main.bounds.size)")
         let screenRect = UIScreen.main.bounds
         
         let safeAreaInsets = UIApplication.shared.windows[0].safeAreaInsets
