@@ -11,7 +11,7 @@ class ZHDrawBoard: UIView {
     
     var image: UIImage?{
         didSet{
-            container.bgImgv.image = image ?? UIImage.zh_PureColorImage(color: .white, size: UIScreen.main.bounds.size)
+            container.bgImage = image ?? UIImage.zh_PureColorImage(color: .white, size: UIScreen.main.bounds.size)
         }
     }
 
@@ -45,13 +45,35 @@ class ZHDrawBoard: UIView {
 // MARK: - ZHDrawBoardContainer
 class ZHDrawBoardContainer: UIView {
     
-    @IBOutlet weak var scrollView: UIScrollView!
+    var bgImage: UIImage? {
+        didSet{
+            guard let img = bgImage else { return }
+    //        print("img:\(img.size)\nscreen:\(UIScreen.main.bounds.size)")
+            let screenRect = UIScreen.main.bounds
+            
+            let safeAreaInsets = UIApplication.shared.windows[0].safeAreaInsets
+            let width = screenRect.width - (safeAreaInsets.left + safeAreaInsets.right)
+            if (img.size.width/img.size.height)/(width/screenRect.height) > 1 {//横向
+                let h = img.size.height / img.size.width * width
+                let y = (screenRect.height - h)/2.0
+                markView.markRect = CGRect(x: 0, y: y, width: width, height: h)
+            }else{//纵向
+                let w = img.size.width / img.size.height * screenRect.height
+                let x = (width - w)/2.0
+                markView.markRect = CGRect(x: x, y: 0, width: w, height: screenRect.height)
+            }
+    //        print(markView.markRect)
+            bgImgv.image = img
+        }
+    }
     
-    @IBOutlet weak var scrollContainer: UIView!
-    @IBOutlet weak var bgImgv: UIImageView!
-    @IBOutlet weak var markView: ZHDrawView!
+    @IBOutlet private weak var scrollView: UIScrollView!
     
-    @IBOutlet weak var optionBar: ZHDrawBoardOptionBar!
+    @IBOutlet private weak var scrollContainer: UIView!
+    @IBOutlet private weak var bgImgv: UIImageView!
+    @IBOutlet private weak var markView: ZHDrawView!
+    
+    @IBOutlet private weak var optionBar: ZHDrawBoardOptionBar!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -63,23 +85,6 @@ class ZHDrawBoardContainer: UIView {
             self?.optionBar.previousBtn.isEnabled = true
             self?.optionBar.clearBtn.isEnabled = true
         }
-        
-        guard let img = bgImgv.image else { return }
-//        print("img:\(img.size)\nscreen:\(UIScreen.main.bounds.size)")
-        let screenRect = UIScreen.main.bounds
-        
-        let safeAreaInsets = UIApplication.shared.windows[0].safeAreaInsets
-        let width = screenRect.width - (safeAreaInsets.left + safeAreaInsets.right)
-        if (img.size.width/img.size.height)/(width/screenRect.height) > 1 {//横向
-            let h = img.size.height / img.size.width * width
-            let y = (screenRect.height - h)/2.0
-            markView.markRect = CGRect(x: 0, y: y, width: width, height: h)
-        }else{//纵向
-            let w = img.size.width / img.size.height * screenRect.height
-            let x = (width - w)/2.0
-            markView.markRect = CGRect(x: x, y: 0, width: w, height: screenRect.height)
-        }
-        print(markView.markRect)
     }
     
     func setupUI(){
