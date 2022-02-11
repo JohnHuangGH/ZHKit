@@ -82,13 +82,18 @@ extension UIImage {
     /// 屏幕截图
     class func zh_ScreenShot() -> UIImage? {
         guard let window = UIApplication.shared.windows.first else { return nil }
-        // 用下面这行而不是UIGraphicsBeginImageContext()，因为前者支持Retina
-        UIGraphicsBeginImageContextWithOptions(window.bounds.size, false, 0.0)
-        window.layer.render(in: UIGraphicsGetCurrentContext()!)
+        return zh_ScreenShot(view: window)
+    }
+    
+    class func zh_ScreenShot(view: UIView) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, 0.0)
+        let success = view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)//快照渲染到上下文
+        if !success {
+            view.layer.render(in: UIGraphicsGetCurrentContext()!)//layer渲染到上下文
+        }
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-       
-//        return UIImage.init(data: image?.jpegData(compressionQuality: 0.5) ?? Data()) //image
+        
         return image
     }
 }

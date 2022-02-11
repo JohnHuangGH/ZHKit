@@ -17,27 +17,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qK8-e4-b95" customClass="ZHDrawBoard" customModule="ZHDrawBoardDemo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q83-qG-DXp">
+                                <rect key="frame" x="276.5" y="266.5" width="114" height="30"/>
+                                <state key="normal" title="ShowDrawBoard"/>
+                                <connections>
+                                    <segue destination="TDo-fs-8vA" kind="presentation" id="C5u-lr-c80"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qq7-f5-Ju1">
+                                <rect key="frame" x="293.5" y="172.5" width="80" height="30"/>
+                                <state key="normal" title="ScreenShot"/>
+                                <connections>
+                                    <action selector="screenShotBtnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gON-jw-keJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="qK8-e4-b95" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="FcL-sw-UIH"/>
-                            <constraint firstAttribute="trailing" secondItem="qK8-e4-b95" secondAttribute="trailing" id="NwJ-WG-jXk"/>
-                            <constraint firstAttribute="bottom" secondItem="qK8-e4-b95" secondAttribute="bottom" id="jfd-I0-0Pz"/>
-                            <constraint firstItem="qK8-e4-b95" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="kZD-CQ-8Vs"/>
+                            <constraint firstItem="Qq7-f5-Ju1" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="IRN-M8-HI7"/>
+                            <constraint firstItem="Q83-qG-DXp" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="1.5" id="Jcz-Hm-VhK"/>
+                            <constraint firstItem="Q83-qG-DXp" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="oWa-EO-Pyv"/>
+                            <constraint firstItem="Qq7-f5-Ju1" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="zcL-9K-hfZ"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="drawBoard" destination="qK8-e4-b95" id="jF7-2y-TXQ"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-424" y="57"/>
+        </scene>
+        <!--ZHDrawBoard-->
+        <scene sceneID="auf-xf-LuI">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ZHDrawBoard" id="TDo-fs-8vA" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="psr-Df-MAD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-424" y="674"/>
         </scene>
     </scenes>
     <resources>

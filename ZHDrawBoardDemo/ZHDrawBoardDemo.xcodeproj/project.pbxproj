@@ -14,8 +14,6 @@
 		9C000420278EAF6E00775F6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C00041E278EAF6E00775F6D /* Main.storyboard */; };
 		9C000422278EAF6E00775F6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C000421278EAF6E00775F6D /* Assets.xcassets */; };
 		9C000425278EAF6E00775F6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C000423278EAF6E00775F6D /* LaunchScreen.storyboard */; };
-		9C000435278EC71C00775F6D /* ZHDrawBoard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C000433278EC71C00775F6D /* ZHDrawBoard.xib */; };
-		9C000436278EC71C00775F6D /* ZHDrawBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C000434278EC71C00775F6D /* ZHDrawBoard.swift */; };
 		9C22C3AF279FEE3A006E4836 /* bezier-clipping.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C377279FEE3A006E4836 /* bezier-clipping.mm */; };
 		9C22C3B0279FEE3A006E4836 /* transforms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C37B279FEE3A006E4836 /* transforms.cpp */; };
 		9C22C3B1279FEE3A006E4836 /* DKIntersectionOfPaths.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22C382279FEE3A006E4836 /* DKIntersectionOfPaths.m */; };
@@ -60,12 +58,14 @@
 		9CADE7DF279E52D80084B482 /* ZHTextPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CADE7DE279E52D80084B482 /* ZHTextPath.swift */; };
 		9CC62CF8279693E600A6FE1E /* ZHLinePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC62CF7279693E600A6FE1E /* ZHLinePath.swift */; };
 		9CC62CFA2796A32C00A6FE1E /* ZHBasePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC62CF92796A32C00A6FE1E /* ZHBasePath.swift */; };
-		9CC62CFC2796A83A00A6FE1E /* ZHDrawBoardOptionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC62CFB2796A83A00A6FE1E /* ZHDrawBoardOptionBar.swift */; };
+		9CC62CFC2796A83A00A6FE1E /* ZHOptionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC62CFB2796A83A00A6FE1E /* ZHOptionBar.swift */; };
 		9CC62CFE2796AAEA00A6FE1E /* ZHDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC62CFD2796AAEA00A6FE1E /* ZHDrawView.swift */; };
 		9CE0A7D92797E147004E6B4C /* ZHCirclePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0A7D82797E147004E6B4C /* ZHCirclePath.swift */; };
 		9CE0A7DB27993E4D004E6B4C /* ZHRectPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0A7DA27993E4D004E6B4C /* ZHRectPath.swift */; };
 		9CE0A7DD27994869004E6B4C /* ZHArrowPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0A7DC27994869004E6B4C /* ZHArrowPath.swift */; };
 		9CE1A5992795429D00BD7930 /* ZHSelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1A5982795429D00BD7930 /* ZHSelectedView.swift */; };
+		9CEC08D327B645B200801F5C /* ZHDrawBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEC08D227B645B200801F5C /* ZHDrawBoardVC.swift */; };
+		9CEC08D527B646FF00801F5C /* ZHDrawBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CEC08D427B646FF00801F5C /* ZHDrawBoard.storyboard */; };
 		E4F3527550C085C7A8D63572 /* Pods_ZHDrawBoardDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3AD0F82D9A882F988F83C9 /* Pods_ZHDrawBoardDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,8 +82,6 @@
 		9C000421278EAF6E00775F6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C000424278EAF6E00775F6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C000426278EAF6E00775F6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9C000433278EC71C00775F6D /* ZHDrawBoard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHDrawBoard.xib; sourceTree = "<group>"; };
-		9C000434278EC71C00775F6D /* ZHDrawBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHDrawBoard.swift; sourceTree = "<group>"; };
 		9C22C30C279FEA4B006E4836 /* ZHDrawBoardDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZHDrawBoardDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		9C22C377279FEE3A006E4836 /* bezier-clipping.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "bezier-clipping.mm"; sourceTree = "<group>"; };
 		9C22C378279FEE3A006E4836 /* DKUIBezierPathShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKUIBezierPathShape.h; sourceTree = "<group>"; };
@@ -175,12 +173,14 @@
 		9CADE7DE279E52D80084B482 /* ZHTextPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHTextPath.swift; sourceTree = "<group>"; };
 		9CC62CF7279693E600A6FE1E /* ZHLinePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHLinePath.swift; sourceTree = "<group>"; };
 		9CC62CF92796A32C00A6FE1E /* ZHBasePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHBasePath.swift; sourceTree = "<group>"; };
-		9CC62CFB2796A83A00A6FE1E /* ZHDrawBoardOptionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHDrawBoardOptionBar.swift; sourceTree = "<group>"; };
+		9CC62CFB2796A83A00A6FE1E /* ZHOptionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHOptionBar.swift; sourceTree = "<group>"; };
 		9CC62CFD2796AAEA00A6FE1E /* ZHDrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHDrawView.swift; sourceTree = "<group>"; };
 		9CE0A7D82797E147004E6B4C /* ZHCirclePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHCirclePath.swift; sourceTree = "<group>"; };
 		9CE0A7DA27993E4D004E6B4C /* ZHRectPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHRectPath.swift; sourceTree = "<group>"; };
 		9CE0A7DC27994869004E6B4C /* ZHArrowPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHArrowPath.swift; sourceTree = "<group>"; };
 		9CE1A5982795429D00BD7930 /* ZHSelectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHSelectedView.swift; sourceTree = "<group>"; };
+		9CEC08D227B645B200801F5C /* ZHDrawBoardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHDrawBoardVC.swift; sourceTree = "<group>"; };
+		9CEC08D427B646FF00801F5C /* ZHDrawBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ZHDrawBoard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,9 +243,9 @@
 			isa = PBXGroup;
 			children = (
 				9C22C376279FEE3A006E4836 /* ClippingBezier */,
-				9C000433278EC71C00775F6D /* ZHDrawBoard.xib */,
-				9C000434278EC71C00775F6D /* ZHDrawBoard.swift */,
-				9CC62CFB2796A83A00A6FE1E /* ZHDrawBoardOptionBar.swift */,
+				9CEC08D427B646FF00801F5C /* ZHDrawBoard.storyboard */,
+				9CEC08D227B645B200801F5C /* ZHDrawBoardVC.swift */,
+				9CC62CFB2796A83A00A6FE1E /* ZHOptionBar.swift */,
 				9CC62CFD2796AAEA00A6FE1E /* ZHDrawView.swift */,
 				9CE1A5982795429D00BD7930 /* ZHSelectedView.swift */,
 				9CC62CF92796A32C00A6FE1E /* ZHBasePath.swift */,
@@ -445,7 +445,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C000435278EC71C00775F6D /* ZHDrawBoard.xib in Resources */,
+				9CEC08D527B646FF00801F5C /* ZHDrawBoard.storyboard in Resources */,
 				9C22C3CA279FEF2B006E4836 /* ClippingBezier-Info.plist in Resources */,
 				9C9FA1E227A23017005DB885 /* bgimgW.png in Resources */,
 				9C000425278EAF6E00775F6D /* LaunchScreen.storyboard in Resources */,
@@ -490,7 +490,6 @@
 			files = (
 				9C22C3C2279FEE3A006E4836 /* MMBackwardCompatible.m in Sources */,
 				9CA7B300279A9514009D4309 /* ZHExtension.swift in Sources */,
-				9C000436278EC71C00775F6D /* ZHDrawBoard.swift in Sources */,
 				9CC62CFA2796A32C00A6FE1E /* ZHBasePath.swift in Sources */,
 				9CE0A7D92797E147004E6B4C /* ZHCirclePath.swift in Sources */,
 				9C22C3B5279FEE3A006E4836 /* DKUIBezierUnmatchedPathIntersectionPoint.m in Sources */,
@@ -499,11 +498,12 @@
 				9C2A006927B23BC600B9BAC7 /* PerformanceBezierJRSwizzle.m in Sources */,
 				9C00041D278EAF6E00775F6D /* ViewController.swift in Sources */,
 				9C2A006B27B23BC600B9BAC7 /* UIBezierPathProperties.m in Sources */,
+				9CEC08D327B645B200801F5C /* ZHDrawBoardVC.swift in Sources */,
 				9C22C3B1279FEE3A006E4836 /* DKIntersectionOfPaths.m in Sources */,
 				9CC62CFE2796AAEA00A6FE1E /* ZHDrawView.swift in Sources */,
 				9C2A006727B23BC600B9BAC7 /* UIBezierPath+Description.m in Sources */,
 				9C2A006C27B23BC600B9BAC7 /* UIBezierPath+Uncached.m in Sources */,
-				9CC62CFC2796A83A00A6FE1E /* ZHDrawBoardOptionBar.swift in Sources */,
+				9CC62CFC2796A83A00A6FE1E /* ZHOptionBar.swift in Sources */,
 				9C2A006527B23BC600B9BAC7 /* UIBezierPath+FirstLast.m in Sources */,
 				9C22C3B6279FEE3A006E4836 /* UIBezierPath+GeometryExtras.m in Sources */,
 				9C22C3C8279FEE3A006E4836 /* bezierclip.cxx in Sources */,

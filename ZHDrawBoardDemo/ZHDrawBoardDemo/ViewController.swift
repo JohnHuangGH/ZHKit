@@ -8,13 +8,22 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    @IBOutlet weak var drawBoard: ZHDrawBoard!
+    
+    var img: UIImage? = UIImage(named: "bgimg")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        drawBoard.image = UIImage(named: "bgimg")
+    }
+    
+    @IBAction func screenShotBtnClick(_ sender: UIButton) {
+        img = UIImage.zh_ScreenShot()
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as? ZHDrawBoardVC
+        vc?.bgImage = img
     }
 }
 
