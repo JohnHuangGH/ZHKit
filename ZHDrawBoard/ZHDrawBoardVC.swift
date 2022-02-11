@@ -18,11 +18,6 @@ class ZHDrawBoardVC: UIViewController {
     @IBOutlet private weak var markView: ZHDrawView!
     
     @IBOutlet private weak var optionBar: ZHOptionBar!
-    
-    convenience init(image: UIImage) {
-        self.init()
-        bgImage = image
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
