@@ -1,5 +1,5 @@
 //
-//  ZHDrawBoardOptionBar.swift
+//  ZHOptionBar.swift
 //  ZHDrawBoardDemo
 //
 //  Created by NetInfo on 2022/1/12.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-@IBDesignable class ZHDrawBoardOptionBar: UIView {
+@IBDesignable class ZHOptionBar: UIView {
     
     var penAct: ((_ sender: UIButton)->Void)?
     var lineColorAct: ((_ sender: UIButton)->Void)?
@@ -25,6 +25,8 @@ import UIKit
     var previousAct: (((_ previousOn: Bool)->Void)->Void)?
     var nextAct: (((_ nextOn: Bool)->Void)->Void)?
     var clearAct: ((_ sender: UIButton)->Void)?
+    
+    var exitAct: (()->Void)?
     
     @IBOutlet weak var penBtn: UIButton!
     @IBOutlet weak var textBtn: UIButton!
@@ -137,6 +139,10 @@ import UIKit
         resetSelectedBtns()
         reset()
         clearAct?(sender)
+    }
+    
+    @IBAction func exitBtnClick(_ sender: UIButton) {
+        exitAct?()
     }
     
     private func resetSelectedBtns(){
