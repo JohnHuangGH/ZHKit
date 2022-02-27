@@ -18,6 +18,9 @@ class ZHDrawBoardVC: UIViewController {
     @IBOutlet private weak var markView: ZHDrawView!
     
     @IBOutlet private weak var optionBar: ZHOptionBar!
+    
+    /// 图片与画布缩放比
+    private var imgScale: CGFloat = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,21 +33,43 @@ class ZHDrawBoardVC: UIViewController {
         scrollView.maximumZoomScale = 10
         drawAction(option: .pen)
         
+//        let screenRect = UIScreen.main.bounds
+//        let img = bgImage ?? UIImage.zh_PureColorImage(color: .white, size: screenRect.size)
+//
+//        let safeInsets = UIApplication.shared.windows[0].safeAreaInsets
+//        let drawBoardW = screenRect.width - (safeInsets.left + safeInsets.right)
+//        print(img.size)
+//        if (img.size.width/img.size.height)/(drawBoardW/screenRect.height) > 1 {//横向
+//            let h = img.size.height / img.size.width * drawBoardW
+//            let y = (screenRect.height - h)/2.0
+//            markView.markRect = CGRect(x: 0, y: y, width: drawBoardW, height: h)
+//        }else{//纵向
+//            let w = img.size.width / img.size.height * screenRect.height
+//            let x = (drawBoardW - w)/2.0
+//            markView.markRect = CGRect(x: x, y: 0, width: w, height: screenRect.height)
+//        }
         let screenRect = UIScreen.main.bounds
         let img = bgImage ?? UIImage.zh_PureColorImage(color: .white, size: screenRect.size)
+        let imgH = img.size.height
+        let imgW = img.size.width
         
         let safeInsets = UIApplication.shared.windows[0].safeAreaInsets
         let drawBoardW = screenRect.width - (safeInsets.left + safeInsets.right)
-        print(img.size)
-        if (img.size.width/img.size.height)/(drawBoardW/screenRect.height) > 1 {//横向
-            let h = img.size.height / img.size.width * drawBoardW
-            let y = (screenRect.height - h)/2.0
+        let drawBoardH = screenRect.height
+        if (imgW/imgH)/(drawBoardW/drawBoardH) > 1 {//横向
+            let h = imgH / imgW * drawBoardW
+            let y = (drawBoardH - h)/2.0
             markView.markRect = CGRect(x: 0, y: y, width: drawBoardW, height: h)
+            imgScale = imgW / drawBoardW
         }else{//纵向
-            let w = img.size.width / img.size.height * screenRect.height
+            let w = imgW / imgH * drawBoardH
             let x = (drawBoardW - w)/2.0
-            markView.markRect = CGRect(x: x, y: 0, width: w, height: screenRect.height)
+            markView.markRect = CGRect(x: x, y: 0, width: w, height: drawBoardH)
+            imgScale = imgH / drawBoardH
         }
+        print("--------screenSize:\(screenRect.size)")
+        print("--------imgSize:\(img.size)")
+        print("--------imgScale:\(imgScale)")
         bgImgv.image = img
     }
     

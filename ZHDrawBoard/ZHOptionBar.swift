@@ -68,7 +68,7 @@ import UIKit
         penAct?(sender)
     }
     @IBAction func colorBtnClick(_ sender: UIButton) {
-        let color = UIColor.zh_RandomColor()
+        let color = UIColor.zh_Random()
         sender.backgroundColor = color
         lineColorAct?(sender)
     }

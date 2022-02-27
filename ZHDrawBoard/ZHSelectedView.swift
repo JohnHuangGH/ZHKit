@@ -41,17 +41,12 @@ class ZHSelectedView: UIView {
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction(recognizer:)))
         addGestureRecognizer(pan)
         let pinch = UIPinchGestureRecognizer(target: self, action: #selector(pinchAction(recognizer:)))
-        pinch.delegate = self
         addGestureRecognizer(pinch)
         //在pinch判定为失败时再执行pan
         pan.shouldRequireFailure(of: pinch)
         
-//        let dashRect = CGRect(origin: .zero, size: frame.size)
-//        let dashRectLayer = CAShapeLayer.zh_DrawDashRect(frame: dashRect, lineWidth: kDashLineW, color: .red)
-//        layer.addSublayer(dashRectLayer)
         originalRect = frame
         
-//        deleteBtn.frame = CGRect(x: frame.midX-frame.minX-10, y: frame.height+10, width: 20, height: 20)
         addSubview(deleteBtn)
     }
     
@@ -104,7 +99,7 @@ class ZHSelectedView: UIView {
         })
         
         let dashRect = CGRect(origin: .zero, size: rect.size)
-        let dashRectLayer = CAShapeLayer.zh_DrawDashRect(frame: dashRect, lineWidth: kDashLineW, color: .red)
+        let dashRectLayer = CAShapeLayer.zh_DashlineBox(frame: dashRect, lineWidth: kDashLineW, color: .red)
         layer.addSublayer(dashRectLayer)
         deleteBtn.frame = CGRect(x: rect.midX-rect.minX-10, y: rect.height+10, width: 20, height: 20)
         
@@ -149,37 +144,6 @@ class ZHSelectedView: UIView {
     private var pinchBeginScale: CGFloat = 1
     @objc private func pinchAction(recognizer: UIPinchGestureRecognizer){
         let scale = recognizer.scale
-//        self.transform = CGAffineTransform(scaleX: pinchBeginScale * scale, y: pinchBeginScale * scale)
-//
-//        if recognizer.state == .ended {
-//            pinchBeginScale = pinchBeginScale * scale
-//            var movedShowPaths: [ZHBasePath] = []
-//            for (i, path) in showPaths.enumerated() {
-//                let selPath = selectedPaths[i]
-//                selPath.isSelectedPath = false
-//                selPath.moved = true
-//                let movedShowPath = path.copyPath()
-//                movedShowPath.scale = movedShowPath.scale * scale
-//                movedShowPath.lineWidth = movedShowPath.lineWidth * scale
-//                movedShowPath.applyByCenter(transform: CGAffineTransform(scaleX: scale, y: scale))
-//                movedShowPaths.append(movedShowPath)
-//                print(path.cgPath)
-//                let movedPath = path.copyPath()
-//                print(movedPath.cgPath)
-//                movedPath.applyByCenter(transform: CGAffineTransform(translationX: originalRect.minX, y: originalRect.minY))
-//                movedPath.scale = movedPath.scale * scale
-//                movedPath.lineWidth = movedPath.lineWidth * scale
-//                movedPath.applyByCenter(transform: CGAffineTransform(scaleX: scale, y: scale))
-//                print(movedPath.cgPath)
-//                movedPath.isSelectedPath = true
-//                movedPath.isValid = true
-//                movedPath.isFinish = true
-//                movedPath.preMovePath = selPath
-//                selectedPaths[i] = movedPath
-//            }
-//            showPaths = movedShowPaths
-//            movedHandle?(selectedPaths)
-//        }
         
         self.transform = self.transform.concatenating(CGAffineTransform(scaleX: scale, y: scale))
         let newFrame = self.frame
@@ -187,12 +151,10 @@ class ZHSelectedView: UIView {
         self.frame = newFrame
         
         showPaths.forEach { path in
-            path.scale = path.scale * scale
             path.lineWidth = path.lineWidth * scale
             path.apply(CGAffineTransform(scaleX: scale, y: scale))
         }
         showBgPaths.forEach { path in
-            path.scale = path.scale * scale
             path.lineWidth = path.lineWidth * scale
             path.apply(CGAffineTransform(scaleX: scale, y: scale))
         }
@@ -226,14 +188,5 @@ class ZHSelectedView: UIView {
             return deleteBtn
         }
         return super.hitTest(point, with: event)
-    }
-}
-
-extension ZHSelectedView: UIGestureRecognizerDelegate {
-    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-//        if gestureRecognizer.isKind(of: UIPinchGestureRecognizer.self) {
-//            return selectedPaths.count == 1
-//        }
-        return true
     }
 }

@@ -23,9 +23,6 @@ class ZHDrawView: UIView {
     /// 第一笔绘制
     var firstMark: (()->Void)?
     
-    var markBegan: (()->Void)?
-    var markEnded: (()->Void)?
-    
     var option: ZHDrawBoardOption = .pen {
         didSet{
             if oldValue == .singleSelect, option != .singleSelect {
@@ -38,6 +35,7 @@ class ZHDrawView: UIView {
 //    var curScale: CGFloat = 1
     var lineWidth: CGFloat = 4
     var lineColor: UIColor = .black
+    var fontSize: CGFloat = 10
     
     var isZooming: Bool = false {
         didSet{
@@ -74,10 +72,22 @@ class ZHDrawView: UIView {
             return false
         }
         clearSelected()
-        if let lastPath = showPaths.last, let preMovePath = lastPath.preMovePath {
-            preMovePath.moved = false
+//        if let lastPath = showPaths.last, let preMovePath = lastPath.preMovePath {
+//            preMovePath.moved = false
+//        }
+//        showPaths.removeLast()
+        if let lastPath = showPaths.last {
+            let modifyTime = lastPath.modifyTime
+            if modifyTime > 0 {
+                let paths = showPaths.filter{$0.modifyTime == modifyTime}
+                paths.forEach{ $0.preMovePath?.moved = false }
+                let prevPaths = showPaths.filter{!(paths.contains($0))}
+                showPaths = prevPaths
+            }else{
+                lastPath.preMovePath?.moved = false
+                showPaths.removeLast()
+            }
         }
-        showPaths.removeLast()
         setNeedsDisplay()
         return showPaths.count > 0
     }
@@ -88,10 +98,19 @@ class ZHDrawView: UIView {
         }
         clearSelected()
         let nextPath = drawPaths[showPaths.count]
-        if let preMovePath = nextPath.preMovePath {
-            preMovePath.moved = true
+//        if let preMovePath = nextPath.preMovePath {
+//            preMovePath.moved = true
+//        }
+//        showPaths.append(nextPath)
+        let modifyTime = nextPath.modifyTime
+        if modifyTime > 0 {
+            let paths = drawPaths.filter{$0.modifyTime == modifyTime}
+            paths.forEach{ $0.preMovePath?.moved = true }
+            showPaths += paths
+        }else{
+            nextPath.preMovePath?.moved = true
+            showPaths.append(nextPath)
         }
-        showPaths.append(nextPath)
         setNeedsDisplay()
         return showPaths.count < drawPaths.count
     }
@@ -119,6 +138,7 @@ extension ZHDrawView {
         if isZooming { return }
         guard let touch = touches.first else { return }
         let touchPoint = touch.location(in: self)
+//        print(touchPoint)
         if !markRect.contains(touchPoint) { return }
         if let lastPath = drawPaths.last, !lastPath.isFinish {//移除被打断的多选路径
             drawPaths.removeLast()
@@ -144,6 +164,7 @@ extension ZHDrawView {
             setNeedsDisplay()
             checkSingleSelect(touchPoint: touchPoint)
         case .multiSelect:
+            if selectedView?.frame.contains(touchPoint) ?? false { return }// 避免事件还未判定成功前，产生多余path
             multiSelPath = ZHPenPath(width: 4, color: .red, point: touchPoint)
         }
     }
@@ -219,6 +240,10 @@ extension ZHDrawView {
     }
     /// 完成当前绘制路径
     private func finishDraw(path: ZHBasePath){
+        if !(path.isKind(of: ZHPenPath.self) || path.isKind(of: ZHTextPath.self)), path.markPoints.count < 2 {
+            drawPaths.removeLast()
+            return
+        }
         path.isValid = true
         path.isFinish = true
         if drawPaths.count == 1 {
@@ -279,6 +304,10 @@ extension ZHDrawView {
     private func refreshSelected(paths: [ZHBasePath]){
         let selView = ZHSelectedView(paths: paths) {[weak self] movedPaths in
             self?.syncDrawPath()
+            if movedPaths.count > 0 {
+                let time = Date().timeIntervalSince1970
+                movedPaths.forEach{ $0.modifyTime = time }
+            }
             self?.drawPaths += movedPaths
         } deleteHandle: {[weak self] in
             self?.deleteSeleted()
@@ -293,8 +322,8 @@ extension ZHDrawView {
         guard let selView = selectedView else { return }
         for path in selView.selectedPaths {
             path.deleted()
-            drawPaths.removeAll{$0.isDeleted}
         }
+        drawPaths.removeAll{$0.isDeleted}
         clearSelected()
         setNeedsDisplay()
     }
