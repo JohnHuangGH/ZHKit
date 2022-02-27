@@ -103,16 +103,16 @@ extension Date {
 // MARK: - Date -> DateString
 extension Date {
     /// 获取格式化Date字符串
-    func zh_DateStr(with dateFormat: String, _ timezone: TimeZone! = TimeZone(abbreviation: "GMT+8")) -> String {
+    func zh_dateStr(with dateFormat: String, _ timezone: TimeZone! = TimeZone(abbreviation: "GMT+8")) -> String {
         return Date.zh_dateFormatter(dateFormat, timezone).string(from: self)
     }
     /// 获取格式化Date字符串
-    func zh_DateStr(with format: ZHDateFormat) -> String {
-        return zh_DateStr(with: format.rawValue)
+    func zh_dateStr(with format: ZHDateFormat) -> String {
+        return zh_dateStr(with: format.rawValue)
     }
     /// 获取获取星期(周)几
     func zh_weekStr(with style: ZHWeekdayStyle) -> String {
-        return zh_DateStr(with: style.rawValue)
+        return zh_dateStr(with: style.rawValue)
     }
     /// h：%d
     func zh_12hStr() -> String {
@@ -137,16 +137,16 @@ extension Date {
 // MARK: - TimeStamp -> DateString
 extension Date {
     /// 时间戳获取格式化Date字符串
-    static func zh_DateStr(timeStamp: TimeInterval,  dateFormat: String) -> String {
-        return Date(timeIntervalSince1970: timeStamp).zh_DateStr(with: dateFormat)
+    static func zh_dateStr(timeStamp: TimeInterval,  dateFormat: String) -> String {
+        return Date(timeIntervalSince1970: timeStamp).zh_dateStr(with: dateFormat)
     }
     /// 时间戳获取格式化Date字符串
-    static func zh_DateStr(timeStamp: TimeInterval, zhDateFormat: ZHDateFormat) -> String {
-        return zh_DateStr(timeStamp: timeStamp, dateFormat: zhDateFormat.rawValue)
+    static func zh_dateStr(timeStamp: TimeInterval, zhDateFormat: ZHDateFormat) -> String {
+        return zh_dateStr(timeStamp: timeStamp, dateFormat: zhDateFormat.rawValue)
     }
     /// 时间戳获取星期(周)几
     static func zh_weekStr(timeStamp: TimeInterval, style: ZHWeekdayStyle) -> String {
-        return zh_DateStr(timeStamp: timeStamp, dateFormat: style.rawValue)
+        return zh_dateStr(timeStamp: timeStamp, dateFormat: style.rawValue)
     }
 }
 
