@@ -41,7 +41,7 @@ class ZHTextPath: ZHBasePath {
                 CTRunGetPositions(run, glyphRange, &position)
                 
                 if let path = CTFontCreatePathForGlyph(runFont, glyph, nil) {
-                    let transform = CGAffineTransform(translationX: point.x + position.x, y: point.y + position.y).scaledBy(x: 1, y: -1)
+                    let transform = CGAffineTransform(translationX: point.x + position.x, y: point.y + position.y + path.boundingBox.height).scaledBy(x: 1, y: -1)
                     pathM.addPath(path, transform: transform)
                 }
             }

@@ -67,7 +67,7 @@ class ZHSelectedView: UIView {
             boundingBoxs.append(boundingBox)
         }
         
-        let viewRect = boundingBoxs.zh_RectsBoundingBox()
+        let viewRect = boundingBoxs.zh_rectsBoundingBox()
         let offset = CGPoint(x: -viewRect.origin.x, y: -viewRect.origin.y)
         
         for path in paths {
@@ -99,7 +99,7 @@ class ZHSelectedView: UIView {
         })
         
         let dashRect = CGRect(origin: .zero, size: rect.size)
-        let dashRectLayer = CAShapeLayer.zh_DashlineBox(frame: dashRect, lineWidth: kDashLineW, color: .red)
+        let dashRectLayer = CAShapeLayer.zh_dashlineBox(frame: dashRect, lineWidth: kDashLineW, color: .red)
         layer.addSublayer(dashRectLayer)
         deleteBtn.frame = CGRect(x: rect.midX-rect.minX-10, y: rect.height+10, width: 20, height: 20)
         

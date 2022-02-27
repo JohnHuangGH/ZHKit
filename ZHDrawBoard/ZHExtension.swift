@@ -9,7 +9,7 @@ import UIKit
 
 extension CAShapeLayer {
     /// 虚线框
-    class func zh_DashlineBox(frame: CGRect, cornerRadius: CGFloat = 0, lineLength: Int = 5, lineSpacing: Int = 5, lineWidth: CGFloat = 2, color: UIColor = .black) -> CAShapeLayer {
+    class func zh_dashlineBox(frame: CGRect, cornerRadius: CGFloat = 0, lineLength: Int = 5, lineSpacing: Int = 5, lineWidth: CGFloat = 2, color: UIColor = .black) -> CAShapeLayer {
         let layer = CAShapeLayer()
         layer.bounds = CGRect.init(origin: .zero, size: frame.size)
         layer.position = CGPoint(x: frame.width/2.0, y: frame.height/2.0)
@@ -28,7 +28,7 @@ extension CAShapeLayer {
 
 extension UIColor {
     /// 随机颜色
-    class func zh_Random() -> UIColor {
+    class func zh_random() -> UIColor {
         return UIColor(red: CGFloat(Int.random(in: 0...255))/255.0,
                        green: CGFloat(Int.random(in: 0...255))/255.0,
                        blue: CGFloat(Int.random(in: 0...255))/255.0,
@@ -51,19 +51,19 @@ extension UIColor {
 
 extension UIResponder {
     /// 最近响应的VC
-    func zh_CurrentVC() -> UIViewController? {
+    func zh_currentVC() -> UIViewController? {
         guard let nextResponder = self.next else { return nil }
         if let vc = nextResponder as? UIViewController {
             return vc
         }else{
-            return nextResponder.zh_CurrentVC()
+            return nextResponder.zh_currentVC()
         }
     }
 }
 
 extension Array where Self.Element == CGRect {
     /// 所有rect的边界rect
-    func zh_RectsBoundingBox() -> CGRect {
+    func zh_rectsBoundingBox() -> CGRect {
         guard let firstR = self.first else { return .zero }
         var xMin: CGFloat = firstR.minX
         var yMin: CGFloat = firstR.minY
@@ -81,12 +81,12 @@ extension Array where Self.Element == CGRect {
 
 extension UIImage {
     /// 纯色图片
-    class func zh_PureColorImage(color: UIColor, size: CGSize) -> UIImage {
-        return zh_Image(color: color, size: size)
+    class func zh_pureColorImage(color: UIColor, size: CGSize) -> UIImage {
+        return zh_image(color: color, size: size)
     }
     
     /// 生成一张图片
-    class func zh_Image(color: UIColor, size: CGSize, cornerRadius: CGFloat = 0, borderWidth: CGFloat = 0, borderColor: UIColor = .clear) -> UIImage {
+    class func zh_image(color: UIColor, size: CGSize, cornerRadius: CGFloat = 0, borderWidth: CGFloat = 0, borderColor: UIColor = .clear) -> UIImage {
         let imgSize = CGSize(width: size.width + borderWidth * 2, height: size.height + borderWidth * 2)
         UIGraphicsBeginImageContextWithOptions(imgSize, false, 0.0)
         let context = UIGraphicsGetCurrentContext()
@@ -105,13 +105,13 @@ extension UIImage {
     }
     
     /// 屏幕截图
-    class func zh_ScreenShot() -> UIImage? {
+    class func zh_screenShot() -> UIImage? {
         guard let window = UIApplication.shared.windows.first else { return nil }
-        return zh_Shot(view: window)
+        return zh_shot(view: window)
     }
     
     /// 视图快照
-    class func zh_Shot(view: UIView) -> UIImage? {
+    class func zh_shot(view: UIView) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, 0.0)
         let success = view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)//快照渲染到上下文
         if !success {

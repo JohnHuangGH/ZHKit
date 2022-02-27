@@ -17,7 +17,6 @@ import UIKit
     var circleAct: ((_ sender: UIButton)->Void)?
     var rectAct: ((_ sender: UIButton)->Void)?
     var arrowAct: ((_ sender: UIButton)->Void)?
-    var lineAct: ((_ sender: UIButton)->Void)?
     
     var singleSelAct: ((_ sender: UIButton)->Void)?
     var multiSelAct: ((_ sender: UIButton)->Void)?
@@ -33,7 +32,6 @@ import UIKit
     @IBOutlet weak var circleBtn: UIButton!
     @IBOutlet weak var rectBtn: UIButton!
     @IBOutlet weak var arrowBtn: UIButton!
-    @IBOutlet weak var lineBtn: UIButton!
     
     @IBOutlet weak var singleSelBtn: UIButton!
     @IBOutlet weak var multiSelBtn: UIButton!
@@ -58,17 +56,13 @@ import UIKit
         clearBtn.isEnabled = false
     }
     
-    func previousOff(){
-        
-    }
-    
     @IBAction private func penBtnClick(sender: UIButton){
         resetSelectedBtns()
         sender.isSelected = true
         penAct?(sender)
     }
     @IBAction func colorBtnClick(_ sender: UIButton) {
-        let color = UIColor.zh_Random()
+        let color = UIColor.zh_random()
         sender.backgroundColor = color
         lineColorAct?(sender)
     }
@@ -96,11 +90,6 @@ import UIKit
         resetSelectedBtns()
         sender.isSelected = true
         arrowAct?(sender)
-    }
-    @IBAction func lineBtnClick(_ sender: UIButton) {
-        resetSelectedBtns()
-        sender.isSelected = true
-        lineAct?(sender)
     }
     
     @IBAction func singleSelBtnClick(_ sender: UIButton) {
@@ -151,7 +140,6 @@ import UIKit
         circleBtn.isSelected = false
         rectBtn.isSelected = false
         arrowBtn.isSelected = false
-        lineBtn.isSelected = false
         singleSelBtn.isSelected = false
         multiSelBtn.isSelected = false
     }

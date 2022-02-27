@@ -56,7 +56,6 @@
 		9C9FA1E227A23017005DB885 /* bgimgW.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C9FA1E127A23017005DB885 /* bgimgW.png */; };
 		9CA7B300279A9514009D4309 /* ZHExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7B2FF279A9514009D4309 /* ZHExtension.swift */; };
 		9CADE7DF279E52D80084B482 /* ZHTextPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CADE7DE279E52D80084B482 /* ZHTextPath.swift */; };
-		9CC62CF8279693E600A6FE1E /* ZHLinePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC62CF7279693E600A6FE1E /* ZHLinePath.swift */; };
 		9CC62CFA2796A32C00A6FE1E /* ZHBasePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC62CF92796A32C00A6FE1E /* ZHBasePath.swift */; };
 		9CC62CFC2796A83A00A6FE1E /* ZHOptionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC62CFB2796A83A00A6FE1E /* ZHOptionBar.swift */; };
 		9CC62CFE2796AAEA00A6FE1E /* ZHDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC62CFD2796AAEA00A6FE1E /* ZHDrawView.swift */; };
@@ -171,7 +170,6 @@
 		9C9FA1E127A23017005DB885 /* bgimgW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgimgW.png; sourceTree = "<group>"; };
 		9CA7B2FF279A9514009D4309 /* ZHExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHExtension.swift; sourceTree = "<group>"; };
 		9CADE7DE279E52D80084B482 /* ZHTextPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHTextPath.swift; sourceTree = "<group>"; };
-		9CC62CF7279693E600A6FE1E /* ZHLinePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHLinePath.swift; sourceTree = "<group>"; };
 		9CC62CF92796A32C00A6FE1E /* ZHBasePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHBasePath.swift; sourceTree = "<group>"; };
 		9CC62CFB2796A83A00A6FE1E /* ZHOptionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHOptionBar.swift; sourceTree = "<group>"; };
 		9CC62CFD2796AAEA00A6FE1E /* ZHDrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHDrawView.swift; sourceTree = "<group>"; };
@@ -253,7 +251,6 @@
 				9CE0A7D82797E147004E6B4C /* ZHCirclePath.swift */,
 				9CE0A7DA27993E4D004E6B4C /* ZHRectPath.swift */,
 				9CE0A7DC27994869004E6B4C /* ZHArrowPath.swift */,
-				9CC62CF7279693E600A6FE1E /* ZHLinePath.swift */,
 				9CADE7DE279E52D80084B482 /* ZHTextPath.swift */,
 				9CA7B2FF279A9514009D4309 /* ZHExtension.swift */,
 			);
@@ -508,7 +505,6 @@
 				9C22C3B6279FEE3A006E4836 /* UIBezierPath+GeometryExtras.m in Sources */,
 				9C22C3C8279FEE3A006E4836 /* bezierclip.cxx in Sources */,
 				9C2A006227B23BC600B9BAC7 /* UIBezierPath+Ahmed.m in Sources */,
-				9CC62CF8279693E600A6FE1E /* ZHLinePath.swift in Sources */,
 				9C22C3C5279FEE3A006E4836 /* DKUIBezierPathClippingResult.m in Sources */,
 				9C2A006127B23BC600B9BAC7 /* UIBezierPath+Performance.m in Sources */,
 				9C22C3BF279FEE3A006E4836 /* UIBezierPath+Trimming.m in Sources */,
@@ -700,7 +696,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "ZHDrawBoardDemo/ZHDrawBoardDemo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -723,7 +719,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ZHDrawBoardDemo/ZHDrawBoardDemo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
