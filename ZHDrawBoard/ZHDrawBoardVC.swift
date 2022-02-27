@@ -120,13 +120,4 @@ extension ZHDrawBoardVC: UIScrollViewDelegate {
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return scrollContainer
     }
-    
-    func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
-        drawView.isZooming = true
-    }
-    
-    func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
-//        drawView.curScale = scale
-        drawView.isZooming = false
-    }
 }

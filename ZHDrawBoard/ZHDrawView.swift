@@ -19,31 +19,21 @@ enum ZHDrawBoardOption {
 
 class ZHDrawView: UIView {
     var markRect: CGRect = .zero
-    /// 第一笔绘制
-    var firstMark: (()->Void)?
+    var lineWidth: CGFloat = 4
+    var lineColor: UIColor = .black
+    var fontSize: CGFloat = 10
     
     var option: ZHDrawBoardOption = .pen {
         didSet{
-            if oldValue == .singleSelect, option != .singleSelect {
+            if (oldValue == .singleSelect && option != .singleSelect) || (oldValue == .multiSelect && option != .multiSelect) {
                 clearSelected()
                 setNeedsDisplay()
             }
         }
     }
     
-//    var curScale: CGFloat = 1
-    var lineWidth: CGFloat = 4
-    var lineColor: UIColor = .black
-    var fontSize: CGFloat = 10
-    
-    var isZooming: Bool = false {
-        didSet{
-            if isZooming, drawPaths.count > 0, let lastPath = drawPaths.last, !lastPath.isValid {
-                drawPaths.removeLast()
-                setNeedsDisplay()
-            }
-        }
-    }
+    /// 第一笔绘制
+    var firstMark: (()->Void)?
     
     private var drawPaths: [ZHBasePath] = []{
         didSet{
@@ -134,7 +124,6 @@ extension ZHDrawView {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if isZooming { return }
         guard let touch = touches.first else { return }
         let touchPoint = touch.location(in: self)
 //        print(touchPoint)
@@ -169,7 +158,6 @@ extension ZHDrawView {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if isZooming { return }
         guard let touch = touches.first else { return }
         let touchPoint = touch.location(in: self)
         switch option {
@@ -197,8 +185,7 @@ extension ZHDrawView {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {//如果是缩放，会走began和moved，不走ended
-        print(#function)
-        if isZooming { return }
+//        print(#function)
         switch option {
         case .pen, .circle, .rect, .arrow:
             guard let path = drawPaths.last else { return }
@@ -217,10 +204,18 @@ extension ZHDrawView {
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print(#function)
-        if option == .multiSelect {
+//        print(#function)
+        switch option {
+        case .pen, .circle, .rect, .arrow:
+            if let lastPath = drawPaths.last, !lastPath.isValid {
+                drawPaths.removeLast()
+                setNeedsDisplay()
+            }
+        case .multiSelect:
             multiSelPath = nil
             setNeedsDisplay()
+        default:
+            break
         }
     }
 }
