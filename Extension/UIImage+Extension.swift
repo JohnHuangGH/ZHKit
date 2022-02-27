@@ -68,4 +68,46 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return self
     }
+    
+    /// 纯色图片
+    class func zh_pureColorImage(color: UIColor, size: CGSize) -> UIImage {
+        return zh_image(color: color, size: size)
+    }
+    
+    /// 生成一张图片
+    class func zh_image(color: UIColor, size: CGSize, cornerRadius: CGFloat = 0, borderWidth: CGFloat = 0, borderColor: UIColor = .clear) -> UIImage {
+        let imgSize = CGSize(width: size.width + borderWidth * 2, height: size.height + borderWidth * 2)
+        UIGraphicsBeginImageContextWithOptions(imgSize, false, 0.0)
+        let context = UIGraphicsGetCurrentContext()
+        let path = UIBezierPath(roundedRect: CGRect(x: borderWidth, y: borderWidth, width: size.width, height: size.height), cornerRadius: cornerRadius)
+        color.setFill()
+        path.fill()
+        let borderPath =  UIBezierPath(roundedRect: CGRect(origin: .zero, size: imgSize), cornerRadius: cornerRadius + borderWidth)
+        borderColor.setFill()
+        borderPath.fill()
+        borderPath.append(path)
+        context?.addPath(borderPath.cgPath)
+        context?.fillPath()
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return image
+    }
+    
+    /// 屏幕截图
+    class func zh_screenShot() -> UIImage? {
+        guard let window = UIApplication.shared.windows.first else { return nil }
+        return zh_shot(view: window)
+    }
+    
+    /// 视图快照
+    class func zh_shot(view: UIView) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, 0.0)
+        let success = view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)//快照渲染到上下文
+        if !success {
+            view.layer.render(in: UIGraphicsGetCurrentContext()!)//layer渲染到上下文
+        }
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
 }

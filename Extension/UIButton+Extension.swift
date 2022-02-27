@@ -8,21 +8,19 @@
 import UIKit
 
 extension UIButton {
-    func zh_Btn(img: String, state: UIControl.State){
+    func zh_btn(img: String, state: UIControl.State){
         setImage(UIImage(named: img), for: state)
     }
     
-    func zh_Btn(bgImg: String, state: UIControl.State){
+    func zh_btn(bgImg: String, state: UIControl.State){
         setBackgroundImage(UIImage(named: bgImg), for: state)
     }
     
-    func zh_Btn(font size: CGFloat, _ weight: UIFont.Weight = .regular){
+    func zh_btn(font size: CGFloat, _ weight: UIFont.Weight = .regular){
         titleLabel?.font = .systemFont(ofSize: size, weight: weight)
     }
-}
     
-// MARK: - ImgLayout
-extension UIButton {
+// MARK: ImgLayout
     enum ZHBtnLayout {
         case imgTop
         case imgBottom
@@ -37,7 +35,7 @@ extension UIButton {
     ///   - maxWidth: btn最大宽度
     ///   - insets: 内边距
     ///   PS：tableviewCell使用自动行高 且 btn的title或image随数据变动时，在layoutSubviews中使用此方法，以免提前触发行高计算，产生约束冲突
-    func zh_Btn(layout: ZHBtnLayout, space: CGFloat = 0, maxWidth: CGFloat = 0, insets: UIEdgeInsets = .zero) {
+    func zh_btn(layout: ZHBtnLayout, space: CGFloat = 0, maxWidth: CGFloat = 0, insets: UIEdgeInsets = .zero) {
         
         guard let lab = self.titleLabel, let imgv = self.imageView else { return }
         

@@ -20,7 +20,6 @@
 		9C61EF38278684C500D3419A /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61EF2E278684C500D3419A /* UIImage+Extension.swift */; };
 		9C61EF39278684C500D3419A /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61EF2F278684C500D3419A /* String+Extension.swift */; };
 		9C61EF3A278684C500D3419A /* Date+Ectension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61EF30278684C500D3419A /* Date+Ectension.swift */; };
-		9C61EF3B278684C500D3419A /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61EF31278684C500D3419A /* CALayer+Extension.swift */; };
 		9C61EF3C278684C500D3419A /* ZHNetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61EF33278684C500D3419A /* ZHNetManager.swift */; };
 		9C61EF3D278684C500D3419A /* ZHWebSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61EF34278684C500D3419A /* ZHWebSocketManager.swift */; };
 		9C61EF3F27868FB800D3419A /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61EF3E27868FB800D3419A /* UIColor+Extension.swift */; };
@@ -43,7 +42,6 @@
 		9C61EF2E278684C500D3419A /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		9C61EF2F278684C500D3419A /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		9C61EF30278684C500D3419A /* Date+Ectension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Ectension.swift"; sourceTree = "<group>"; };
-		9C61EF31278684C500D3419A /* CALayer+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
 		9C61EF33278684C500D3419A /* ZHNetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHNetManager.swift; sourceTree = "<group>"; };
 		9C61EF34278684C500D3419A /* ZHWebSocketManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHWebSocketManager.swift; sourceTree = "<group>"; };
 		9C61EF3E27868FB800D3419A /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -113,7 +111,6 @@
 				9C61EF2E278684C500D3419A /* UIImage+Extension.swift */,
 				9C61EF2F278684C500D3419A /* String+Extension.swift */,
 				9C61EF30278684C500D3419A /* Date+Ectension.swift */,
-				9C61EF31278684C500D3419A /* CALayer+Extension.swift */,
 				9C61EF3E27868FB800D3419A /* UIColor+Extension.swift */,
 			);
 			name = Extension;
@@ -257,7 +254,6 @@
 				9C61EF3A278684C500D3419A /* Date+Ectension.swift in Sources */,
 				9C61EF37278684C500D3419A /* UIView+Extension.swift in Sources */,
 				9C61EF3D278684C500D3419A /* ZHWebSocketManager.swift in Sources */,
-				9C61EF3B278684C500D3419A /* CALayer+Extension.swift in Sources */,
 				9C61EF38278684C500D3419A /* UIImage+Extension.swift in Sources */,
 				9C61EF1B278684AF00D3419A /* ViewController.swift in Sources */,
 				9C61EF35278684C500D3419A /* UIDevice+Extension.swift in Sources */,

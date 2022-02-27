@@ -7,6 +7,20 @@
 
 import UIKit
 
+func rgba(_ r: CGFloat, _ g: CGFloat, _ b: CGFloat, _ a: CGFloat) -> UIColor {
+    return UIColor(red: r, green: g, blue: g, alpha: a)
+}
+
+extension String {
+    func uicolor() -> UIColor {
+        return UIColor.zh_hex(self)
+    }
+    
+    func cgcolor() -> CGColor {
+        return uicolor().cgColor
+    }
+}
+
 extension UIColor {
     class func zh_hex(_ hexStr: String) -> UIColor {
         guard !hexStr.isEmpty && hexStr.hasPrefix("#") && hexStr.count == 7 else { return .white }
@@ -47,26 +61,10 @@ extension UIColor {
                        alpha: CGFloat((hex & 0x000000ff)) / 255.0)
     }
     
-    class func randomColor() -> UIColor {
+    class func zh_random() -> UIColor {
         return rgba(CGFloat(Int.random(in: 0...255)) / 255.0,
                     CGFloat(Int.random(in: 0...255)) / 255.0,
                     CGFloat(Int.random(in: 0...255)) / 255.0,
                     1)
     }
-}
-
-
-extension String {
-    func uicolor() -> UIColor {
-        return UIColor.zh_hex(self)
-    }
-    
-    func cgcolor() -> CGColor {
-        return uicolor().cgColor
-    }
-}
-
-
-func rgba(_ r: CGFloat, _ g: CGFloat, _ b: CGFloat, _ a: CGFloat) -> UIColor {
-    return UIColor(red: r, green: g, blue: g, alpha: a)
 }
