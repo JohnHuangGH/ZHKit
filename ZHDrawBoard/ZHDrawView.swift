@@ -10,7 +10,6 @@ import UIKit
 enum ZHDrawBoardOption {
     case pen
     case text
-    case line
     case circle
     case rect
     case arrow
@@ -144,7 +143,7 @@ extension ZHDrawView {
             drawPaths.removeLast()
         }
         switch option {
-        case .pen, .circle, .rect, .arrow, .line:
+        case .pen, .circle, .rect, .arrow:
             syncDrawPath()
             let path = createPath(point: touchPoint)
             drawPaths.append(path)
@@ -174,7 +173,7 @@ extension ZHDrawView {
         guard let touch = touches.first else { return }
         let touchPoint = touch.location(in: self)
         switch option {
-        case .pen, .circle, .rect, .arrow, .line:
+        case .pen, .circle, .rect, .arrow:
             guard let path = drawPaths.last else { return }
             if !markRect.contains(touchPoint) {//超出范围，结束当前绘制
                 finishDraw(path: path)
@@ -198,9 +197,10 @@ extension ZHDrawView {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {//如果是缩放，会走began和moved，不走ended
+        print(#function)
         if isZooming { return }
         switch option {
-        case .pen, .circle, .rect, .arrow, .line:
+        case .pen, .circle, .rect, .arrow:
             guard let path = drawPaths.last else { return }
             finishDraw(path: path)
         case .multiSelect:
@@ -213,6 +213,14 @@ extension ZHDrawView {
             checkMultiSelect(path: path)
         default:
             break
+        }
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print(#function)
+        if option == .multiSelect {
+            multiSelPath = nil
+            setNeedsDisplay()
         }
     }
 }
@@ -231,8 +239,6 @@ extension ZHDrawView {
             path = ZHRectPath(width: lineWidth, color: lineColor, point: point)
         case .arrow:
             path = ZHArrowPath(width: lineWidth, color: lineColor, point: point)
-        case .line:
-            path = ZHLinePath(width: lineWidth, color: lineColor, point: point)
         default:
             path = ZHBasePath(width: lineWidth, color: lineColor, point: point)
         }
@@ -337,7 +343,7 @@ extension ZHDrawView {
     
     /// 文本输入弹窗
     private func showTextAlert(confirmHandle: ((_ text: String)->Void)?){
-        guard let curVC = zh_CurrentVC() else { return }
+        guard let curVC = zh_currentVC() else { return }
         let alertVC = UIAlertController(title: "添加文字标绘", message: nil, preferredStyle: .alert)
         alertVC.addTextField { tf in
             tf.placeholder = "请输入文字"

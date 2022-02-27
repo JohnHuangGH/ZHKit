@@ -9,13 +9,13 @@ import UIKit
 
 class ZHDrawBoardVC: UIViewController {
     
-    var bgImage: UIImage?
+    var bgImage: UIImage = UIImage.zh_pureColorImage(color: .white, size: UIScreen.main.bounds.size)
     
     @IBOutlet private weak var scrollView: UIScrollView!
     
     @IBOutlet private weak var scrollContainer: UIView!
     @IBOutlet private weak var bgImgv: UIImageView!
-    @IBOutlet private weak var markView: ZHDrawView!
+    @IBOutlet private weak var drawView: ZHDrawView!
     
     @IBOutlet private weak var optionBar: ZHOptionBar!
     
@@ -30,28 +30,9 @@ class ZHDrawBoardVC: UIViewController {
     }
 
     func setupUI(){
-        scrollView.maximumZoomScale = 10
-        drawAction(option: .pen)
-        
-//        let screenRect = UIScreen.main.bounds
-//        let img = bgImage ?? UIImage.zh_PureColorImage(color: .white, size: screenRect.size)
-//
-//        let safeInsets = UIApplication.shared.windows[0].safeAreaInsets
-//        let drawBoardW = screenRect.width - (safeInsets.left + safeInsets.right)
-//        print(img.size)
-//        if (img.size.width/img.size.height)/(drawBoardW/screenRect.height) > 1 {//横向
-//            let h = img.size.height / img.size.width * drawBoardW
-//            let y = (screenRect.height - h)/2.0
-//            markView.markRect = CGRect(x: 0, y: y, width: drawBoardW, height: h)
-//        }else{//纵向
-//            let w = img.size.width / img.size.height * screenRect.height
-//            let x = (drawBoardW - w)/2.0
-//            markView.markRect = CGRect(x: x, y: 0, width: w, height: screenRect.height)
-//        }
         let screenRect = UIScreen.main.bounds
-        let img = bgImage ?? UIImage.zh_PureColorImage(color: .white, size: screenRect.size)
-        let imgH = img.size.height
-        let imgW = img.size.width
+        let imgH = bgImage.size.height * bgImage.scale
+        let imgW = bgImage.size.width * bgImage.scale
         
         let safeInsets = UIApplication.shared.windows[0].safeAreaInsets
         let drawBoardW = screenRect.width - (safeInsets.left + safeInsets.right)
@@ -59,18 +40,17 @@ class ZHDrawBoardVC: UIViewController {
         if (imgW/imgH)/(drawBoardW/drawBoardH) > 1 {//横向
             let h = imgH / imgW * drawBoardW
             let y = (drawBoardH - h)/2.0
-            markView.markRect = CGRect(x: 0, y: y, width: drawBoardW, height: h)
+            drawView.markRect = CGRect(x: 0, y: y, width: drawBoardW, height: h)
             imgScale = imgW / drawBoardW
         }else{//纵向
             let w = imgW / imgH * drawBoardH
             let x = (drawBoardW - w)/2.0
-            markView.markRect = CGRect(x: x, y: 0, width: w, height: drawBoardH)
+            drawView.markRect = CGRect(x: x, y: 0, width: w, height: drawBoardH)
             imgScale = imgH / drawBoardH
         }
-        print("--------screenSize:\(screenRect.size)")
-        print("--------imgSize:\(img.size)")
-        print("--------imgScale:\(imgScale)")
-        bgImgv.image = img
+        
+        bgImgv.image = bgImage
+        drawAction(option: .pen)
     }
     
     func setupAction(){
@@ -78,10 +58,10 @@ class ZHDrawBoardVC: UIViewController {
             self?.drawAction(option: .pen)
         }
         optionBar.lineColorAct = {[weak self] sender in
-            self?.markView.lineColor = sender.backgroundColor ?? .black
+            self?.drawView.lineColor = sender.backgroundColor ?? .black
         }
         optionBar.lineWidthAct = {[weak self] sender in
-            self?.markView.lineWidth = sender.isSelected ? 8 : 4
+            self?.drawView.lineWidth = sender.isSelected ? 8 : 4
         }
         optionBar.textAct = {[weak self] sender in
             self?.drawAction(option: .text)
@@ -95,9 +75,6 @@ class ZHDrawBoardVC: UIViewController {
         optionBar.arrowAct = {[weak self] sender in
             self?.drawAction(option: .arrow)
         }
-        optionBar.lineAct = {[weak self] sender in
-            self?.drawAction(option: .line)
-        }
         
         optionBar.singleSelAct = {[weak self] sender in
             self?.seleteAction(option: .singleSelect)
@@ -107,20 +84,20 @@ class ZHDrawBoardVC: UIViewController {
         }
         
         optionBar.previousAct = {[weak self] handle in
-            handle(self?.markView.previous() ?? false)
+            handle(self?.drawView.previous() ?? false)
         }
         optionBar.nextAct = {[weak self] handle in
-            handle(self?.markView.next() ?? false)
+            handle(self?.drawView.next() ?? false)
         }
         optionBar.clearAct = {[weak self] sender in
-            self?.markView.clear()
+            self?.drawView.clear()
             self?.drawAction(option: .pen)
         }
         optionBar.exitAct = {[weak self] in
             self?.dismiss(animated: true, completion: nil)
         }
         
-        markView.firstMark = {[weak self] in
+        drawView.firstMark = {[weak self] in
             self?.optionBar.singleSelBtn.isEnabled = true
             self?.optionBar.multiSelBtn.isEnabled = true
             self?.optionBar.previousBtn.isEnabled = true
@@ -129,12 +106,12 @@ class ZHDrawBoardVC: UIViewController {
     }
     
     func drawAction(option: ZHDrawBoardOption){
-        markView.option = option
+        drawView.option = option
         scrollView.isScrollEnabled = false
     }
     
     func seleteAction(option: ZHDrawBoardOption){
-        markView.option = option
+        drawView.option = option
         scrollView.isScrollEnabled = true
     }
 }
@@ -145,11 +122,11 @@ extension ZHDrawBoardVC: UIScrollViewDelegate {
     }
     
     func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
-        markView.isZooming = true
+        drawView.isZooming = true
     }
     
     func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
-//        markView.curScale = scale
-        markView.isZooming = false
+//        drawView.curScale = scale
+        drawView.isZooming = false
     }
 }
