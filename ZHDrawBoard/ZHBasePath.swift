@@ -12,7 +12,7 @@ class ZHBasePath: UIBezierPath {
     var lineColor: UIColor = .black
     var markPoints: [CGPoint] = []
     var isFill: Bool = false
-    var scale: CGFloat = 1
+//    var scale: CGFloat = 1
     
     /// 已结束绘制（或超出画板）
     var isFinish: Bool = false
@@ -26,6 +26,8 @@ class ZHBasePath: UIBezierPath {
     var preMovePath: ZHBasePath?
     /// 已删除
     var isDeleted: Bool = false
+    /// 修改时间戳（多选移动或缩放后，用于标识同一组操作，以进行回滚操作）
+    var modifyTime: TimeInterval = 0
 
     
     convenience init(width: CGFloat, color: UIColor, capStyle: CGLineCap = .round, joinStyle: CGLineJoin = .round) {
@@ -47,7 +49,7 @@ class ZHBasePath: UIBezierPath {
         path.lineColor = lineColor
         path.markPoints = markPoints
         path.isFill = isFill
-        path.scale = scale
+//        path.scale = scale
         return path
     }
     

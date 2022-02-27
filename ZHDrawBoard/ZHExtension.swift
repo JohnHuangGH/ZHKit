@@ -9,7 +9,7 @@ import UIKit
 
 extension CAShapeLayer {
     /// 虚线框
-    class func zh_DrawDashRect(frame: CGRect, cornerRadius: CGFloat = 0, lineLength: Int = 5, lineSpacing: Int = 5, lineWidth: CGFloat = 2, color: UIColor = .black) -> CAShapeLayer {
+    class func zh_DashlineBox(frame: CGRect, cornerRadius: CGFloat = 0, lineLength: Int = 5, lineSpacing: Int = 5, lineWidth: CGFloat = 2, color: UIColor = .black) -> CAShapeLayer {
         let layer = CAShapeLayer()
         layer.bounds = CGRect.init(origin: .zero, size: frame.size)
         layer.position = CGPoint(x: frame.width/2.0, y: frame.height/2.0)
@@ -28,10 +28,23 @@ extension CAShapeLayer {
 
 extension UIColor {
     /// 随机颜色
-    class func zh_RandomColor() -> UIColor {
+    class func zh_Random() -> UIColor {
         return UIColor(red: CGFloat(Int.random(in: 0...255))/255.0,
                        green: CGFloat(Int.random(in: 0...255))/255.0,
                        blue: CGFloat(Int.random(in: 0...255))/255.0,
+                       alpha: 1)
+    }
+    /// 16进制Color
+    class func zh_hex(_ hexStr: String) -> UIColor {
+        guard !hexStr.isEmpty && hexStr.hasPrefix("#") && hexStr.count == 7 else { return .white }
+        
+        let hexString = hexStr.replacingOccurrences(of: "#", with: "")
+        var hex: UInt64 = 0
+        Scanner.init(string: hexString).scanHexInt64(&hex)
+        
+        return UIColor(red: CGFloat((hex & 0xff0000) >> 16) / 255.0,
+                       green: CGFloat((hex & 0x00ff00) >> 8) / 255.0,
+                       blue: CGFloat((hex & 0x0000ff)) / 255.0,
                        alpha: 1)
     }
 }
@@ -69,11 +82,23 @@ extension Array where Self.Element == CGRect {
 extension UIImage {
     /// 纯色图片
     class func zh_PureColorImage(color: UIColor, size: CGSize) -> UIImage {
-        let rect = CGRect(origin: .zero, size: size)
-        UIGraphicsBeginImageContext(size)
+        return zh_Image(color: color, size: size)
+    }
+    
+    /// 生成一张图片
+    class func zh_Image(color: UIColor, size: CGSize, cornerRadius: CGFloat = 0, borderWidth: CGFloat = 0, borderColor: UIColor = .clear) -> UIImage {
+        let imgSize = CGSize(width: size.width + borderWidth * 2, height: size.height + borderWidth * 2)
+        UIGraphicsBeginImageContextWithOptions(imgSize, false, 0.0)
         let context = UIGraphicsGetCurrentContext()
-        context?.setFillColor(color.cgColor)
-        context?.fill(rect)
+        let path = UIBezierPath(roundedRect: CGRect(x: borderWidth, y: borderWidth, width: size.width, height: size.height), cornerRadius: cornerRadius)
+        color.setFill()
+        path.fill()
+        let borderPath =  UIBezierPath(roundedRect: CGRect(origin: .zero, size: imgSize), cornerRadius: cornerRadius + borderWidth)
+        borderColor.setFill()
+        borderPath.fill()
+        borderPath.append(path)
+        context?.addPath(borderPath.cgPath)
+        context?.fillPath()
         let image = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return image
@@ -82,10 +107,11 @@ extension UIImage {
     /// 屏幕截图
     class func zh_ScreenShot() -> UIImage? {
         guard let window = UIApplication.shared.windows.first else { return nil }
-        return zh_ScreenShot(view: window)
+        return zh_Shot(view: window)
     }
     
-    class func zh_ScreenShot(view: UIView) -> UIImage? {
+    /// 视图快照
+    class func zh_Shot(view: UIView) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, 0.0)
         let success = view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)//快照渲染到上下文
         if !success {
