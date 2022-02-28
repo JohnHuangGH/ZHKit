@@ -18,13 +18,26 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let bgImg = UIImage(named: "bgimg") else { return }
-        img = bgImg
+        setDefaultImg()
     }
     
-    @IBAction func screenShotBtnClick(_ sender: UIButton) {
+    func setDefaultImg(){
+        guard let bgImg = UIImage(named: "bgimgH") else { return }
+        img = bgImg
+    }
+    func setScreenShot(){
         guard let shotImg = UIImage.zh_screenShot() else { return }
         img = shotImg
+    }
+    
+    @IBAction func imgBtnClick(_ sender: UIButton) {
+        if sender.titleLabel?.text == "ScreenShot" {
+            setScreenShot()
+            sender.setTitle("DefaultImg", for: .normal)
+        }else{
+            setDefaultImg()
+            sender.setTitle("ScreenShot", for: .normal)
+        }
     }
     
     

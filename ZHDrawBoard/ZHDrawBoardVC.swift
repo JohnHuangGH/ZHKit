@@ -21,6 +21,10 @@ class ZHDrawBoardVC: UIViewController {
     
     /// 图片与画布缩放比
     private var imgScale: CGFloat = 0
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +40,7 @@ class ZHDrawBoardVC: UIViewController {
         
         let safeInsets = UIApplication.shared.windows[0].safeAreaInsets
         let drawBoardW = screenRect.width - (safeInsets.left + safeInsets.right)
-        let drawBoardH = screenRect.height
+        let drawBoardH = screenRect.height - (safeInsets.top + safeInsets.bottom)
         if (imgW/imgH)/(drawBoardW/drawBoardH) > 1 {//横向
             let h = imgH / imgW * drawBoardW
             let y = (drawBoardH - h)/2.0

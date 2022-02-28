@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5217BB9B279CFB7300948175 /* bgimg.png in Resources */ = {isa = PBXBuildFile; fileRef = 5217BB9A279CFB7300948175 /* bgimg.png */; };
 		9C000419278EAF6E00775F6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C000418278EAF6E00775F6D /* AppDelegate.swift */; };
 		9C00041B278EAF6E00775F6D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C00041A278EAF6E00775F6D /* SceneDelegate.swift */; };
 		9C00041D278EAF6E00775F6D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C00041C278EAF6E00775F6D /* ViewController.swift */; };
@@ -53,7 +52,8 @@
 		9C2A006C27B23BC600B9BAC7 /* UIBezierPath+Uncached.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2A005E27B23BC600B9BAC7 /* UIBezierPath+Uncached.m */; };
 		9C2A006D27B23BC600B9BAC7 /* UIBezierPath+Trim.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2A006027B23BC600B9BAC7 /* UIBezierPath+Trim.m */; };
 		9C4D25F327902948007128EC /* ZHPenPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4D25F227902948007128EC /* ZHPenPath.swift */; };
-		9C9FA1E227A23017005DB885 /* bgimgW.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C9FA1E127A23017005DB885 /* bgimgW.png */; };
+		9C5BEFDA27CCBEBC00F93BB3 /* bgimgH.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5BEFD827CCBEBC00F93BB3 /* bgimgH.png */; };
+		9C5BEFDB27CCBEBC00F93BB3 /* bgimgW.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5BEFD927CCBEBC00F93BB3 /* bgimgW.png */; };
 		9CA7B300279A9514009D4309 /* ZHExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7B2FF279A9514009D4309 /* ZHExtension.swift */; };
 		9CADE7DF279E52D80084B482 /* ZHTextPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CADE7DE279E52D80084B482 /* ZHTextPath.swift */; };
 		9CC62CFA2796A32C00A6FE1E /* ZHBasePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC62CF92796A32C00A6FE1E /* ZHBasePath.swift */; };
@@ -70,7 +70,6 @@
 
 /* Begin PBXFileReference section */
 		49A61FA4059E6B3FE824CF5A /* Pods-ZHDrawBoardDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHDrawBoardDemo.debug.xcconfig"; path = "Target Support Files/Pods-ZHDrawBoardDemo/Pods-ZHDrawBoardDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		5217BB9A279CFB7300948175 /* bgimg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgimg.png; sourceTree = "<group>"; };
 		59EFA203F748FE96F5674405 /* Pods-ZHDrawBoardDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHDrawBoardDemo.release.xcconfig"; path = "Target Support Files/Pods-ZHDrawBoardDemo/Pods-ZHDrawBoardDemo.release.xcconfig"; sourceTree = "<group>"; };
 		6E3AD0F82D9A882F988F83C9 /* Pods_ZHDrawBoardDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZHDrawBoardDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C000415278EAF6E00775F6D /* ZHDrawBoardDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZHDrawBoardDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,7 +166,8 @@
 		9C2A005F27B23BC600B9BAC7 /* UIBezierPath+Clockwise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+Clockwise.h"; sourceTree = "<group>"; };
 		9C2A006027B23BC600B9BAC7 /* UIBezierPath+Trim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+Trim.m"; sourceTree = "<group>"; };
 		9C4D25F227902948007128EC /* ZHPenPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHPenPath.swift; sourceTree = "<group>"; };
-		9C9FA1E127A23017005DB885 /* bgimgW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgimgW.png; sourceTree = "<group>"; };
+		9C5BEFD827CCBEBC00F93BB3 /* bgimgH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgimgH.png; sourceTree = "<group>"; };
+		9C5BEFD927CCBEBC00F93BB3 /* bgimgW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgimgW.png; sourceTree = "<group>"; };
 		9CA7B2FF279A9514009D4309 /* ZHExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHExtension.swift; sourceTree = "<group>"; };
 		9CADE7DE279E52D80084B482 /* ZHTextPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHTextPath.swift; sourceTree = "<group>"; };
 		9CC62CF92796A32C00A6FE1E /* ZHBasePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHBasePath.swift; sourceTree = "<group>"; };
@@ -228,11 +228,11 @@
 				9C00041C278EAF6E00775F6D /* ViewController.swift */,
 				9C22C30C279FEA4B006E4836 /* ZHDrawBoardDemo-Bridging-Header.h */,
 				9C00041E278EAF6E00775F6D /* Main.storyboard */,
+				9C5BEFD827CCBEBC00F93BB3 /* bgimgH.png */,
+				9C5BEFD927CCBEBC00F93BB3 /* bgimgW.png */,
 				9C000421278EAF6E00775F6D /* Assets.xcassets */,
 				9C000423278EAF6E00775F6D /* LaunchScreen.storyboard */,
 				9C000426278EAF6E00775F6D /* Info.plist */,
-				5217BB9A279CFB7300948175 /* bgimg.png */,
-				9C9FA1E127A23017005DB885 /* bgimgW.png */,
 			);
 			path = ZHDrawBoardDemo;
 			sourceTree = "<group>";
@@ -444,11 +444,11 @@
 			files = (
 				9CEC08D527B646FF00801F5C /* ZHDrawBoard.storyboard in Resources */,
 				9C22C3CA279FEF2B006E4836 /* ClippingBezier-Info.plist in Resources */,
-				9C9FA1E227A23017005DB885 /* bgimgW.png in Resources */,
+				9C5BEFDB27CCBEBC00F93BB3 /* bgimgW.png in Resources */,
 				9C000425278EAF6E00775F6D /* LaunchScreen.storyboard in Resources */,
+				9C5BEFDA27CCBEBC00F93BB3 /* bgimgH.png in Resources */,
 				9C22C3BC279FEE3A006E4836 /* BezierUtilsLicense in Resources */,
 				9C000422278EAF6E00775F6D /* Assets.xcassets in Resources */,
-				5217BB9B279CFB7300948175 /* bgimg.png in Resources */,
 				9C000420278EAF6E00775F6D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
