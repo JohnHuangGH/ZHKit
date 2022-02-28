@@ -61,6 +61,19 @@ extension UIResponder {
     }
 }
 
+extension UIBezierPath {
+    /// 以中心点进行变换
+    func applyByCenter(_ transform: CGAffineTransform){
+        let boundingBox = cgPath.boundingBoxOfPath
+        let center = CGPoint(x: boundingBox.midX, y: boundingBox.midY)
+        var centerT = CGAffineTransform.identity
+        centerT = centerT.translatedBy(x: center.x, y: center.y)
+        centerT = transform.concatenating(centerT)
+        centerT = centerT.translatedBy(x: -center.x, y: -center.y)
+        apply(centerT)
+    }
+}
+
 extension Array where Self.Element == CGRect {
     /// 所有rect的边界rect
     func zh_rectsBoundingBox() -> CGRect {

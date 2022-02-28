@@ -16,6 +16,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qq7-f5-Ju1">
+                                <rect key="frame" x="147.5" y="418.5" width="80" height="30"/>
+                                <state key="normal" title="ScreenShot"/>
+                                <connections>
+                                    <action selector="imgBtnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nnW-YH-f4v"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q83-qG-DXp">
                                 <rect key="frame" x="130.5" y="485.5" width="114" height="30"/>
                                 <state key="normal" title="ShowDrawBoard"/>
@@ -23,21 +30,22 @@
                                     <segue destination="TDo-fs-8vA" kind="presentation" id="C5u-lr-c80"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qq7-f5-Ju1">
-                                <rect key="frame" x="147.5" y="318.5" width="80" height="30"/>
-                                <state key="normal" title="ScreenShot"/>
-                                <connections>
-                                    <action selector="screenShotBtnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gON-jw-keJ"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ZHDrawBoard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7eS-5A-gB3">
+                                <rect key="frame" x="95.5" y="232" width="184" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Qq7-f5-Ju1" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="IRN-M8-HI7"/>
                             <constraint firstItem="Q83-qG-DXp" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="1.5" id="Jcz-Hm-VhK"/>
+                            <constraint firstItem="7eS-5A-gB3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="gYO-Cd-yCN"/>
+                            <constraint firstItem="7eS-5A-gB3" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="0.75" id="n8O-3Y-m7U"/>
                             <constraint firstItem="Q83-qG-DXp" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="oWa-EO-Pyv"/>
-                            <constraint firstItem="Qq7-f5-Ju1" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="zcL-9K-hfZ"/>
+                            <constraint firstItem="Qq7-f5-Ju1" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="1.3" id="zcL-9K-hfZ"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -51,7 +59,7 @@
                 <viewControllerPlaceholder storyboardName="ZHDrawBoard" id="TDo-fs-8vA" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="psr-Df-MAD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-425" y="467"/>
+            <point key="canvasLocation" x="-425" y="474"/>
         </scene>
     </scenes>
 </document>

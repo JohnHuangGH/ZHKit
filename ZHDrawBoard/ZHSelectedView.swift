@@ -56,7 +56,7 @@ class ZHSelectedView: UIView {
         var showBgPaths: [ZHBasePath] = []
         for path in paths {
             path.isSelectedPath = true
-            let pathRect = path.pathBounding()
+            let pathRect = path.cgPath.boundingBoxOfPath
             let selPathLineW = path.isFill ? 0 : path.lineWidth
             
             let viewX = pathRect.origin.x - (selPathLineW + kSelBgPathLineW + kDashLineW) * 0.5
@@ -73,13 +73,13 @@ class ZHSelectedView: UIView {
         for path in paths {
             let selPathLineW = path.isFill ? 0 : path.lineWidth
             let showBgPath = path.copyPath()
-            showBgPath.applyByCenter(transform: CGAffineTransform(translationX: offset.x, y: offset.y))
+            showBgPath.applyByCenter(CGAffineTransform(translationX: offset.x, y: offset.y))
             showBgPath.lineWidth = selPathLineW + kSelBgPathLineW
             showBgPath.lineColor = .red
             showBgPaths.append(showBgPath)
 
             let showPath = path.copyPath()
-            showPath.applyByCenter(transform: CGAffineTransform(translationX: offset.x, y: offset.y))
+            showPath.applyByCenter(CGAffineTransform(translationX: offset.x, y: offset.y))
             showPaths.append(showPath)
         }
         
@@ -129,7 +129,7 @@ class ZHSelectedView: UIView {
                 selPath.isSelectedPath = false
                 selPath.moved = true
                 let movedPath = path.copyPath()
-                movedPath.applyByCenter(transform: CGAffineTransform(translationX: movedRect.minX, y: movedRect.minY))
+                movedPath.applyByCenter(CGAffineTransform(translationX: movedRect.minX, y: movedRect.minY))
                 movedPath.isSelectedPath = true
                 movedPath.isValid = true
                 movedPath.isFinish = true
@@ -168,7 +168,7 @@ class ZHSelectedView: UIView {
                 selPath.isSelectedPath = false
                 selPath.moved = true
                 let movedPath = path.copyPath()
-                movedPath.applyByCenter(transform: CGAffineTransform(translationX: newFrame.minX, y: newFrame.minY))
+                movedPath.applyByCenter(CGAffineTransform(translationX: newFrame.minX, y: newFrame.minY))
                 movedPath.isSelectedPath = true
                 movedPath.isValid = true
                 movedPath.isFinish = true

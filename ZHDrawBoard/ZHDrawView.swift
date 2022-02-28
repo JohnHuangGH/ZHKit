@@ -66,9 +66,9 @@ class ZHDrawView: UIView {
 //        }
 //        showPaths.removeLast()
         if let lastPath = showPaths.last {
-            let modifyTime = lastPath.modifyTime
-            if modifyTime > 0 {
-                let paths = showPaths.filter{$0.modifyTime == modifyTime}
+            let multiSelFlag = lastPath.multiSelFlag
+            if multiSelFlag > 0 {
+                let paths = showPaths.filter{$0.multiSelFlag == multiSelFlag}
                 paths.forEach{ $0.preMovePath?.moved = false }
                 let prevPaths = showPaths.filter{!(paths.contains($0))}
                 showPaths = prevPaths
@@ -91,9 +91,9 @@ class ZHDrawView: UIView {
 //            preMovePath.moved = true
 //        }
 //        showPaths.append(nextPath)
-        let modifyTime = nextPath.modifyTime
-        if modifyTime > 0 {
-            let paths = drawPaths.filter{$0.modifyTime == modifyTime}
+        let multiSelFlag = nextPath.multiSelFlag
+        if multiSelFlag > 0 {
+            let paths = drawPaths.filter{$0.multiSelFlag == multiSelFlag}
             paths.forEach{ $0.preMovePath?.moved = true }
             showPaths += paths
         }else{
@@ -306,8 +306,8 @@ extension ZHDrawView {
         let selView = ZHSelectedView(paths: paths) {[weak self] movedPaths in
             self?.syncDrawPath()
             if movedPaths.count > 0 {
-                let time = Date().timeIntervalSince1970
-                movedPaths.forEach{ $0.modifyTime = time }
+                let multiSelFlag = Date().timeIntervalSince1970
+                movedPaths.forEach{ $0.multiSelFlag = multiSelFlag }
             }
             self?.drawPaths += movedPaths
         } deleteHandle: {[weak self] in
