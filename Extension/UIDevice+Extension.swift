@@ -71,4 +71,9 @@ extension UIDevice {
         }
         return "iPhone新机型"
     }
+    
+    static func currentOrientation() -> UIInterfaceOrientation {
+        guard let value = current.value(forKey: "orientation") as? NSNumber, let orientation = UIInterfaceOrientation(rawValue: value.intValue) else { return .unknown }
+        return orientation
+    }
 }

@@ -23,6 +23,7 @@
 		9C61EF3C278684C500D3419A /* ZHNetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61EF33278684C500D3419A /* ZHNetManager.swift */; };
 		9C61EF3D278684C500D3419A /* ZHWebSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61EF34278684C500D3419A /* ZHWebSocketManager.swift */; };
 		9C61EF3F27868FB800D3419A /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C61EF3E27868FB800D3419A /* UIColor+Extension.swift */; };
+		9CE0C6BE281A3EBD00A6C61B /* JHFloatingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0C6BD281A3EBD00A6C61B /* JHFloatingItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		9C61EF33278684C500D3419A /* ZHNetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHNetManager.swift; sourceTree = "<group>"; };
 		9C61EF34278684C500D3419A /* ZHWebSocketManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHWebSocketManager.swift; sourceTree = "<group>"; };
 		9C61EF3E27868FB800D3419A /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		9CE0C6BD281A3EBD00A6C61B /* JHFloatingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JHFloatingItem.swift; sourceTree = "<group>"; };
 		D65789F8BB02D79A526185AF /* Pods-ZHKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHKitDemo.release.xcconfig"; path = "Target Support Files/Pods-ZHKitDemo/Pods-ZHKitDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +93,7 @@
 			children = (
 				9C61EF2A278684C500D3419A /* Extension */,
 				9C61EF32278684C500D3419A /* Manager */,
+				9CE0C6BA281A349600A6C61B /* Tools */,
 				9C61EF16278684AF00D3419A /* AppDelegate.swift */,
 				9C61EF18278684AF00D3419A /* SceneDelegate.swift */,
 				9C61EF1A278684AF00D3419A /* ViewController.swift */,
@@ -125,6 +128,15 @@
 			);
 			name = Manager;
 			path = ../../Manager;
+			sourceTree = "<group>";
+		};
+		9CE0C6BA281A349600A6C61B /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				9CE0C6BD281A3EBD00A6C61B /* JHFloatingItem.swift */,
+			);
+			name = Tools;
+			path = ../../Tools;
 			sourceTree = "<group>";
 		};
 		BEA2F29F36E0CD529D8D058D /* Pods */ = {
@@ -164,8 +176,10 @@
 		9C61EF0B278684AF00D3419A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = JH;
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
+				ORGANIZATIONNAME = "https://github.com/JohnHuangGH";
 				TargetAttributes = {
 					9C61EF12278684AF00D3419A = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -254,6 +268,7 @@
 				9C61EF3A278684C500D3419A /* Date+Ectension.swift in Sources */,
 				9C61EF37278684C500D3419A /* UIView+Extension.swift in Sources */,
 				9C61EF3D278684C500D3419A /* ZHWebSocketManager.swift in Sources */,
+				9CE0C6BE281A3EBD00A6C61B /* JHFloatingItem.swift in Sources */,
 				9C61EF38278684C500D3419A /* UIImage+Extension.swift in Sources */,
 				9C61EF1B278684AF00D3419A /* ViewController.swift in Sources */,
 				9C61EF35278684C500D3419A /* UIDevice+Extension.swift in Sources */,
@@ -412,6 +427,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = THBE855T8T;
 				INFOPLIST_FILE = ZHKitDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -432,6 +448,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = THBE855T8T;
 				INFOPLIST_FILE = ZHKitDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
