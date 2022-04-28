@@ -32,9 +32,8 @@ class JHFloatingHelper: NSObject {
 
 class JHFloatingItem: UIWindow {
 
-    var contentView: UIView?
-    
-    private var lastOrientation: UIInterfaceOrientation = .portrait
+    private var contentView: UIView = UIView()
+    private var lastOrientation: UIDeviceOrientation = .portrait
     
     init(contentView contentV: UIView){
         super.init(frame: CGRect(origin: CGPoint(x: 0, y: kScreenH/2), size: contentV.bounds.size))
@@ -57,14 +56,14 @@ class JHFloatingItem: UIWindow {
     
     func show(){
         isHidden = false
-        lastOrientation = UIDevice.currentOrientation()
+        lastOrientation = UIDevice.current.orientation
     }
     
     @objc private func panAction(_ recognizer: UIPanGestureRecognizer){
         guard let recognizerV = recognizer.view else { return }
         let point = recognizer.translation(in: recognizer.view)
         
-        let halfContentW = (contentView?.bounds.width ?? 0)/2
+        let halfContentW = contentView.bounds.width/2
         
         let minX = halfContentW
         let maxX = kScreenW - halfContentW
@@ -93,9 +92,11 @@ class JHFloatingItem: UIWindow {
         }
     }
     
-    @objc func notificationOrientationChanged(){
+    @objc private func notificationOrientationChanged(){
+        print("screenW:\(kScreenW)")
         var angle: CGFloat = 0
-        switch UIDevice.currentOrientation() {
+        let orientation = UIDevice.current.orientation
+        switch orientation {
         case .portrait:
             print("portrait")
         case .portraitUpsideDown:
@@ -103,14 +104,15 @@ class JHFloatingItem: UIWindow {
             angle = .pi
         case .landscapeRight:
             print("landscapeRight")
-            angle = .pi * 0.5
+            angle = .pi * -0.5
         case .landscapeLeft:
             print("landscapeLeft")
-            angle = .pi * -0.5
+            angle = .pi * 0.5
         default:
             print("unknown")
         }
         transform = CGAffineTransform(rotationAngle: angle)
+        lastOrientation = orientation
     }
     
     /*
