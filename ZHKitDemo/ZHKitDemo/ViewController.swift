@@ -62,7 +62,7 @@ class ViewController: UIViewController {
         floatingBtn.layer.cornerRadius = 30
         floatingBtn.layer.masksToBounds = true
         floatingBtn.addTarget(self, action: #selector(floatingBtnClick), for: .touchUpInside)
-        JHFloatingHelper.shared.show(contentV: floatingBtn)
+        JHFloatingHelper.shared.show(contentV: floatingBtn, rootVC: self)
     }
     
     @objc func navItemRAct(){
