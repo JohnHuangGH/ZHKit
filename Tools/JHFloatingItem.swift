@@ -11,7 +11,7 @@ import SnapKit
 
 fileprivate var kScreenW: CGFloat { UIScreen.main.bounds.width }
 fileprivate var kScreenH: CGFloat { UIScreen.main.bounds.height }
-fileprivate let kSafeInsets = UIApplication.shared.windows[0].safeAreaInsets
+fileprivate var kSafeInsets: UIEdgeInsets { UIApplication.shared.windows[0].safeAreaInsets }
 
 class JHFloatingHelper: NSObject {
     static let shared = JHFloatingHelper()
@@ -19,8 +19,8 @@ class JHFloatingHelper: NSObject {
     var safeInsets: UIEdgeInsets = kSafeInsets
     var floatingItem: JHFloatingItem?
     
-    func show(contentV: UIView){
-        let item = JHFloatingItem.init(contentView: contentV)
+    func show(contentV: UIView, rootVC: UIViewController){
+        let item = JHFloatingItem.init(contentView: contentV, rootVC: rootVC)
         floatingItem = item
         item.show()
     }
@@ -31,15 +31,21 @@ class JHFloatingHelper: NSObject {
 }
 
 class JHFloatingItem: UIWindow {
+    
+//    private static var item: JHFloatingItem?
 
     private var contentView: UIView = UIView()
+    private var rootVC: UIViewController = UIViewController()
     private var lastOrientation: UIDeviceOrientation = .portrait
+    private var lastInsets: UIEdgeInsets = kSafeInsets
     
-    init(contentView contentV: UIView){
-        super.init(frame: CGRect(origin: CGPoint(x: 0, y: kScreenH/2), size: contentV.bounds.size))
+    init(contentView contentV: UIView, rootVC rootVc: UIViewController){
+        //kScreenW - contentV.bounds.width
+        super.init(frame: CGRect(origin: CGPoint(x: kScreenW - contentV.bounds.width, y: (kScreenH - contentV.bounds.height)/2), size: contentV.bounds.size))
         backgroundColor = .clear
         windowLevel = .alert - 1
         contentView = contentV
+        rootVC = rootVc
         
         addSubview(contentV)
         contentV.snp.makeConstraints { make in
@@ -61,58 +67,135 @@ class JHFloatingItem: UIWindow {
     
     @objc private func panAction(_ recognizer: UIPanGestureRecognizer){
         guard let recognizerV = recognizer.view else { return }
-        let point = recognizer.translation(in: recognizer.view)
         
-        let halfContentW = contentView.bounds.width/2
+        let isLandscape = lastOrientation.isLandscape
+        let halfContentW = (isLandscape ? contentView.bounds.height : contentView.bounds.width)/2
+        let halfContentH = (isLandscape ? contentView.bounds.width : contentView.bounds.height)/2
+        let screenW = isLandscape ? kScreenH : kScreenW
+        let screenH = isLandscape ? kScreenW : kScreenH
         
-        let minX = halfContentW
-        let maxX = kScreenW - halfContentW
-        let minY = halfContentW + JHFloatingHelper.shared.safeInsets.top
-        let maxY = kScreenH - JHFloatingHelper.shared.safeInsets.bottom - halfContentW
+        var point = recognizer.translation(in: recognizerV)
+        var inset = kSafeInsets
         
-        var movedX = recognizerV.center.x + point.x
+        switch lastOrientation {
+        case .landscapeLeft:
+            point = CGPoint(x: -point.y, y: point.x)
+            inset = UIEdgeInsets(top: inset.left, left: inset.bottom, bottom: inset.right, right: inset.top)
+        case .landscapeRight:
+            point = CGPoint(x: point.y, y: -point.x)
+            inset = UIEdgeInsets(top: inset.right, left: inset.top, bottom: inset.left, right: inset.bottom)
+        default:
+            break
+        }
+        
+        let minX = halfContentW + inset.left
+        let maxX = screenW - halfContentW - inset.right
+        let minY = halfContentH + inset.top
+        let maxY = screenH - halfContentH - inset.bottom
+        
+        var movedX = point.x + recognizerV.center.x
         if movedX < minX {
             movedX = minX
         } else if movedX > maxX {
             movedX = maxX
         }
-        var movedY = recognizerV.center.y + point.y
+        var movedY = point.y + recognizerV.center.y
         if movedY < minY {
             movedY = minY
         } else if movedY > maxY {
             movedY = maxY
         }
+        
         center = CGPoint(x: movedX, y: movedY)
         recognizer.setTranslation(.zero, in: self)
         
         switch recognizer.state {
         case .ended, .cancelled, .failed:
-            center.x = center.x < kScreenW/2 ? minX : maxX
+            if isLandscape {
+                center.y = center.y < kScreenW/2 ? minY : maxY
+            }else{
+                center.x = center.x < kScreenW/2 ? minX : maxX
+            }
+//            print("\(frame)")
         default: break
         }
     }
     
     @objc private func notificationOrientationChanged(){
-        print("screenW:\(kScreenW)")
-        var angle: CGFloat = 0
+//        print("screenW:\(kScreenW)")
+        let oldFrame = frame
+//        print("oldFrame:\(oldFrame)")
         let orientation = UIDevice.current.orientation
+        let inset = kSafeInsets
+//        print("inset:\(inset)")
+        
+        var angle: CGFloat = 0
         switch orientation {
-        case .portrait:
-            print("portrait")
-        case .portraitUpsideDown:
-            print("portraitUpsideDown")
-            angle = .pi
-        case .landscapeRight:
-            print("landscapeRight")
-            angle = .pi * -0.5
         case .landscapeLeft:
-            print("landscapeLeft")
+//            print("landscapeLeft")
             angle = .pi * 0.5
+        case .landscapeRight:
+//            print("landscapeRight")
+            angle = .pi * -0.5
         default:
-            print("unknown")
+//            print("portrait")
+            break
         }
+        
         transform = CGAffineTransform(rotationAngle: angle)
+        
+        let newSize = lastOrientation.isLandscape && orientation.isLandscape ? oldFrame.size : CGSize(width: oldFrame.height, height: oldFrame.width)
+        frame.size = newSize
+        
+        let isLandscape = lastOrientation.isLandscape
+        let halfContentW = contentView.bounds.width/2
+        let halfContentH = contentView.bounds.height/2
+//        let screenW = isLandscape ? kScreenH : kScreenW
+//        let screenH = isLandscape ? kScreenW : kScreenH
+        
+        let whChanged: Bool = orientation.isLandscape ? lastOrientation.isPortrait : lastOrientation.isLandscape//宽高是否对调
+        let oldH = whChanged ? kScreenW : kScreenH
+        let oldW = whChanged ? kScreenH : kScreenW
+        
+        switch lastOrientation {
+        case .landscapeLeft:
+            let newX = oldFrame.minY == lastInsets.left ? halfContentW + inset.left : kScreenW - inset.right - halfContentW
+            let newY = (oldH - oldFrame.midX) / oldH * kScreenH
+            switch orientation {
+            case .portrait:
+                center = CGPoint(x: newX, y: newY)
+            case .landscapeRight:
+                center = CGPoint(x: newY, y: kScreenW - newX)
+            default:
+                break
+            }
+        case .landscapeRight:
+            let newX = oldFrame.maxY == oldW - lastInsets.left ? halfContentW + inset.left : kScreenW - inset.right - halfContentW
+            let newY = oldFrame.midX / oldH * kScreenH
+            switch orientation {
+            case .portrait:
+                center = CGPoint(x: newX, y: newY)
+            case .landscapeLeft:
+                center = CGPoint(x: kScreenH - newY, y: newX)
+            default:
+                break
+            }
+        default:
+            let newX = oldFrame.minX == lastInsets.left ? halfContentW + inset.left : kScreenW - inset.right - halfContentW
+            let newY = oldFrame.midY / oldH * kScreenH
+            switch orientation {
+            case .landscapeLeft:
+                center = CGPoint(x: kScreenH - newY, y: newX)
+            case .landscapeRight:
+                center = CGPoint(x: newY, y: kScreenW - newX)
+            default:
+                break
+            }
+            break
+        }
+
         lastOrientation = orientation
+        lastInsets = inset
     }
     
     /*
