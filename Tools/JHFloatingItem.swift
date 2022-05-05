@@ -13,35 +13,19 @@ fileprivate var kScreenW: CGFloat { UIScreen.main.bounds.width }
 fileprivate var kScreenH: CGFloat { UIScreen.main.bounds.height }
 fileprivate var kSafeInsets: UIEdgeInsets { UIApplication.shared.windows[0].safeAreaInsets }
 
-class JHFloatingHelper: NSObject {
-    static let shared = JHFloatingHelper()
-    
-    var safeInsets: UIEdgeInsets = kSafeInsets
-    var floatingItem: JHFloatingItem?
-    
-    func show(contentV: UIView, rootVC: UIViewController){
-        let item = JHFloatingItem.init(contentView: contentV, rootVC: rootVC)
-        floatingItem = item
-        item.show()
-    }
-    
-    func close(){
-        floatingItem = nil
-    }
-}
-
 class JHFloatingItem: UIWindow {
     
-//    private static var item: JHFloatingItem?
+    private static var floatingItem: JHFloatingItem?
 
     private var contentView: UIView = UIView()
     private var rootVC: UIViewController = UIViewController()
     private var lastOrientation: UIDeviceOrientation = .portrait
-    private var lastInsets: UIEdgeInsets = kSafeInsets
+    private lazy var lastInsets: UIEdgeInsets = kSafeInsets
     
     init(contentView contentV: UIView, rootVC rootVc: UIViewController){
         //kScreenW - contentV.bounds.width
-        super.init(frame: CGRect(origin: CGPoint(x: kScreenW - contentV.bounds.width, y: (kScreenH - contentV.bounds.height)/2), size: contentV.bounds.size))
+        let scH = UIDevice.current.orientation.isLandscape ? kScreenW : kScreenH
+        super.init(frame: CGRect(origin: CGPoint(x: 0 + kSafeInsets.left, y: (scH - contentV.bounds.height)/2), size: contentV.bounds.size))
         backgroundColor = .clear
         windowLevel = .alert - 1
         contentView = contentV
@@ -60,17 +44,29 @@ class JHFloatingItem: UIWindow {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func show(){
-        isHidden = false
-        lastOrientation = UIDevice.current.orientation
+    static func show(item contentV: UIView, rootVC rootVc: UIViewController){
+        let item = JHFloatingItem.init(contentView: contentV, rootVC: rootVc)
+        floatingItem = item
+        item.isHidden = false
+//        lastOrientation = UIDevice.current.orientation
+        item.notificationOrientationChanged()
+    }
+    
+    static func close(){
+        floatingItem?.isHidden = true
+        floatingItem = nil
+    }
+    
+    deinit {
+        print("deinit")
     }
     
     @objc private func panAction(_ recognizer: UIPanGestureRecognizer){
         guard let recognizerV = recognizer.view else { return }
         
         let isLandscape = lastOrientation.isLandscape
-        let halfContentW = (isLandscape ? contentView.bounds.height : contentView.bounds.width)/2
-        let halfContentH = (isLandscape ? contentView.bounds.width : contentView.bounds.height)/2
+        let halfItemW = (isLandscape ? contentView.bounds.height : contentView.bounds.width)/2
+        let halfItemH = (isLandscape ? contentView.bounds.width : contentView.bounds.height)/2
         let screenW = isLandscape ? kScreenH : kScreenW
         let screenH = isLandscape ? kScreenW : kScreenH
         
@@ -88,10 +84,10 @@ class JHFloatingItem: UIWindow {
             break
         }
         
-        let minX = halfContentW + inset.left
-        let maxX = screenW - halfContentW - inset.right
-        let minY = halfContentH + inset.top
-        let maxY = screenH - halfContentH - inset.bottom
+        let minX = halfItemW + inset.left
+        let maxX = screenW - halfItemW - inset.right
+        let minY = halfItemH + inset.top
+        let maxY = screenH - halfItemH - inset.bottom
         
         var movedX = point.x + recognizerV.center.x
         if movedX < minX {
@@ -122,12 +118,15 @@ class JHFloatingItem: UIWindow {
     }
     
     @objc private func notificationOrientationChanged(){
-//        print("screenW:\(kScreenW)")
+        
         let oldFrame = frame
 //        print("oldFrame:\(oldFrame)")
-        let orientation = UIDevice.current.orientation
+        let orientation = UIDevice.current.orientation // 不用isPortrait判断是否竖屏，UIDeviceOrientation包含水平方向faceUp，faceDown，!isLandscape就为Portrait
         let inset = kSafeInsets
 //        print("inset:\(inset)")
+        let itemSize = contentView.bounds.size
+        let itemW = itemSize.width
+        let itemH = itemSize.height
         
         var angle: CGFloat = 0
         switch orientation {
@@ -141,26 +140,26 @@ class JHFloatingItem: UIWindow {
 //            print("portrait")
             break
         }
-        
+//        print("orientation:\(orientation.rawValue)")
         transform = CGAffineTransform(rotationAngle: angle)
+        frame.size = orientation.isLandscape ? CGSize(width: itemH, height: itemW) : itemSize
         
-        let newSize = lastOrientation.isLandscape && orientation.isLandscape ? oldFrame.size : CGSize(width: oldFrame.height, height: oldFrame.width)
-        frame.size = newSize
         
-        let isLandscape = lastOrientation.isLandscape
-        let halfContentW = contentView.bounds.width/2
-        let halfContentH = contentView.bounds.height/2
-//        let screenW = isLandscape ? kScreenH : kScreenW
-//        let screenH = isLandscape ? kScreenW : kScreenH
-        
-        let whChanged: Bool = orientation.isLandscape ? lastOrientation.isPortrait : lastOrientation.isLandscape//宽高是否对调
+        let whChanged: Bool = orientation.isLandscape ? !lastOrientation.isLandscape : lastOrientation.isLandscape//宽高是否对调
         let oldH = whChanged ? kScreenW : kScreenH
         let oldW = whChanged ? kScreenH : kScreenW
         
+        let oldContentH = oldH - lastInsets.top - lastInsets.bottom - itemH
+        let newContentH = kScreenH - inset.top - inset.bottom - itemH
+        
+        let itemMinX = itemW/2 + inset.left
+        let itemMaxX = kScreenW - inset.right - itemW/2
+        
         switch lastOrientation {
         case .landscapeLeft:
-            let newX = oldFrame.minY == lastInsets.left ? halfContentW + inset.left : kScreenW - inset.right - halfContentW
-            let newY = (oldH - oldFrame.midX) / oldH * kScreenH
+            let newX = oldFrame.minY == lastInsets.left ? itemMinX : itemMaxX
+            let offsetY = oldH - oldFrame.midX - lastInsets.top - itemH/2
+            let newY = offsetY / oldContentH * newContentH + itemH/2 + inset.top
             switch orientation {
             case .portrait:
                 center = CGPoint(x: newX, y: newY)
@@ -170,8 +169,9 @@ class JHFloatingItem: UIWindow {
                 break
             }
         case .landscapeRight:
-            let newX = oldFrame.maxY == oldW - lastInsets.left ? halfContentW + inset.left : kScreenW - inset.right - halfContentW
-            let newY = oldFrame.midX / oldH * kScreenH
+            let newX = oldFrame.maxY == oldW - lastInsets.left ? itemMinX : itemMaxX
+            let offsetY = oldFrame.midX - lastInsets.top - itemH/2
+            let newY = offsetY / oldContentH * newContentH + itemH/2 + inset.top
             switch orientation {
             case .portrait:
                 center = CGPoint(x: newX, y: newY)
@@ -181,8 +181,9 @@ class JHFloatingItem: UIWindow {
                 break
             }
         default:
-            let newX = oldFrame.minX == lastInsets.left ? halfContentW + inset.left : kScreenW - inset.right - halfContentW
-            let newY = oldFrame.midY / oldH * kScreenH
+            let newX = oldFrame.minX == lastInsets.left ? itemMinX : itemMaxX
+            let offsetY = oldFrame.midY - lastInsets.top - itemH/2
+            let newY = offsetY / oldContentH * newContentH + itemH/2 + inset.top
             switch orientation {
             case .landscapeLeft:
                 center = CGPoint(x: kScreenH - newY, y: newX)

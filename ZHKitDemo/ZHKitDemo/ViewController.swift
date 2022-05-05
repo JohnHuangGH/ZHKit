@@ -18,11 +18,17 @@ class ViewController: UIViewController {
     func setupUI(){
         navigationItem.title = "ZHKitDemo"
         
-        let navBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 40))
-        navBtn.setTitle("present", for: .normal)
-        navBtn.setTitleColor(.orange, for: .normal)
-        navBtn.addTarget(self, action: #selector(navItemRAct), for: .touchUpInside)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: navBtn)
+        let navBtnL = UIButton(frame: CGRect(x: 0, y: 0, width: 80, height: 40))
+        navBtnL.setTitle("showItem", for: .normal)
+        navBtnL.setTitleColor(.orange, for: .normal)
+        navBtnL.addTarget(self, action: #selector(navItemActL), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: navBtnL)
+        
+        let navBtnR = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 40))
+        navBtnR.setTitle("present", for: .normal)
+        navBtnR.setTitleColor(.orange, for: .normal)
+        navBtnR.addTarget(self, action: #selector(navItemActR), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: navBtnR)
         
         let rotateBtnP = UIButton(frame: .zero)
         rotateBtnP.setTitle("Portrait", for: .normal)
@@ -55,17 +61,19 @@ class ViewController: UIViewController {
             make.centerY.width.height.equalTo(rotateBtnP)
             make.left.equalTo(rotateBtnP.snp.right).offset(10)
         }
-        
+    }
+    
+    @objc func navItemActL(){
         let floatingBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 60))
         floatingBtn.setTitle("floating", for: .normal)
         floatingBtn.backgroundColor = .blue
         floatingBtn.layer.cornerRadius = 30
         floatingBtn.layer.masksToBounds = true
         floatingBtn.addTarget(self, action: #selector(floatingBtnClick), for: .touchUpInside)
-        JHFloatingHelper.shared.show(contentV: floatingBtn, rootVC: self)
+        JHFloatingItem.show(item: floatingBtn, rootVC: self)
     }
     
-    @objc func navItemRAct(){
+    @objc func navItemActR(){
         let vc = UIViewController()
         vc.modalPresentationStyle = .fullScreen
         vc.view.backgroundColor = .darkGray
@@ -79,6 +87,7 @@ class ViewController: UIViewController {
     
     @objc func floatingBtnClick(){
         print("floatingBtnClick")
+        JHFloatingItem.close()
     }
     
     @objc func rotateBtnPClick(){
@@ -87,12 +96,12 @@ class ViewController: UIViewController {
     }
     
     @objc func rotateBtnLClick(){
-        print("rotateBtnLClick:\(UIInterfaceOrientation.landscapeLeft.rawValue)")
+        print("rotateBtnLClick:\(UIDeviceOrientation.landscapeLeft.rawValue)")
         UIDevice.change(deviceOrientation: .landscapeLeft)
     }
     
     @objc func rotateBtnRClick(){
-        print("rotateBtnRClick:\(UIInterfaceOrientation.landscapeRight.rawValue)")
+        print("rotateBtnRClick:\(UIDeviceOrientation.landscapeRight.rawValue)")
         UIDevice.change(deviceOrientation: .landscapeRight)
     }
 }
