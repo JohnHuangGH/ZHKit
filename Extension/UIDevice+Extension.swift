@@ -72,8 +72,8 @@ extension UIDevice {
         return "iPhone新机型"
     }
     
-    static func change(deviceOrientation: UIDeviceOrientation){
-        UIDevice.current.setValue(NSNumber(integerLiteral: UIDeviceOrientation.unknown.rawValue), forKey: "orientation")
-        UIDevice.current.setValue(NSNumber(integerLiteral: deviceOrientation.rawValue), forKey: "orientation")
+    static func change(orientation: UIInterfaceOrientation){
+        UIDevice.current.setValue(UIInterfaceOrientation.unknown.rawValue, forKey: "orientation")
+        UIDevice.current.setValue(orientation.rawValue, forKey: "orientation")
     }
 }

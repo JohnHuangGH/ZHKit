@@ -92,17 +92,17 @@ class ViewController: UIViewController {
     
     @objc func rotateBtnPClick(){
         print("rotateBtnPClick:\(UIDeviceOrientation.portrait.rawValue)")
-        UIDevice.change(deviceOrientation: .portrait)
+        UIDevice.change(orientation: .portrait)
     }
     
     @objc func rotateBtnLClick(){
         print("rotateBtnLClick:\(UIDeviceOrientation.landscapeLeft.rawValue)")
-        UIDevice.change(deviceOrientation: .landscapeLeft)
+        UIDevice.change(orientation: .landscapeLeft)
     }
     
     @objc func rotateBtnRClick(){
         print("rotateBtnRClick:\(UIDeviceOrientation.landscapeRight.rawValue)")
-        UIDevice.change(deviceOrientation: .landscapeRight)
+        UIDevice.change(orientation: .landscapeRight)
     }
 }
 
