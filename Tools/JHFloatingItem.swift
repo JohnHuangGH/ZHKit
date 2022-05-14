@@ -13,16 +13,31 @@ fileprivate var kScreenW: CGFloat { UIScreen.main.bounds.width }
 fileprivate var kScreenH: CGFloat { UIScreen.main.bounds.height }
 fileprivate var kSafeInsets: UIEdgeInsets { UIApplication.shared.windows[0].safeAreaInsets }
 
+struct JHFloatingType: OptionSet {
+    let rawValue: Int
+    init(rawValue: Int) {
+        self.rawValue = rawValue
+    }
+    static var none     : JHFloatingType {JHFloatingType(rawValue: 0)}
+    static var top      : JHFloatingType {JHFloatingType(rawValue: 1<<0)}
+    static var right    : JHFloatingType {JHFloatingType(rawValue: 1<<1)}
+    static var down     : JHFloatingType {JHFloatingType(rawValue: 1<<2)}
+    static var left     : JHFloatingType {JHFloatingType(rawValue: 1<<3)}
+    static var all      : JHFloatingType {JHFloatingType(rawValue: top.rawValue|right.rawValue|down.rawValue|left.rawValue)}
+}
+
 class JHFloatingItem: UIWindow {
     
     private static var floatingItem: JHFloatingItem?
 
     private var contentView: UIView = UIView()
     private var rootVC: UIViewController = UIViewController()
+    private var floatintType: JHFloatingType = .none
+    
     private var lastOrientation: UIDeviceOrientation = .portrait
     private lazy var lastInsets: UIEdgeInsets = kSafeInsets
     
-    init(contentView contentV: UIView, rootVC rootVc: UIViewController){
+    init(contentView contentV: UIView, rootVC rootVc: UIViewController, type: JHFloatingType){
         //kScreenW - contentV.bounds.width
         let scH = UIDevice.current.orientation.isLandscape ? kScreenW : kScreenH
         super.init(frame: CGRect(origin: CGPoint(x: 0 + kSafeInsets.left, y: (scH - contentV.bounds.height)/2), size: contentV.bounds.size))
@@ -30,6 +45,7 @@ class JHFloatingItem: UIWindow {
         windowLevel = .alert - 1
         contentView = contentV
         rootVC = rootVc
+        floatintType = type
         
         addSubview(contentV)
         contentV.snp.makeConstraints { make in
@@ -44,8 +60,8 @@ class JHFloatingItem: UIWindow {
         fatalError("init(coder:) has not been implemented")
     }
     
-    static func show(item contentV: UIView, rootVC rootVc: UIViewController){
-        let item = JHFloatingItem.init(contentView: contentV, rootVC: rootVc)
+    static func show(item contentV: UIView, rootVC rootVc: UIViewController, type: JHFloatingType = .none){
+        let item = JHFloatingItem.init(contentView: contentV, rootVC: rootVc, type: type)
         floatingItem = item
         item.isHidden = false
 //        lastOrientation = UIDevice.current.orientation
@@ -131,13 +147,10 @@ class JHFloatingItem: UIWindow {
         var angle: CGFloat = 0
         switch orientation {
         case .landscapeLeft:
-//            print("landscapeLeft")
             angle = .pi * 0.5
         case .landscapeRight:
-//            print("landscapeRight")
             angle = .pi * -0.5
         default:
-//            print("portrait")
             break
         }
 //        print("orientation:\(orientation.rawValue)")
